@@ -254,7 +254,7 @@ h3 {
   padding: 96px 0;
 }
 
-.brand-story {
+.quick-proof {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: min(var(--max), calc(100% - 36px));
@@ -267,17 +267,17 @@ h3 {
   backdrop-filter: blur(18px);
 }
 
-.brand-story div {
+.quick-proof div {
   min-height: 132px;
   padding: 22px;
   border-right: 1px solid var(--line);
 }
 
-.brand-story div:last-child {
+.quick-proof div:last-child {
   border-right: 0;
 }
 
-.brand-story span {
+.quick-proof span {
   display: block;
   margin-bottom: 26px;
   color: var(--cyan);
@@ -285,9 +285,37 @@ h3 {
   font-weight: 900;
 }
 
-.brand-story p {
+.quick-proof p {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+}
+
+.brand-story {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.brand-story div {
+  min-height: 176px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.brand-story span {
+  display: block;
+  margin-bottom: 34px;
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.brand-story p {
+  margin: 0;
+  color: var(--muted);
   font-size: 15px;
 }
 
@@ -660,17 +688,21 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .quick-proof,
   .brand-story {
     grid-template-columns: 1fr;
+  }
+
+  .quick-proof {
     margin-top: 0;
   }
 
-  .brand-story div {
+  .quick-proof div {
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
 
-  .brand-story div:last-child {
+  .quick-proof div:last-child {
     border-bottom: 0;
   }
 
