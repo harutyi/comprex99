@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Comprex99 Rex mark</title>
+  <desc id="desc">A minimal geometric T-Rex head mark with 99 as the eye and a single tear.</desc>
+  <rect width="96" height="96" fill="#f7f4ed"/>
+  <path
+    fill="#111315"
+    d="M18 33h37l10 10h17v14H69l9 10H58l-8-10H36v16H21V57H12V43h6V33Z"
+  />
+  <path fill="#111315" d="M30 71h14v8H30zM50 71h12v8H50z"/>
+  <path fill="#111315" d="M70 31h15v8H70z"/>
+  <path fill="#63d9e8" d="M49 42a5 5 0 1 1-10 0 5 5 0 0 1 10 0Zm15 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/>
+  <path fill="#111315" d="M44 39h2v6h-6v-2h4v-4Zm15 0h2v6h-6v-2h4v-4Z"/>
+  <path fill="#63d9e8" d="M64 50c4 5 4 10 0 14-4-4-4-9 0-14Z"/>
+  <path fill="#e95d51" d="M78 57h9v5h-9z"/>
+</svg>
