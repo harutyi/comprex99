@@ -106,8 +106,8 @@ a {
 .hero-shade {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(15, 15, 15, 0.82), rgba(15, 15, 15, 0.32) 54%, rgba(15, 15, 15, 0.74)),
-    linear-gradient(180deg, rgba(15, 15, 15, 0.14), rgba(15, 15, 15, 0.95));
+    linear-gradient(90deg, rgba(15, 15, 15, 0.74), rgba(15, 15, 15, 0.24) 54%, rgba(15, 15, 15, 0.66)),
+    linear-gradient(180deg, rgba(15, 15, 15, 0.08), rgba(15, 15, 15, 0.86));
 }
 
 .hero-inner {
@@ -148,6 +148,10 @@ a {
   font-family: "Noto Serif JP", "Yu Mincho", serif;
   font-size: clamp(26px, 7vw, 54px);
   line-height: 1.35;
+}
+
+.hero-copy span {
+  display: block;
 }
 
 .hero-sub {
