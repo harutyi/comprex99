@@ -205,10 +205,16 @@ a {
   border-bottom: 1px solid var(--soft);
 }
 
+.concept.reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .concept-grid {
   display: grid;
-  gap: 34px;
+  gap: 18px;
   margin-top: 36px;
+  max-width: 780px;
 }
 
 .concept p,
@@ -220,8 +226,8 @@ a {
 .concept-lead {
   color: var(--text) !important;
   font-family: "Noto Serif JP", "Yu Mincho", serif;
-  font-size: 22px;
-  line-height: 2.1;
+  font-size: clamp(21px, 4vw, 30px);
+  line-height: 1.7;
 }
 
 .menu {
@@ -457,17 +463,28 @@ a {
     padding-bottom: 78px;
   }
 
-  .concept-grid,
   .image-note,
   .access {
     grid-template-columns: 0.9fr 1.1fr;
     align-items: start;
   }
 
-  .concept-lead {
-    writing-mode: vertical-rl;
-    min-height: 360px;
-    justify-self: end;
+  .concept {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.76fr) minmax(360px, 1fr);
+    column-gap: 74px;
+    align-items: start;
+  }
+
+  .concept .section-kicker,
+  .concept h2 {
+    grid-column: 1;
+  }
+
+  .concept-grid {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 34px;
   }
 
   .price-row {
@@ -507,6 +524,10 @@ a {
   .hero {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .concept h2 {
+    font-size: 29px;
   }
 
   .price-row {
