@@ -566,6 +566,27 @@ h3 {
   font-size: 15px;
 }
 
+.service-line-section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-line-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-line-list li {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 800;
+}
+
 .production {
   display: grid;
   grid-template-columns: minmax(260px, 1fr) minmax(280px, 420px);
