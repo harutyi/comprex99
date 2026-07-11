@@ -201,6 +201,14 @@ a {
   font-size: clamp(31px, 8vw, 62px);
 }
 
+.section h2 span {
+  display: inline-block;
+}
+
+.concept h2 span {
+  display: block;
+}
+
 .concept {
   border-bottom: 1px solid var(--soft);
 }
