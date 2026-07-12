@@ -73,7 +73,6 @@ a {
 
 .nav a:hover,
 .business-row:hover,
-.work-row:hover,
 .footer a:hover {
   background: var(--black);
   color: var(--white);
@@ -192,18 +191,24 @@ a {
 
 .work-row {
   display: grid;
-  grid-template-columns: 92px 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
   align-items: stretch;
   padding: 16px;
   border-bottom: 0;
 }
 
-.work-row img {
-  width: 92px;
-  height: 122px;
-  object-fit: cover;
-  border: 2px solid var(--black);
+.work-empty {
+  min-height: 220px;
+  align-content: space-between;
+}
+
+.work-empty .work-title {
+  color: var(--white);
+  background: var(--black);
+  width: max-content;
+  max-width: 100%;
+  padding: 4px 8px 8px;
 }
 
 .work-main {
@@ -225,7 +230,7 @@ a {
 }
 
 .work-link {
-  grid-column: 2;
+  grid-column: auto;
   width: max-content;
   align-self: end;
   border: 2px solid currentColor;
@@ -299,14 +304,9 @@ a {
   }
 
   .work-row {
-    grid-template-columns: 140px minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 24px;
     padding: 24px;
-  }
-
-  .work-row img {
-    width: 140px;
-    height: 184px;
   }
 
   .work-link {
