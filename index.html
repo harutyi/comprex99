@@ -1,89 +1,360 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comprex99</title>
-    <meta name="description" content="愛知の一人制作会社。Webサイトとアプリを作る。" />
-    <link rel="canonical" href="https://comprex99.com/" />
-    <meta property="og:title" content="Comprex99" />
-    <meta property="og:description" content="愛知の一人制作会社。Webサイトとアプリを作る。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://comprex99.com/" />
-    <meta property="og:image" content="https://comprex99.com/assets/hero-studio.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="./corporate.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="./" aria-label="Comprex99 トップ">
-        Comprex99
-      </a>
-      <nav class="nav" aria-label="メインナビゲーション">
-        <a href="#works">WORKS</a>
-        <a href="./company.html">COMPANY</a>
-        <a href="./web/">WEB制作</a>
-        <a href="./web/#contact">CONTACT</a>
-      </nav>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprex99</title>
+<meta name="description" content="Comprex99 — 愛知の制作スタジオ。">
+<style>
+  /* ===== 60:30:10 テーマ(サイドバーで切替) ===== */
+  body[data-theme="lime"]{   --base:#FBFBF7; --sub:#1C1D1B; --dim:#9A9B93; --accent:#B5E800; --accent-ink:#5E7A00; --line:rgba(28,29,27,.13); --card:#F3F4EC; }
+  body[data-theme="noir"]{   --base:#0F0F12; --sub:#EDEBE6; --dim:#77767E; --accent:#2B32FF; --accent-ink:#2B32FF; --line:rgba(237,235,230,.12); --card:#141419; }
+  body[data-theme="ivory"]{  --base:#F1EFE9; --sub:#1B1B1E; --dim:#8B887F; --accent:#E4572E; --accent-ink:#C43D17; --line:rgba(27,27,30,.14);   --card:#E9E6DE; }
+  body[data-theme="forest"]{ --base:#12211B; --sub:#EAE7DC; --dim:#7C8A80; --accent:#E9B44C; --accent-ink:#E9B44C; --line:rgba(234,231,220,.13); --card:#182B23; }
+  body[data-theme="plum"]{   --base:#171320; --sub:#ECE8F1; --dim:#7E7690; --accent:#C6F432; --accent-ink:#C6F432; --line:rgba(236,232,241,.12); --card:#1E1930; }
+  body[data-theme="paper"]{  --base:#FAFAF7; --sub:#232326; --dim:#98979E; --accent:#0F7B5F; --accent-ink:#0F7B5F; --line:rgba(35,35,38,.12);   --card:#F0F0EB; }
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="kicker">AICHI / SOLO STUDIO</p>
-        <h1 id="hero-title">Comprex99</h1>
-        <p class="hero-copy">
-          愛知の一人制作会社。<br />
-          Webサイトとアプリを作る。
-        </p>
-      </section>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--base); color:var(--sub);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    cursor:none;
+    transition:background .5s ease,color .5s ease;
+    overflow-x:hidden;
+  }
+  .mono{font-family:"SF Mono","Courier New",ui-monospace,monospace;}
+  ::selection{background:var(--accent);color:#111;}
+  a{color:inherit;text-decoration:none;cursor:none;}
 
-      <section id="services" class="business" aria-labelledby="business-title">
-        <div class="section-head">
-          <p>BUSINESS</p>
-          <h2 id="business-title">作るもの。</h2>
+  /* ===== cursor ===== */
+  .cursor{
+    position:fixed;top:0;left:0;z-index:999;pointer-events:none;
+    width:10px;height:10px;border-radius:50%;
+    background:var(--accent);
+    transform:translate(-50%,-50%);
+    transition:width .25s ease,height .25s ease,background .25s ease;
+  }
+  .cursor.hov{width:52px;height:52px;background:transparent;border:1px solid var(--accent);}
+  @media (hover:none){ .cursor{display:none;} body,a,button{cursor:auto !important;} }
+
+  /* ===== layout : sidebar + main ===== */
+  .layout{display:grid;grid-template-columns:240px 1fr;min-height:100svh;}
+  aside{
+    position:sticky;top:0;height:100svh;
+    border-right:1px solid var(--line);
+    display:flex;flex-direction:column;
+    padding:28px 24px;
+    transition:border-color .5s ease;
+  }
+  .side-logo{font-weight:800;font-size:16px;letter-spacing:.03em;}
+  .side-logo span{color:var(--accent-ink);}
+  .side-nav{margin-top:56px;display:flex;flex-direction:column;gap:18px;}
+  .side-nav a{font-size:13px;letter-spacing:.1em;color:var(--dim);position:relative;overflow:hidden;display:inline-block;width:max-content;}
+  .side-nav a i{font-style:normal;display:inline-block;transition:transform .35s cubic-bezier(.76,0,.24,1);}
+  .side-nav a::before{content:attr(data-t);position:absolute;left:0;top:100%;color:var(--accent-ink);transition:transform .35s cubic-bezier(.76,0,.24,1);}
+  .side-nav a:hover i{transform:translateY(-100%);}
+  .side-nav a:hover::before{transform:translateY(-100%);}
+
+  .side-bottom{margin-top:auto;display:flex;flex-direction:column;gap:20px;}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap;}
+  .sw{
+    width:22px;height:22px;border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--sw);
+    position:relative;
+    transition:transform .2s ease;
+  }
+  .sw:hover{transform:scale(1.25);}
+  .sw.active::after{content:"";position:absolute;inset:-5px;border:1px solid var(--accent);border-radius:50%;}
+  .sw-label{font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:10px;letter-spacing:.2em;color:var(--dim);margin-bottom:6px;}
+  .side-line{border:none;font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;color:var(--dim);}
+  button.sw{cursor:none;}
+
+  main{min-width:0;}
+  .pad{padding:0 clamp(24px,5vw,72px);}
+
+  /* ===== hero ===== */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+  .hero h1{
+    font-size:clamp(52px,10.5vw,168px);
+    font-weight:800;line-height:.95;letter-spacing:-0.045em;
+  }
+  .hero h1 .ln{display:block;overflow:hidden;}
+  .hero h1 .ln span{display:inline-block;}
+  .hero h1 em{font-style:normal;color:var(--accent-ink);}
+  .hero h1 mark{background:var(--accent);color:var(--sub);padding:0 .08em;}
+  @keyframes rise{from{transform:translateY(110%);}to{transform:translateY(0);}}
+  .hero .tag{
+    margin-top:34px;
+    font-family:"SF Mono","Courier New",ui-monospace,monospace;
+    font-size:12.5px;letter-spacing:.24em;color:var(--dim);
+    opacity:0;animation:fade .8s ease .7s forwards;
+  }
+  @keyframes fade{to{opacity:1;}}
+  .hero-bg{
+    position:absolute;inset:0;display:flex;align-items:center;
+    font-weight:800;font-size:clamp(200px,36vw,540px);letter-spacing:-.05em;
+    color:transparent;-webkit-text-stroke:1px var(--line);
+    white-space:nowrap;pointer-events:none;user-select:none;z-index:-1;
+  }
+  .scroll-hint{
+    position:absolute;bottom:30px;left:clamp(24px,5vw,72px);
+    font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:10px;letter-spacing:.3em;color:var(--dim);
+    animation:bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ===== sections ===== */
+  section{padding:clamp(80px,13vh,150px) 0;}
+  #contact{padding-top:clamp(140px,24vh,260px);padding-bottom:clamp(110px,18vh,200px);}
+  .sec-label{font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:11px;letter-spacing:.25em;color:var(--accent-ink);margin-bottom:44px;}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ===== works(説明はここに集約) ===== */
+  .works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;}
+  .tilt{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    transform-style:preserve-3d;will-change:transform;
+    transition:border-color .3s ease,background .5s ease;
+    background:var(--card);
+  }
+  .tilt:hover{border-color:var(--accent);}
+  .tilt.next{border-style:dashed;background:transparent;}
+  .tilt.next .thumb{color:var(--dim);}
+  .tilt.next:hover{border-color:var(--accent);}
+  .tilt .thumb{
+    aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.02em;
+    border-bottom:1px solid var(--line);
+  }
+  .tilt .body{padding:22px 24px 26px;}
+  .tilt .body .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .tilt h3{font-size:17px;font-weight:700;}
+  .tilt .meta{font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:10.5px;letter-spacing:.15em;color:var(--dim);}
+  .tilt p{font-size:14px;color:var(--dim);line-height:1.8;}
+
+  /* ===== company ===== */
+  .fact-list{border-top:1px solid var(--line);max-width:720px;}
+  .fact{display:grid;grid-template-columns:140px 1fr;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px;}
+  .fact dt{color:var(--dim);font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:11px;letter-spacing:.15em;padding-top:3px;}
+
+  /* ===== contact ===== */
+  .contact-inner{text-align:center;}
+  .contact-inner h2{font-size:clamp(32px,5vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1.1;}
+  .magnet{ color:#111;
+    display:inline-flex;align-items:center;justify-content:center;
+    margin-top:46px;
+    width:clamp(150px,16vw,190px);height:clamp(150px,16vw,190px);
+    border-radius:50%;
+    background:var(--accent);color:#111;
+    font-size:15px;font-weight:700;letter-spacing:.05em;
+    will-change:transform;
+    transition:filter .3s ease,background .5s ease,color .5s ease;
+  }
+  .magnet:hover{filter:brightness(1.12);}
+
+  footer{border-top:1px solid var(--line);padding:24px 0;}
+  .ft{display:flex;justify-content:space-between;font-family:"SF Mono","Courier New",ui-monospace,monospace;font-size:11px;color:var(--dim);flex-wrap:wrap;gap:8px;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+    .hero h1 .ln span{transform:none;}
+    .hero .tag{opacity:1;}
+  }
+  /* ===== mobile polish ===== */
+  @media (max-width:860px){
+    section{padding:64px 0;}
+    #contact{padding-top:110px;padding-bottom:110px;}
+    .hero{min-height:88svh;}
+    .hero h1{font-size:clamp(36px,10.5vw,64px);}
+    .hero .tag{font-size:11px;letter-spacing:.18em;}
+    .hero-bg{font-size:70vw;opacity:.7;}
+    .works-grid{grid-template-columns:1fr;gap:20px;}
+    .tilt .thumb{aspect-ratio:16/8;font-size:24px;}
+    .contact-inner h2{font-size:clamp(30px,9vw,44px);}
+    .magnet{width:132px;height:132px;font-size:13.5px;}
+    .ft{flex-direction:column;gap:6px;}
+  }
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;}
+    aside{
+      position:fixed;inset:0 0 auto;height:auto;z-index:50;
+      flex-direction:row;align-items:center;gap:18px;
+      padding:14px 20px;
+      background:color-mix(in srgb, var(--base) 82%, transparent);
+      backdrop-filter:blur(10px);
+      border-right:none;border-bottom:1px solid var(--line);
+    }
+    .side-nav{margin-top:0;flex-direction:row;gap:14px;flex-wrap:wrap;}
+    .side-nav a{font-size:11px;}
+    .side-bottom{margin-top:0;margin-left:auto;flex-direction:row;align-items:center;}
+    .sw-label,.side-line{display:none;}
+    .sw{width:18px;height:18px;}
+    .swatches{gap:6px;}
+    main{padding-top:76px;}
+    .scroll-hint{display:none;}
+  }
+</style>
+</head>
+<body data-theme="lime">
+
+<div class="cursor" id="cursor"></div>
+
+<div class="layout">
+
+  <aside>
+    <a class="side-logo" href="/">COMPREX<span>99</span></a>
+    <nav class="side-nav">
+      <a href="#works" data-t="WORKS"><i>WORKS</i></a>
+      <a href="/web/" data-t="WEB制作"><i>WEB制作</i></a>
+      <a href="#contact" data-t="CONTACT"><i>CONTACT</i></a>
+    </nav>
+    <div class="side-bottom">
+      <div>
+        <div class="sw-label">THEME</div>
+        <div class="swatches" id="swatches">
+          <button class="sw active" data-theme="lime"   style="--sw:#B5E800" title="lime"></button>
+          <button class="sw" data-theme="noir"   style="--sw:#2B32FF" title="noir"></button>
+          <button class="sw" data-theme="ivory"  style="--sw:#E4572E" title="ivory"></button>
+          <button class="sw" data-theme="forest" style="--sw:#E9B44C" title="forest"></button>
+          <button class="sw" data-theme="plum"   style="--sw:#C6F432" title="plum"></button>
+          <button class="sw" data-theme="paper"  style="--sw:#0F7B5F" title="paper"></button>
         </div>
-        <div class="business-list">
-          <a id="web-production" class="business-row is-link" href="./web/">
-            <span class="business-index">01</span>
-            <span class="business-name">WEB PRODUCTION</span>
-            <span class="business-text">店舗・事業のホームページ制作</span>
-            <span class="business-arrow">OPEN</span>
-          </a>
-          <div class="business-row is-offset">
-            <span class="business-index">02</span>
-            <span class="business-name">APP DEVELOPMENT</span>
-            <span class="business-text">自社プロダクト開発</span>
-            <span class="business-arrow">準備中</span>
+      </div>
+      <div class="side-line">AICHI, JP<br>SINCE 2026</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="hero pad">
+      <div class="hero-bg" id="heroBg">COMPREX99</div>
+      <h1>
+        <span class="ln"><span>COMPREX<mark>99</mark></span></span>
+        <span class="ln"><span>STUDIO.</span></span>
+      </h1>
+      <p class="tag">WEB / APP — AICHI, JAPAN</p>
+      <div class="scroll-hint">SCROLL</div>
+    </div>
+
+    <section id="works" class="pad">
+      <div class="sec-label reveal">(01) WORKS</div>
+      <div class="works-grid">
+        <a class="tilt reveal" data-tilt href="/web/">
+          <div class="thumb">Web Production</div>
+          <div class="body">
+            <div class="top"><h3>ホームページ制作</h3><span class="meta">SERVICE / RUNNING</span></div>
+            <p>店舗向けの1ページ制作。ヒアリングから公開・保守まで。料金と制作例は専用ページで。</p>
           </div>
-          <div class="business-row">
-            <span class="business-index">03</span>
-            <span class="business-name">MAINTENANCE</span>
-            <span class="business-text">保守・運用</span>
-            <span class="business-arrow">KEEP</span>
+        </a>
+        <div class="tilt reveal" data-tilt>
+          <div class="thumb">Video Analyzer</div>
+          <div class="body">
+            <div class="top"><h3>動画解析アプリ</h3><span class="meta">WIP / PYTHON</span></div>
+            <p>動画を解析するデスクトップツール。公開準備中。</p>
           </div>
         </div>
-      </section>
-
-      <section id="works" class="works" aria-labelledby="works-title">
-        <div class="section-head">
-          <p>WORKS</p>
-          <h2 id="works-title">出せるものだけ置く。</h2>
+        <div class="tilt reveal" data-tilt>
+          <div class="thumb">Travel Compare</div>
+          <div class="body">
+            <div class="top"><h3>旅行比較アプリ</h3><span class="meta">WIP / WEB</span></div>
+            <p>旅行プランを横並びで比較するWebアプリ。公開準備中。</p>
+          </div>
         </div>
-        <div class="work-row work-empty">
-          <span class="work-main">
-            <span class="work-title">公開できる実績は準備中。</span>
-            <span class="work-desc">アプリ、自社プロダクト、公開許可のある実案件だけをここに追加する。</span>
-          </span>
-          <span class="work-link">COMING SOON</span>
+        <div class="tilt next reveal">
+          <div class="thumb" style="border-bottom:none;">NEXT</div>
+          <div class="body">
+            <div class="top"><h3>制作中</h3><span class="meta">COMING</span></div>
+            <p>次の実績がここに入ります。</p>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer id="contact" class="footer">
-      <p>© 2026 Comprex99</p>
-      <a href="./company.html">company.html</a>
-      <a href="./web/#contact">contact</a>
-      <p class="last-update">last update: 2026-07-12</p>
+    <section id="contact" class="pad">
+      <div class="contact-inner">
+        <h2 class="reveal">仕事の話は、<br>こちら。</h2>
+        <a class="magnet reveal" id="magnet" href="/web/#contact">CONTACT →</a>
+      </div>
+    </section>
+
+    <footer class="pad">
+      <div class="ft">
+        <div>© COMPREX99</div>
+        <div><a href="/legal/" style="color:var(--dim);">運営者情報・プライバシーポリシー</a></div>
+        <div>LAST UPDATE: 2026-07-12</div>
+      </div>
     </footer>
-  </body>
+  </main>
+</div>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme switch */
+  const sws = document.querySelectorAll('.sw');
+  sws.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.body.dataset.theme = b.dataset.theme;
+      sws.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+    });
+  });
+
+  /* cursor */
+  const cur = document.getElementById('cursor');
+  let cx=innerWidth/2, cy=innerHeight/2, tx=cx, ty=cy;
+  addEventListener('mousemove', e=>{tx=e.clientX; ty=e.clientY;});
+  (function loop(){
+    cx += (tx-cx)*0.18; cy += (ty-cy)*0.18;
+    cur.style.left = cx+'px'; cur.style.top = cy+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));
+  });
+
+  /* reveal */
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const touch = matchMedia('(hover: none)').matches;
+  if(reduce || touch) return;
+
+  /* hero bg parallax */
+  const bg = document.getElementById('heroBg');
+  addEventListener('scroll', ()=>{
+    bg.style.transform = 'translateX(' + (-scrollY*0.25) + 'px)';
+  }, {passive:true});
+
+  /* tilt */
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      card.style.transform = 'perspective(800px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+  });
+
+  /* magnet */
+  const m = document.getElementById('magnet');
+  m.addEventListener('mousemove', e=>{
+    const r = m.getBoundingClientRect();
+    m.style.transform = 'translate(' + ((e.clientX-r.left-r.width/2)*0.3) + 'px,' + ((e.clientY-r.top-r.height/2)*0.3) + 'px)';
+  });
+  m.addEventListener('mouseleave', ()=>{ m.style.transform=''; });
+})();
+</script>
+
+</body>
 </html>

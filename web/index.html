@@ -1,225 +1,386 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ホームページ制作 | Comprex99</title>
-    <meta
-      name="description"
-      content="個人店・小さな事業向けのホームページ制作。文章作成、デザイン、公開後の管理までまとめてお引き受けします。"
-    />
-    <link rel="canonical" href="https://comprex99.com/web/" />
-    <meta property="og:title" content="ホームページ制作 | Comprex99" />
-    <meta
-      property="og:description"
-      content="お店のこだわりを聞いて、文章もデザインも、公開後の管理までまとめてお引き受けします。"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://comprex99.com/web/" />
-    <meta property="og:image" content="https://comprex99.com/assets/noir-et-or-mobile.webp" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="../web.css" />
-  </head>
-  <body>
-    <header class="lp-header">
-      <a class="lp-brand" href="../">Comprex99</a>
-      <nav class="lp-nav" aria-label="ページ内ナビゲーション">
-        <a href="#works">制作例</a>
-        <a href="#pricing">料金</a>
-        <a href="#flow">流れ</a>
-        <a href="#contact">相談</a>
-      </nav>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お店のホームページ制作 | Comprex99</title>
+<meta name="description" content="お店のホームページを39,800円で。やりとりはLINEだけ、お手間は10分ほど。愛知の個人制作所Comprex99。">
+<meta property="og:title" content="お店のホームページ、つくります。">
+<meta property="og:description" content="やりとりはLINEだけ。5つの質問に答えるだけで、あとはおまかせ。先着3名モニター価格39,800円。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://comprex99.com/web/">
+<meta property="og:image" content="https://comprex99.com/web/og.jpg">
+<style>
+  :root{
+    --bg:#FAF8F5;
+    --ink:#3A3A38;
+    --soft:#7C7A74;
+    --green:#2E6B4F;
+    --green-soft:#EAF2ED;
+    --card:#FFFFFF;
+    --line:#E8E4DD;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+    font-size:17px; line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">個人店・小さな事業のホームページ制作</p>
-          <h1 id="hero-title">あなたのお店の良さ、<br />ちゃんと伝わっていますか。</h1>
-          <p class="lead">
-            お店のこだわりを聞いて、文章もデザインも、公開後の管理までまとめてお引き受けします。お手間はLINEで5つの質問に答える10分だけです。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://lin.ee/9ImQrCR" target="_blank" rel="noopener">
-              LINEで相談する
-            </a>
-            <a class="button secondary" href="#works">制作例を見る</a>
-          </div>
-        </div>
-        <div class="hero-panel" aria-label="制作内容の概要">
-          <span>1ページ構成</span>
-          <span>スマホ対応</span>
-          <span>文章作成</span>
-          <span>公開作業</span>
-        </div>
-      </section>
+  /* ===== header ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,248,245,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .hd{display:flex;justify-content:space-between;align-items:center;height:60px;}
+  .hd .logo{font-weight:700;font-size:15px;color:var(--soft);}
+  .hd .logo b{color:var(--ink);}
+  .hd a.mini-cta{
+    background:var(--green);color:#fff;
+    padding:9px 18px;border-radius:999px;
+    font-size:13.5px;font-weight:700;
+  }
 
-      <section id="works" class="section works" aria-labelledby="works-title">
-        <div class="section-heading">
-          <p>制作例</p>
-          <h2 id="works-title">雰囲気まで伝わるページを作ります。</h2>
-        </div>
-        <article class="work-card">
-          <a class="work-image" href="../demos/noir-et-or/" target="_blank" rel="noopener">
-            <img
-              src="../assets/noir-et-or-mobile.webp"
-              alt="hair salon Noir et Or 制作デモのスマホ表示"
-              width="360"
-              height="480"
-            />
-          </a>
-          <div class="work-copy">
-            <p class="tag">制作デモ</p>
-            <h3>hair salon Noir et Or</h3>
-            <p>美容室・高級プライベートサロンを想定した1ページサイトです。黒と金を基調に、静かで上質な雰囲気が伝わるように作っています。</p>
-            <p class="small">制作期間: 3日 / 構成・デザイン・コーディング・サーバー設定</p>
-            <a class="text-link" href="../demos/noir-et-or/" target="_blank" rel="noopener">デモサイトを見る</a>
-          </div>
-        </article>
-      </section>
+  /* ===== buttons ===== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:16px 32px;border-radius:999px;
+    font-size:16px;font-weight:700;
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .btn.line{
+    background:#06C755;color:#fff;
+    box-shadow:0 4px 14px rgba(6,199,85,.25);
+  }
+  .btn.line:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,199,85,.3);}
+  .btn.sub{
+    background:#fff;color:var(--ink);
+    border:1.5px solid var(--line);
+  }
+  .btn.sub:hover{border-color:var(--ink);transform:translateY(-2px);}
+  .note{font-size:13px;color:var(--soft);margin-top:10px;}
 
-      <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
-        <div class="section-heading">
-          <p>料金</p>
-          <h2 id="pricing-title">写真を送るだけ。あとは全部、こちらでやります。</h2>
-        </div>
-        <div class="pricing-layout">
-          <article class="plan-card">
-            <p class="plan-label">おまかせプラン</p>
-            <h3>通常98,000円<span>税込</span></h3>
-            <div class="monitor-price">
-              <span>先着3名様モニター価格</span>
-              <strong>39,800円</strong>
-              <small>制作実績としてご紹介にご協力いただける方</small>
-            </div>
-            <ul class="included-list">
-              <li>1ページ構成（スマホ完全対応）</li>
-              <li>紹介文・キャッチコピー作成</li>
-              <li>写真の選定・加工</li>
-              <li>地図・営業時間・SNSリンク設置</li>
-              <li>サーバー・ドメイン設定</li>
-              <li>SSL対応・公開作業</li>
-              <li>修正2回</li>
-            </ul>
-          </article>
-          <div class="sub-plans">
-            <article class="mini-card">
-              <h3>追加メニュー</h3>
-              <table>
-                <tbody>
-                  <tr>
-                    <th>ページ追加</th>
-                    <td>10,000円 / ページ</td>
-                  </tr>
-                  <tr>
-                    <th>予約フォーム・LINE連携</th>
-                    <td>10,000円</td>
-                  </tr>
-                  <tr>
-                    <th>ロゴ簡易作成</th>
-                    <td>10,000円</td>
-                  </tr>
-                  <tr>
-                    <th>修正3回目以降</th>
-                    <td>3,000円 / 回</td>
-                  </tr>
-                  <tr>
-                    <th>お急ぎ対応</th>
-                    <td>最短3日 +50%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </article>
-            <article class="mini-card">
-              <h3>保守・管理</h3>
-              <p class="monthly">月額5,500円</p>
-              <p>サーバー・ドメイン管理、SSL更新、バックアップ、軽微な修正を月2回まで対応します。</p>
-            </article>
-          </div>
-        </div>
-      </section>
+  /* ===== hero ===== */
+  .hero{padding:72px 0 64px;text-align:center;}
+  .hero h1{
+    font-size:clamp(26px,5.6vw,42px);
+    font-weight:800;line-height:1.6;letter-spacing:.01em;
+  }
+  .hero .lede{
+    margin:26px auto 0;max-width:560px;
+    color:var(--soft);font-size:clamp(15px,2vw,17px);
+  }
+  .hero .lede b{color:var(--ink);}
+  .hero .cta{margin-top:38px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
 
-      <section id="flow" class="section flow" aria-labelledby="flow-title">
-        <div class="section-heading">
-          <p>流れ</p>
-          <h2 id="flow-title">最初に必要なのは、短いやりとりだけです。</h2>
-        </div>
-        <ol class="flow-list">
-          <li>
-            <span>01</span>
-            <p>お問い合わせ（LINEまたはフォーム）</p>
-          </li>
-          <li>
-            <span>02</span>
-            <p>LINEで5つの質問に回答（約10分）+ お店の写真を送る</p>
-          </li>
-          <li>
-            <span>03</span>
-            <p>こちらで制作（文章もお任せ。修正2回まで）</p>
-          </li>
-          <li>
-            <span>04</span>
-            <p>公開・お引き渡し</p>
-          </li>
-        </ol>
-      </section>
+  /* ===== demo ===== */
+  section{padding:64px 0;}
+  .sec-title{
+    text-align:center;font-size:clamp(21px,3.4vw,28px);font-weight:800;
+    margin-bottom:12px;
+  }
+  .sec-sub{text-align:center;color:var(--soft);font-size:15px;margin-bottom:40px;}
+  .demo-card{
+    display:block;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 6px 24px rgba(58,58,56,.06);
+    transition:transform .25s ease,box-shadow .25s ease;
+    max-width:640px;margin:0 auto;
+  }
+  .demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(58,58,56,.1);}
+  .demo-thumb{
+    aspect-ratio:16/9;
+    background:#111 url() center/cover;
+    display:flex;align-items:center;justify-content:center;
+    color:#C9A227;font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:.06em;
+  }
+  .demo-body{padding:22px 26px 26px;}
+  .demo-body h3{font-size:17px;font-weight:700;}
+  .demo-body p{font-size:14.5px;color:var(--soft);margin-top:6px;}
+  .demo-body .go{color:var(--green);font-weight:700;font-size:14.5px;margin-top:10px;display:inline-block;}
 
-      <section class="section operator" aria-labelledby="operator-title">
-        <div class="section-heading">
-          <p>運営者紹介</p>
-          <h2 id="operator-title">一人で、最後まで見ます。</h2>
-        </div>
-        <div class="operator-card">
-          <dl>
-            <div>
-              <dt>運営者</dt>
-              <dd>加藤陽翔（Comprex99）</dd>
-            </div>
-            <div>
-              <dt>拠点</dt>
-              <dd>愛知県</dd>
-            </div>
-          </dl>
-          <p>
-            22歳のWeb開発者です。AIを活用した高速な開発を強みに、ホームページ制作からアプリ開発、公開後の保守まで一貫して担当します。「なんとなくこうしたい」の段階からご相談ください。
-          </p>
-        </div>
-      </section>
+  /* ===== price ===== */
+  #price{background:var(--green-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    max-width:640px;margin:0 auto;overflow:hidden;
+    box-shadow:0 6px 24px rgba(58,58,56,.06);
+  }
+  .price-head{
+    text-align:center;padding:34px 26px 28px;
+    border-bottom:1px dashed var(--line);
+  }
+  .price-head .plan{font-size:15px;font-weight:700;color:var(--green);letter-spacing:.08em;}
+  .price-head .was{
+    margin-top:14px;color:var(--soft);font-size:15px;
+    text-decoration:line-through;
+  }
+  .price-head .now{
+    font-size:clamp(38px,7vw,52px);font-weight:800;line-height:1.2;letter-spacing:.01em;
+  }
+  .price-head .now small{font-size:.45em;font-weight:700;}
+  .price-head .cond{
+    display:inline-block;margin-top:12px;
+    background:var(--green-soft);color:var(--green);
+    font-size:13px;font-weight:700;
+    padding:5px 14px;border-radius:999px;
+  }
+  .price-body{padding:26px;}
+  .inc{list-style:none;display:grid;gap:12px;}
+  .inc li{
+    padding-left:30px;position:relative;font-size:15.5px;
+  }
+  .inc li::before{
+    content:"✓";position:absolute;left:4px;top:0;
+    color:var(--green);font-weight:800;
+  }
+  .price-foot{
+    border-top:1px dashed var(--line);
+    padding:20px 26px;text-align:center;
+    font-size:14.5px;color:var(--soft);
+  }
+  .price-foot b{color:var(--ink);}
+  .addons{max-width:640px;margin:28px auto 0;font-size:14px;color:var(--soft);}
+  .addons summary{
+    font-weight:700;color:var(--ink);font-size:15px;
+    padding:14px 18px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;
+    list-style:none;
+  }
+  .addons summary::-webkit-details-marker{display:none;}
+  .addons summary::after{content:" +";color:var(--green);font-weight:800;}
+  .addons[open] summary::after{content:" −";}
+  .addons .ad-body{padding:16px 18px 6px;}
+  .addons table{width:100%;border-collapse:collapse;}
+  .addons td{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .addons td:last-child{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);}
 
-      <section id="contact" class="section contact" aria-labelledby="contact-title">
-        <div class="contact-copy">
-          <p class="eyebrow">相談</p>
-          <h2 id="contact-title">まだ曖昧でも、相談できます。</h2>
-          <p>お店の写真がまだ揃っていなくても大丈夫です。まずはLINEで、作りたいページの雰囲気を聞かせてください。</p>
-          <a class="button primary" href="https://lin.ee/9ImQrCR" target="_blank" rel="noopener">LINEで相談する</a>
-        </div>
-        <form class="contact-form">
-          <label>
-            <span>相談内容</span>
-            <select>
-              <option>ホームページ制作</option>
-              <option>予約フォーム・LINE連携</option>
-              <option>公開後の管理</option>
-              <option>その他</option>
-            </select>
-          </label>
-          <label>
-            <span>メールアドレス</span>
-            <input type="email" placeholder="you@example.com" />
-          </label>
-          <label>
-            <span>メッセージ</span>
-            <textarea rows="5" placeholder="お店の業種、今困っていること、相談したいこと"></textarea>
-          </label>
-          <button class="button secondary" type="button">フォーム内容を確認する</button>
-        </form>
-      </section>
-    </main>
+  /* ===== flow ===== */
+  .flow{max-width:640px;margin:0 auto;display:grid;gap:0;}
+  .step{
+    display:grid;grid-template-columns:52px 1fr;gap:18px;
+    padding:22px 0;
+    position:relative;
+  }
+  .step:not(:last-child)::before{
+    content:"";position:absolute;left:25px;top:64px;bottom:-8px;
+    width:2px;background:var(--line);
+  }
+  .step .num{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--card);border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:var(--green);font-size:17px;
+    position:relative;z-index:1;
+  }
+  .step h3{font-size:17px;font-weight:700;padding-top:10px;}
+  .step p{font-size:15px;color:var(--soft);margin-top:4px;}
+  .step .badge{
+    display:inline-block;margin-left:8px;
+    background:var(--green-soft);color:var(--green);
+    font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;
+    vertical-align:2px;
+  }
 
-    <footer class="lp-footer">
-      <p>© 2026 Comprex99</p>
-      <a href="../company.html">会社概要</a>
-      <a href="../">トップへ戻る</a>
-    </footer>
-  </body>
+  /* ===== owner ===== */
+  .owner{
+    max-width:640px;margin:0 auto;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 30px 32px;
+    box-shadow:0 6px 24px rgba(58,58,56,.06);
+  }
+  .owner .who{font-size:14px;color:var(--soft);}
+  .owner .who b{color:var(--ink);font-size:16px;}
+  .owner p{font-size:15px;margin-top:14px;}
+
+  /* ===== contact ===== */
+  #contact{padding-bottom:90px;}
+  .contact-box{
+    max-width:640px;margin:0 auto;text-align:center;
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:44px 28px 40px;
+    box-shadow:0 6px 24px rgba(58,58,56,.06);
+  }
+  .contact-box h2{font-size:clamp(20px,3.4vw,26px);font-weight:800;line-height:1.7;}
+  .contact-box .p{color:var(--soft);font-size:15px;margin-top:12px;}
+  .contact-box .cta{margin-top:28px;}
+  .mail{
+    margin-top:22px;font-size:14px;color:var(--soft);
+  }
+  .mail a{color:var(--green);font-weight:700;}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 30px;}
+  .ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--soft);}
+  .ft a:hover{color:var(--ink);}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    .hero{padding:52px 0 48px;}
+    .hero h1{font-size:24px;line-height:1.65;}
+    .hero .lede{max-width:300px;}
+    .hero .cta{flex-direction:column;align-items:center;}
+    .btn{width:min(286px,100%);padding-left:22px;padding-right:22px;}
+    section{padding:52px 0;}
+    .step{grid-template-columns:44px 1fr;gap:14px;}
+    .step .num{width:44px;height:44px;font-size:15px;}
+    .step:not(:last-child)::before{left:21px;top:56px;}
+    .owner{padding:24px 22px 26px;}
+    .ft{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="/">Comprex99 <b>| ホームページ制作</b></a>
+    <a class="mini-cta" href="#contact">相談する</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>あなたのお店の良さ、<br>ちゃんと伝わっていますか。</h1>
+    <p class="lede">お店の紹介ページを、まるごとおまかせでおつくりします。<br>やりとりはLINEだけ。<b>お手間は10分ほど</b>です。</p>
+    <div class="cta">
+      <a class="btn line" href="https://line.me/R/ti/p/@419iumau">LINEで相談してみる</a>
+      <a class="btn sub" href="#demo">制作例を見る</a>
+    </div>
+    <p class="note">相談は無料です。そのまま依頼しなくても大丈夫です。</p>
+  </div>
+</div>
+
+<section id="demo">
+  <div class="wrap">
+    <h2 class="sec-title">制作例</h2>
+    <p class="sec-sub">実際にこんなサイトをおつくりします。</p>
+    <a class="demo-card" href="https://comprex99.com/demos/noir-et-or/" target="_blank" rel="noopener">
+      <div class="demo-thumb">Noir et Or</div>
+      <div class="demo-body">
+        <h3>美容室のホームページ(制作デモ)</h3>
+        <p>高級感のある黒×金のデザイン。スマホでもきれいに見られます。</p>
+        <span class="go">実物を見てみる →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <h2 class="sec-title">料金</h2>
+    <p class="sec-sub">追加料金が出ないよう、必要なものは全部込みにしました。</p>
+    <div class="price-card">
+      <div class="price-head">
+        <div class="plan">おまかせプラン</div>
+        <div class="was">通常 98,000円(税込)</div>
+        <div class="now">39,800<small>円(税込)</small></div>
+        <span class="cond">先着3名のモニター価格です</span>
+      </div>
+      <div class="price-body">
+        <ul class="inc">
+          <li>お店の紹介ページ一式(スマホ完全対応)</li>
+          <li>紹介文・キャッチコピーの作成</li>
+          <li>写真の選定ときれいな加工</li>
+          <li>地図・営業時間・SNSへのリンク</li>
+          <li>公開に必要な設定すべて(サーバー・ドメイン・SSL)</li>
+          <li>公開後の修正2回まで無料</li>
+        </ul>
+      </div>
+      <div class="price-foot">
+        公開後の管理は <b>月額5,500円</b>(安全な状態の維持・バックアップ・軽微な修正 月2回)
+      </div>
+    </div>
+    <details class="addons">
+      <summary>オプション料金を見る</summary>
+      <div class="ad-body">
+        <table>
+          <tr><td>ページの追加</td><td>10,000円/ページ</td></tr>
+          <tr><td>予約フォーム・LINE連携</td><td>10,000円</td></tr>
+          <tr><td>かんたんなロゴ作成</td><td>10,000円</td></tr>
+          <tr><td>修正3回目以降</td><td>3,000円/回</td></tr>
+          <tr><td>お急ぎ対応(最短3日)</td><td>総額+50%</td></tr>
+        </table>
+      </div>
+    </details>
+    <p class="note" style="text-align:center;">※モニター価格は、完成後に「制作実績」としての掲載にご協力いただける方限定です。</p>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <h2 class="sec-title">ご依頼の流れ</h2>
+    <p class="sec-sub">最初から最後まで、LINEの中だけで進みます。</p>
+    <div class="flow">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>LINEで5つの質問に答える<span class="badge">ここだけ10分</span></h3>
+          <p>お店の名前や雰囲気など、かんたんな質問を1通でお送りします。お手持ちの写真も一緒に送ってください。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>こちらで制作します</h3>
+          <p>いただいた内容をもとに、紹介文もデザインもまとめておつくりします。待っているだけで大丈夫です。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3>確認・手直し</h3>
+          <p>できあがりをLINEでお見せします。気になるところは2回まで無料でなおします。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3>公開</h3>
+          <p>OKをいただいたら、インターネットに公開します。面倒な設定はすべてこちらでやります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="owner">
+  <div class="wrap">
+    <h2 class="sec-title">つくる人</h2>
+    <p class="sec-sub">制作から公開後の管理まで、同じ人間がずっと担当します。</p>
+    <div class="owner">
+      <div class="who"><b>加藤 晴士</b> — Comprex99 代表</div>
+      <p>Webサイトの制作を専門にしている個人の制作所です。お打ち合わせから制作、公開後の管理まで、代表の私がすべて直接担当いたします。ご連絡には原則当日中にお返事しています。公開して終わりではなく、その後の更新やご相談も継続してお受けしています。</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>まずは、お店の名前だけ<br>送ってみてください。</h2>
+      <p class="p">「うちのお店でもできる?」の一言でも大丈夫です。<br>無理におすすめすることはありません。</p>
+      <div class="cta">
+        <a class="btn line" href="https://line.me/R/ti/p/@419iumau">LINEで相談してみる</a>
+      </div>
+      <p class="mail">LINEをお使いでない方は <a href="mailto:katoharutoworks@gmail.com">メール</a> でもどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap ft">
+    <div>© Comprex99</div>
+    <div><a href="/legal/">運営者情報・プライバシーポリシー</a></div>
+  </div>
+</footer>
+
+</body>
 </html>
