@@ -4,220 +4,92 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Comprex99</title>
-    <meta
-      name="description"
-      content="Comprex99は、ホームページ制作とWebアプリ開発を中心に、事業の入口と仕組みを整える制作会社です。"
-    />
+    <meta name="description" content="愛知の一人制作会社。Webサイトとアプリを作る。" />
     <link rel="canonical" href="https://comprex99.com/" />
     <meta property="og:title" content="Comprex99" />
-    <meta
-      property="og:description"
-      content="ホームページ制作、Webアプリ開発、事業サイト設計まで。事業の信頼と問い合わせ導線を整えます。"
-    />
+    <meta property="og:description" content="愛知の一人制作会社。Webサイトとアプリを作る。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://comprex99.com/" />
     <meta property="og:image" content="https://comprex99.com/assets/hero-studio.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./corporate.css" />
   </head>
   <body>
-    <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="トップへ">
-        <img class="brand-mark" src="./assets/comprex99-mark.svg" alt="" />
-        <span class="brand-name">Comprex99</span>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Comprex99 トップ">
+        Comprex99
       </a>
-      <button class="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="nav" aria-label="主要ナビゲーション">
-        <a href="./works.html">制作例</a>
-        <a href="#pricing">料金</a>
-        <a href="#flow">流れ</a>
-        <a href="#contact">相談</a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <a href="#works">WORKS</a>
+        <a href="./company.html">COMPANY</a>
+        <a href="./web/">WEB制作</a>
+        <a href="./web/#contact">CONTACT</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <img class="hero-media" src="./assets/hero-studio.png" alt="" />
-        <div class="hero-shade"></div>
-        <div class="hero-inner">
-          <p class="eyebrow">Website production</p>
-          <h1 class="hero-title-fixed"><span>写真を送るだけ。</span><span>あとは全部、</span><span>こちらでやります。</span></h1>
-          <p class="lead">
-            お店のホームページ制作。文章づくりからサーバー設定、公開後の管理まで、まるごとおまかせ。お客様のお手間はLINEで5つの質問に答える10分だけです。
-          </p>
-          <div class="hero-notes" aria-label="対応領域">
-            <span>ホームページ制作</span>
-            <span>LP制作</span>
-            <span>Webアプリ開発</span>
-            <span>保守運用</span>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="kicker">AICHI / SOLO STUDIO</p>
+        <h1 id="hero-title">Comprex99</h1>
+        <p class="hero-copy">
+          愛知の一人制作会社。<br />
+          Webサイトとアプリを作る。
+        </p>
+      </section>
+
+      <section id="services" class="business" aria-labelledby="business-title">
+        <div class="section-head">
+          <p>BUSINESS</p>
+          <h2 id="business-title">作るもの。</h2>
+        </div>
+        <div class="business-list">
+          <a id="web-production" class="business-row is-link" href="./web/">
+            <span class="business-index">01</span>
+            <span class="business-name">WEB PRODUCTION</span>
+            <span class="business-text">店舗・事業のホームページ制作</span>
+            <span class="business-arrow">OPEN</span>
+          </a>
+          <div class="business-row is-offset">
+            <span class="business-index">02</span>
+            <span class="business-name">APP DEVELOPMENT</span>
+            <span class="business-text">自社プロダクト開発</span>
+            <span class="business-arrow">準備中</span>
           </div>
-          <div class="hero-actions" aria-label="主要アクション">
-            <a class="button primary" href="https://lin.ee/9ImQrCR" target="_blank" rel="noopener">LINEで相談する</a>
-            <a class="button secondary" href="./works.html">制作例を見る</a>
+          <div class="business-row">
+            <span class="business-index">03</span>
+            <span class="business-name">MAINTENANCE</span>
+            <span class="business-text">保守・運用</span>
+            <span class="business-arrow">KEEP</span>
           </div>
         </div>
       </section>
 
-      <section id="works" class="section works-section">
-        <div class="section-heading">
-          <div>
-            <div class="section-label">Works</div>
-            <h2>制作例</h2>
-          </div>
-          <p>実際に見られる制作デモです。スマホでの見え方、予約導線、世界観づくりまで確認できます。</p>
+      <section id="works" class="works" aria-labelledby="works-title">
+        <div class="section-head">
+          <p>WORKS</p>
+          <h2 id="works-title">公開しているもの。</h2>
         </div>
-        <div class="works-grid">
-          <article class="work-card large demo-work-card">
-            <a class="work-card-link" href="./demos/noir-et-or/" target="_blank" rel="noopener" aria-label="hair salon Noir et Or 制作デモを新しいタブで開く">
-              <div class="work-visual demo-preview">
-                <picture>
-                  <source srcset="./assets/noir-et-or-mobile.webp" type="image/webp" />
-                  <img src="./assets/noir-et-or-mobile.webp" alt="hair salon Noir et Or 制作デモのスマホ表示" />
-                </picture>
-              </div>
-              <span class="work-tag">制作デモ</span>
-              <h3>hair salon Noir et Or</h3>
-              <p class="work-sub">美容室・高級プライベートサロン想定</p>
-              <p>黒×金を基調に、完全予約制サロンの世界観を表現した1ページ構成のサイト。スマホ最適化・予約導線設計込み。</p>
-              <span class="work-meta">制作期間: 3日 / デザイン + コーディング + サーバー設定</span>
-              <span class="work-cta">デモサイトを見る</span>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section id="pricing" class="production section">
-        <div class="production-copy">
-          <div class="section-label">Pricing</div>
-          <h2>写真を送るだけ。あとは全部、こちらでやります。</h2>
-          <p>
-            文章を考える、写真を選ぶ、業者と何度も打ち合わせる。それを全部こちらで引き受けます。お客様がやるのはLINEで5つの質問に答えて、お店の写真を送るだけです。
-          </p>
-          <div class="production-actions">
-            <a class="button primary" href="#contact">無料で相談する</a>
-            <a class="button ghost" href="#flow">流れを見る</a>
-          </div>
-        </div>
-        <div class="production-panel">
-          <div class="price-block main-plan">
-            <span>おまかせプラン</span>
-            <strong>通常98,000円(税込)</strong>
-            <p>先着3名様モニター価格 39,800円。制作実績としてご紹介にご協力いただける方限定です。</p>
-          </div>
-          <ul>
-            <li>1ページ構成</li>
-            <li>スマホ完全対応</li>
-            <li>紹介文・キャッチコピー作成</li>
-            <li>写真の選定・加工</li>
-            <li>地図・営業時間・SNSリンク設置</li>
-            <li>サーバー・ドメイン設定</li>
-            <li>SSL対応・公開作業</li>
-            <li>修正2回</li>
-          </ul>
-          <div class="price-block">
-            <span>追加メニュー</span>
-            <p>ページ追加 10,000円/ページ、予約フォーム・LINE連携 10,000円、ロゴ簡易作成 10,000円、修正3回目以降 3,000円/回、お急ぎ対応(最短3日)総額+50%</p>
-          </div>
-          <div class="price-block">
-            <span>保守・管理</span>
-            <strong>月額5,500円(税込)</strong>
-            <p>サーバー・ドメイン管理、SSL更新、バックアップ、軽微な修正を月2回まで対応します。</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="flow" class="section flow">
-        <div class="section-heading">
-          <div>
-            <div class="section-label">Flow</div>
-            <h2>相談から公開まで</h2>
-          </div>
-        </div>
-        <div class="flow-list">
-          <article>
-            <span>1</span>
-            <h3>お問い合わせ</h3>
-            <p>フォームまたはLINEからご相談ください。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>LINEで5つの質問に回答</h3>
-            <p>約10分で回答できます。あわせてお店の写真を送ってください。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>こちらで制作</h3>
-            <p>文章もこちらで作成します。修正は2回まで対応します。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <h3>公開・お引き渡し</h3>
-            <p>公開設定まで整えて、すぐ見せられる状態でお渡しします。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="services" class="section service-line-section">
-        <div class="section-heading">
-          <div>
-            <div class="section-label">Services</div>
-            <h2>できること</h2>
-          </div>
-          <p>必要なものだけ、小さく始められます。</p>
-        </div>
-        <ul class="service-line-list">
-          <li>お店・事業のホームページ/LP制作</li>
-          <li>予約や管理画面などのWebアプリ開発</li>
-          <li>公開後の保守・更新・サーバー管理</li>
-        </ul>
-      </section>
-
-      <section id="contact" class="contact section">
-        <div>
-          <div class="section-label">Contact</div>
-          <h2>まだ曖昧でも、相談できます。</h2>
-          <p>
-            ホームページ制作、Webアプリ開発、事業サイト設計など、作りたいものが固まる前の段階から整理します。
-          </p>
-          <div class="line-consult">
-            <a class="button primary" href="https://lin.ee/9ImQrCR" target="_blank" rel="noopener" aria-label="LINEで相談する">LINEで相談する</a>
-            <small>LINEの友だち追加ページが新しいタブで開きます。</small>
-          </div>
-        </div>
-        <form class="contact-form">
-          <label>
-            <span>相談内容</span>
-            <select>
-              <option>ホームページ制作</option>
-              <option>Webアプリ開発</option>
-              <option>事業サイト設計</option>
-              <option>その他</option>
-            </select>
-          </label>
-          <label>
-            <span>メール</span>
-            <input type="email" placeholder="you@example.com" />
-          </label>
-          <label>
-            <span>メッセージ</span>
-            <textarea rows="4" placeholder="作りたいものや悩んでいること"></textarea>
-          </label>
-          <button class="button primary" type="button">送信する</button>
-        </form>
+        <a class="work-row" href="./demos/noir-et-or/" target="_blank" rel="noopener">
+          <img
+            src="./assets/noir-et-or-mobile.webp"
+            alt="hair salon Noir et Or 制作デモのスマホ表示"
+            width="176"
+            height="235"
+          />
+          <span class="work-main">
+            <span class="work-title">hair salon Noir et Or（制作デモ）</span>
+            <span class="work-desc">美容室・高級プライベートサロン想定</span>
+          </span>
+          <span class="work-link">VIEW DEMO</span>
+        </a>
       </section>
     </main>
 
-    <footer class="footer">
-      <span>Comprex99</span>
-      <div class="footer-links">
-        <a href="./company.html">会社概要</a>
-        <a href="#top">Back to top</a>
-      </div>
+    <footer id="contact" class="footer">
+      <p>© 2026 Comprex99</p>
+      <a href="./company.html">company.html</a>
+      <a href="./web/#contact">contact</a>
+      <p class="last-update">last update: 2026-07-12</p>
     </footer>
-
-    <script src="./script.js"></script>
   </body>
 </html>
