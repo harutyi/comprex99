@@ -401,8 +401,12 @@
       </div>
       <div class="qform">
         <h3>フォームで相談する</h3>
-        <p class="qnote">LINEをお使いでない方はこちらから。送信するとメール作成画面が開きます。</p>
-        <form id="contactForm">
+        <p class="qnote">LINEをお使いでない方はこちらから。わかるところだけで大丈夫です。</p>
+        <form action="https://formsubmit.co/katoharutoworks@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="【相談】ホームページ制作フォーム">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
           <label>1. お店の名前と業種</label>
           <input type="text" name="shop" placeholder="例: hair salon ○○ / 美容室">
           <label>2. お店の場所と営業時間・定休日</label>
@@ -424,10 +428,10 @@
             <option>ご紹介</option>
             <option>その他</option>
           </select>
-          <label>ご返信先のメールアドレス <small>(任意)</small></label>
-          <input type="email" name="email" placeholder="you@example.com">
-          <div class="photo-note">写真(5〜10枚)は、メール作成画面が開いたあとに添付して送ってください。</div>
-          <button type="submit">メールを作成する(無料)</button>
+          <label>ご返信先のメールアドレス <small>(必須)</small></label>
+          <input type="email" name="email" required placeholder="you@example.com">
+          <div class="photo-note">写真(5〜10枚)は、送信後にこちらからお送りする返信メールに添付してご返送ください。</div>
+          <button type="submit">この内容で相談する(無料)</button>
         </form>
       </div>
     </div>
@@ -441,33 +445,5 @@
   </div>
 </footer>
 
-<script>
-(function(){
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-  form.addEventListener('submit', function(event){
-    event.preventDefault();
-    const data = new FormData(form);
-    const lines = [
-      'Comprex99 加藤様',
-      '',
-      'ホームページ制作の相談です。',
-      '',
-      '1. お店の名前と業種: ' + (data.get('shop') || ''),
-      '2. 場所・営業時間・定休日: ' + (data.get('hours') || ''),
-      '3. 自慢ポイント: ' + (data.get('strong') || ''),
-      '4. 希望の雰囲気: ' + (data.get('mood') || ''),
-      '5. メニューと料金: ' + (data.get('menu') || ''),
-      '知ったきっかけ: ' + (data.get('source') || ''),
-      '返信先メール: ' + (data.get('email') || ''),
-      '',
-      '写真はこのメールに添付して送ります。'
-    ];
-    const subject = encodeURIComponent('ホームページ制作の相談');
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = 'mailto:katoharutoworks@gmail.com?subject=' + subject + '&body=' + body;
-  });
-})();
-</script>
 </body>
 </html>
