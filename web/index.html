@@ -395,29 +395,26 @@
   <div class="wrap">
     <div class="contact-box">
       <h2>まずは、お店の名前だけ<br>送ってみてください。</h2>
-      <p class="p">「うちのお店でもできる?」の一言でも大丈夫です。<br>無理におすすめすることはありません。</p>
+      <p class="p">「うちのお店でもできる？」の一言でも大丈夫です。<br>無理におすすめすることはありません。</p>
       <div class="cta">
         <a class="btn line" href="https://line.me/R/ti/p/@419iumau" target="_blank" rel="noopener">LINEで相談してみる</a>
       </div>
       <div class="qform">
         <h3>フォームで相談する</h3>
-        <p class="qnote">LINEをお使いでない方はこちらから。わかるところだけで大丈夫です。</p>
-        <form action="https://formsubmit.co/katoharutoworks@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="【相談】ホームページ制作フォーム">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none">
-          <label>①お店の名前と業種</label>
-          <input type="text" name="①お店の名前と業種" placeholder="例:hair salon ○○/美容室">
-          <label>②お店の場所と営業時間・定休日</label>
-          <input type="text" name="②場所と営業時間・定休日" placeholder="例:名古屋市○○区、10時〜19時、火曜定休">
-          <label>③お店の「ここが自慢」ポイント</label>
-          <textarea name="③自慢ポイント" placeholder="例:完全マンツーマン/髪質改善が得意"></textarea>
-          <label>④どんな雰囲気のページにしたいか <small>(おまかせでもOK)</small></label>
-          <input type="text" name="④希望の雰囲気" placeholder="例:高級感/かわいい/ナチュラル/おまかせ">
-          <label>⑤載せたいメニューと料金 <small>(あとからでもOK)</small></label>
-          <textarea name="⑤メニューと料金" placeholder="例:カット 5,500円 / カラー 8,800円〜"></textarea>
+        <p class="qnote">LINEをお使いでない方はこちらから。送信するとメール作成画面が開きます。</p>
+        <form id="contactForm">
+          <label>1. お店の名前と業種</label>
+          <input type="text" name="shop" placeholder="例: hair salon ○○ / 美容室">
+          <label>2. お店の場所と営業時間・定休日</label>
+          <input type="text" name="hours" placeholder="例: 名古屋市○○区、10時〜19時、火曜定休">
+          <label>3. お店の「ここが自慢」ポイント</label>
+          <textarea name="strong" placeholder="例: 完全マンツーマン / 髪質改善が得意"></textarea>
+          <label>4. どんな雰囲気のページにしたいか <small>(おまかせでもOK)</small></label>
+          <input type="text" name="mood" placeholder="例: 高級感 / かわいい / ナチュラル / おまかせ">
+          <label>5. 載せたいメニューと料金 <small>(あとからでもOK)</small></label>
+          <textarea name="menu" placeholder="例: カット 5,500円 / カラー 8,800円〜"></textarea>
           <label>このサービスをどこでお知りになりましたか? <small>(任意)</small></label>
-          <select name="流入経路">
+          <select name="source">
             <option value="">選択してください</option>
             <option>Instagram</option>
             <option>LINE</option>
@@ -427,10 +424,10 @@
             <option>ご紹介</option>
             <option>その他</option>
           </select>
-          <label>ご返信先のメールアドレス <small>(必須)</small></label>
-          <input type="email" name="email" required placeholder="you@example.com">
-          <div class="photo-note">📷 お店の写真(5〜10枚)は、送信後にこちらからお送りする返信メールに、そのまま添付してご返送ください。</div>
-          <button type="submit">この内容で相談する(無料)</button>
+          <label>ご返信先のメールアドレス <small>(任意)</small></label>
+          <input type="email" name="email" placeholder="you@example.com">
+          <div class="photo-note">写真(5〜10枚)は、メール作成画面が開いたあとに添付して送ってください。</div>
+          <button type="submit">メールを作成する(無料)</button>
         </form>
       </div>
     </div>
@@ -444,5 +441,33 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const data = new FormData(form);
+    const lines = [
+      'Comprex99 加藤様',
+      '',
+      'ホームページ制作の相談です。',
+      '',
+      '1. お店の名前と業種: ' + (data.get('shop') || ''),
+      '2. 場所・営業時間・定休日: ' + (data.get('hours') || ''),
+      '3. 自慢ポイント: ' + (data.get('strong') || ''),
+      '4. 希望の雰囲気: ' + (data.get('mood') || ''),
+      '5. メニューと料金: ' + (data.get('menu') || ''),
+      '知ったきっかけ: ' + (data.get('source') || ''),
+      '返信先メール: ' + (data.get('email') || ''),
+      '',
+      '写真はこのメールに添付して送ります。'
+    ];
+    const subject = encodeURIComponent('ホームページ制作の相談');
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = 'mailto:katoharutoworks@gmail.com?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
 </body>
 </html>
