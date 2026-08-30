@@ -1,0 +1,76 @@
+:root {
+  --color-bg: #fbfaf4;
+  --color-paper: #ffffff;
+  --color-ink: #14211c;
+  --color-muted: #61736b;
+  --color-line: rgba(20, 33, 28, 0.14);
+  --color-key: #2b6251;
+  --color-key-dark: #183f34;
+  --color-soft: #edf5ef;
+  --color-accent: #a76f3d;
+  --color-accent-soft: rgba(167, 111, 61, 0.18);
+  --shadow-soft: 0 22px 60px rgba(35, 68, 54, 0.12);
+}
+
+.hero-media img {
+  filter: saturate(0.9) contrast(0.98);
+}
+
+.site-header .button:not(.primary) {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.intro-main {
+  border-color: rgba(167, 111, 61, 0.22);
+}
+
+.feature-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(20, 33, 28, 0.05), rgba(20, 33, 28, 0.78)),
+    url("./img/hero.webp") center / cover;
+}
+
+.feature-panel::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  pointer-events: none;
+}
+
+.feature-panel p {
+  position: relative;
+  z-index: 1;
+}
+
+.reason,
+.step,
+.voice,
+.proof-item {
+  border-radius: 0;
+}
+
+.reason:nth-child(2),
+.step:nth-child(2),
+.voice:nth-child(2) {
+  background: #f9f6ef;
+}
+
+.menu-table tr:first-of-type td {
+  background: #f8fbf8;
+}
+
+.menu-table tr:first-of-type td:first-child {
+  color: var(--color-key-dark);
+  font-weight: 900;
+}
+
+.map-frame {
+  background:
+    linear-gradient(90deg, rgba(43, 98, 81, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(43, 98, 81, 0.08) 1px, transparent 1px),
+    #f4f7f1;
+  background-size: 28px 28px;
+}

@@ -71,6 +71,7 @@
   .hero h1{
     font-size:clamp(26px,5.6vw,42px);
     font-weight:800;line-height:1.6;letter-spacing:.01em;
+    overflow-wrap:anywhere;
   }
   .hero .lede{
     margin:26px auto 0;max-width:560px;
@@ -92,8 +93,9 @@
     overflow:hidden;
     box-shadow:0 6px 24px rgba(58,58,56,.06);
     transition:transform .25s ease,box-shadow .25s ease;
-    max-width:640px;margin:0 auto;
+    min-width:0;
   }
+  .demo-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:0 auto;}
   .demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(58,58,56,.1);}
   .demo-thumb{
     aspect-ratio:16/9;
@@ -101,6 +103,8 @@
     display:flex;align-items:center;justify-content:center;
     color:#C9A227;font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:.06em;
   }
+  .demo-thumb.noir{background:#111;color:#C9A227;}
+  .demo-thumb.seitai{background:linear-gradient(135deg,rgba(251,250,244,.72),rgba(43,98,81,.22)),url("/demos/seitai-tsukiakari/img/hero.webp") center/cover;color:#183f34;}
   .demo-body{padding:22px 26px 26px;}
   .demo-body h3{font-size:17px;font-weight:700;}
   .demo-body p{font-size:14.5px;color:var(--soft);margin-top:6px;}
@@ -223,8 +227,11 @@
   @media (max-width:640px){
     body{font-size:16px;}
     .hero{padding:52px 0 48px;}
+    .hero h1{font-size:25px;line-height:1.55;max-width:12em;margin-inline:auto;}
+    .hero .lede{max-width:21em;overflow-wrap:break-word;}
     .hero .cta{flex-direction:column;align-items:center;}
     .btn{width:min(320px,100%);}
+    .demo-list{grid-template-columns:1fr;}
     section{padding:52px 0;}
     .step{grid-template-columns:44px 1fr;gap:14px;}
     .step .num{width:44px;height:44px;font-size:15px;}
@@ -259,14 +266,24 @@
   <div class="wrap">
     <h2 class="sec-title">制作例</h2>
     <p class="sec-sub">実際にこんなサイトをおつくりします。</p>
-    <a class="demo-card" href="https://comprex99.com/demos/noir-et-or/" target="_blank" rel="noopener">
-      <div class="demo-thumb">Noir et Or</div>
-      <div class="demo-body">
-        <h3>美容室のホームページ(制作デモ)</h3>
-        <p>高級感のある黒×金のデザイン。スマホでもきれいに見られます。</p>
-        <span class="go">実物を見てみる →</span>
-      </div>
-    </a>
+    <div class="demo-list">
+      <a class="demo-card" href="https://comprex99.com/demos/noir-et-or/" target="_blank" rel="noopener">
+        <div class="demo-thumb noir">Noir et Or</div>
+        <div class="demo-body">
+          <h3>美容室のホームページ(制作デモ)</h3>
+          <p>高級感のある黒×金のデザイン。スマホでもきれいに見られます。</p>
+          <span class="go">実物を見てみる →</span>
+        </div>
+      </a>
+      <a class="demo-card" href="https://comprex99.com/demos/seitai-tsukiakari/" target="_blank" rel="noopener">
+        <div class="demo-thumb seitai">月灯り整体院</div>
+        <div class="demo-body">
+          <h3>整体院のホームページ(制作デモ)</h3>
+          <p>初回の不安、料金、流れ、アクセスを先に見せる落ち着いたデザイン。</p>
+          <span class="go">実物を見てみる →</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
