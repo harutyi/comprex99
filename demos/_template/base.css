@@ -323,6 +323,7 @@ section {
 
 .proof-list,
 .reason-list,
+.topic-grid,
 .steps {
   display: grid;
   gap: 14px;
@@ -330,6 +331,7 @@ section {
 
 .proof-item,
 .reason,
+.topic-card,
 .step,
 .voice {
   border: 1px solid var(--color-line);
@@ -359,10 +361,53 @@ section {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.topic-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
 .reason,
+.topic-card,
 .step,
 .voice {
   padding: 24px;
+}
+
+.topic-card {
+  color: inherit;
+  text-decoration: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.52),
+    0 14px 36px rgba(28, 38, 34, 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(40, 93, 76, 0.36);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.62),
+    0 18px 42px rgba(28, 38, 34, 0.12);
+}
+
+.topic-card strong,
+.topic-card span {
+  display: block;
+}
+
+.topic-card strong {
+  margin-bottom: 10px;
+  color: var(--color-key-dark);
+  font-size: 18px;
+}
+
+.topic-card span {
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.75;
 }
 
 .number {
@@ -575,6 +620,7 @@ td:last-child {
   }
 
   .reason-list,
+  .topic-grid,
   .steps,
   .voice-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -658,6 +704,7 @@ td:last-child {
   }
 
   .reason-list,
+  .topic-grid,
   .steps,
   .voice-list {
     grid-template-columns: minmax(0, 1fr);
@@ -667,6 +714,7 @@ td:last-child {
   .feature-copy,
   .access-panel,
   .reason,
+  .topic-card,
   .step,
   .voice {
     padding: 22px;
