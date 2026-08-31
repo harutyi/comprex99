@@ -1,0 +1,246 @@
+:root {
+  --bg: #f4f1eb;
+  --paper: #fffefa;
+  --ink: #17231d;
+  --muted: #66736b;
+  --line: rgba(34, 50, 43, 0.18);
+  --green: #176b55;
+  --green-dark: #0f493b;
+  --red: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.quote {
+  width: min(900px, calc(100% - 28px));
+  margin: 28px auto;
+  padding: clamp(24px, 5vw, 46px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 70px rgba(34, 50, 43, 0.12);
+  overflow: hidden;
+}
+
+.quote-head,
+.quote-parties,
+.quote-total,
+.quote-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: start;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(28px, 6vw, 46px);
+  line-height: 1.1;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.quote-parties,
+.quote-table,
+.quote-total,
+.terms,
+.quote-actions {
+  margin-top: 26px;
+}
+
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+td:last-child,
+th:last-child {
+  text-align: right;
+  width: 34%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.quote-total {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: #f4faf5;
+}
+
+.quote-total strong {
+  display: block;
+  color: var(--green-dark);
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.terms {
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+}
+
+.terms h2 {
+  font-size: 18px;
+}
+
+.terms ul {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+}
+
+.terms li {
+  overflow-wrap: anywhere;
+}
+
+.quote-actions {
+  position: sticky;
+  bottom: 0;
+  padding: 16px 0 0;
+  background: linear-gradient(180deg, rgba(255, 254, 250, 0), var(--paper) 28%);
+}
+
+.quote-actions label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+button {
+  min-height: 44px;
+  border: 1px solid var(--green);
+  background: #ffffff;
+  color: var(--green-dark);
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+button.primary {
+  background: linear-gradient(180deg, var(--green), var(--green-dark));
+  color: #ffffff;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.error {
+  color: var(--red);
+  font-weight: 900;
+}
+
+@media (max-width: 680px) {
+  .quote-head,
+  .quote-parties,
+  .quote-total,
+  .quote-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .buttons {
+    justify-content: stretch;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .quote {
+    padding-inline: 24px;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+  }
+
+  .quote-table thead {
+    display: none;
+  }
+
+  .quote-table tr,
+  .quote-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .quote-table tr {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .quote-table td {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .quote-table td:last-child {
+    width: 100%;
+    margin-top: 2px;
+    color: var(--green-dark);
+    font-weight: 900;
+    text-align: left;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    font-size: 12px;
+  }
+
+  .quote {
+    width: 100%;
+    margin: 0;
+    padding: 12mm;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .quote-actions {
+    display: none;
+  }
+
+  .terms ul {
+    gap: 2px;
+  }
+}

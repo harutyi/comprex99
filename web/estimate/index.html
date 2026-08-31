@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>料金チェックシート | Comprex99</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="/web/estimate/estimate.css" />
+  </head>
+  <body>
+    <main class="estimate-shell">
+      <section class="estimate-head">
+        <a href="/web/">Comprex99</a>
+        <p>料金チェックシート</p>
+        <h1>必要な内容を選んで、<span>概算を確認できます。</span></h1>
+        <span>この時点では契約は成立しません。内容を確認したうえで24時間以内にご連絡します。</span>
+      </section>
+
+      <form id="estimateForm" class="estimate-form">
+        <input type="text" name="company_url" class="hp" tabindex="-1" autocomplete="off" />
+
+        <section class="panel">
+          <p class="step-label">1. 業種を選ぶ</p>
+          <div class="choice-grid" id="industryChoices"></div>
+        </section>
+
+        <section class="panel">
+          <p class="step-label">2. 保守プランを選ぶ</p>
+          <div class="plan-grid" id="maintenanceChoices"></div>
+          <div class="fee-link" id="productionFeeNote"></div>
+        </section>
+
+        <section class="panel">
+          <p class="step-label">3. オプションを選ぶ</p>
+          <div class="option-list" id="optionChoices"></div>
+          <label class="field">
+            <span>その他のご要望（自由記入）</span>
+            <textarea name="otherRequest" rows="4" placeholder="例：ココナラ用に画像もほしい、LINE誘導を強めたい、など"></textarea>
+          </label>
+        </section>
+
+        <section class="panel contact-panel">
+          <p class="step-label">4. 連絡先</p>
+          <label class="field"><span>店名</span><input name="shopName" required /></label>
+          <label class="field"><span>お名前</span><input name="personName" required /></label>
+          <label class="field"><span>電話番号</span><input name="phone" inputmode="tel" required /></label>
+          <label class="field"><span>メールアドレス</span><input name="email" type="email" required /></label>
+        </section>
+
+        <button class="submit-button" type="submit">見積りを送信する</button>
+        <p class="form-message" id="formMessage"></p>
+      </form>
+    </main>
+
+    <aside class="total-bar" aria-live="polite">
+      <div><span>初期費用 合計</span><strong id="initialTotal">0円</strong></div>
+      <div><span>月額</span><strong id="monthlyTotal">0円</strong></div>
+      <small>※お見積りは概算です。内容を確認のうえ、24時間以内にご連絡します。</small>
+    </aside>
+
+    <script src="/web/catalog.js"></script>
+    <script src="/web/estimate/estimate.js"></script>
+  </body>
+</html>
