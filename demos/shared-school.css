@@ -414,3 +414,642 @@ h2 {
     padding-top: 132px;
   }
 }
+
+/* Distinct demo structures */
+.layout-juku,
+.layout-atelier,
+.layout-gym {
+  min-height: 100vh;
+}
+
+.layout-juku .nav,
+.layout-atelier .nav,
+.layout-gym .nav {
+  position: fixed;
+}
+
+.juku-hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.78fr);
+  gap: 28px;
+  align-items: stretch;
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 110px 0 28px;
+}
+
+.juku-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 620px;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgb(89 240 206 / 0.13), transparent 48%),
+    rgb(255 255 255 / 0.045);
+}
+
+.juku-hero h1,
+.atelier-cover h1,
+.gym-stage h1 {
+  max-width: 8.8em;
+  font-size: clamp(4rem, 10vw, 9.4rem);
+  letter-spacing: 0;
+}
+
+.juku-hero__photo {
+  margin: 0;
+  min-height: 620px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.juku-hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.juku-proof {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.juku-proof span {
+  padding: 18px;
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.juku-proof span:last-child {
+  border-right: 0;
+}
+
+.juku-board,
+.juku-flow,
+.juku-cta {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 128px) 0;
+}
+
+.board-head {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.compare-table {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-x: auto;
+  background: rgb(255 255 255 / 0.045);
+}
+
+.compare-table .row {
+  min-width: 760px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.9fr 0.8fr;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.compare-table .row:last-child {
+  border-bottom: 0;
+}
+
+.compare-table .head {
+  color: var(--key);
+  background: rgb(89 240 206 / 0.08);
+}
+
+.compare-table strong {
+  color: var(--key-2);
+}
+
+.juku-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--line);
+}
+
+.juku-results article {
+  min-height: 220px;
+  padding: clamp(24px, 5vw, 56px);
+  border-right: 1px solid var(--line);
+}
+
+.juku-results article:last-child {
+  border-right: 0;
+}
+
+.juku-results b {
+  display: block;
+  color: var(--key);
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+}
+
+.juku-results span {
+  display: block;
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.juku-flow ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 0;
+  margin: 32px 0 0;
+  list-style: none;
+}
+
+.juku-flow li {
+  min-height: 220px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.045);
+}
+
+.juku-flow li b {
+  color: var(--key);
+}
+
+.juku-flow li span {
+  display: block;
+  margin-top: 28px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.juku-flow li p {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.juku-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.layout-atelier {
+  background: #0b0d0a;
+}
+
+.atelier-nav {
+  width: min(980px, calc(100% - 32px));
+}
+
+.atelier-cover {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 118px 0 56px;
+  display: grid;
+  grid-template-columns: 0.78fr 1.02fr;
+  grid-template-areas:
+    "title image"
+    "aside image";
+  gap: 18px;
+}
+
+.atelier-title {
+  grid-area: title;
+  align-self: end;
+  padding: clamp(20px, 4vw, 44px) 0;
+}
+
+.atelier-cover figure {
+  grid-area: image;
+  margin: 0;
+  min-height: 760px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.atelier-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atelier-cover aside {
+  grid-area: aside;
+  align-self: start;
+  max-width: 430px;
+  padding: 22px;
+  border-left: 1px solid var(--key);
+}
+
+.atelier-cover aside b {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.atelier-cover aside p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.atelier-journal,
+.atelier-calendar,
+.atelier-cta {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 128px) 0;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 14px;
+}
+
+.journal-grid article {
+  min-height: 240px;
+  padding: clamp(22px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.045);
+}
+
+.journal-grid .large {
+  grid-row: span 2;
+  min-height: 500px;
+}
+
+.journal-grid span {
+  color: var(--key);
+  font-weight: 900;
+}
+
+.journal-grid h2 {
+  margin-top: 80px;
+}
+
+.journal-grid h3 {
+  margin-top: 42px;
+  font-size: 1.5rem;
+}
+
+.journal-grid p {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.lesson-ribbon {
+  display: flex;
+  overflow-x: auto;
+  border-block: 1px solid var(--line);
+}
+
+.lesson-ribbon article {
+  flex: 0 0 min(380px, 82vw);
+  min-height: 190px;
+  padding: 34px;
+  border-right: 1px solid var(--line);
+}
+
+.lesson-ribbon b {
+  display: block;
+  font-size: 1.45rem;
+}
+
+.lesson-ribbon span {
+  display: block;
+  margin-top: 16px;
+  color: var(--key-2);
+}
+
+.atelier-calendar {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.atelier-calendar ul {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.atelier-calendar li {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.atelier-calendar span {
+  color: var(--key);
+  font-weight: 900;
+}
+
+.atelier-calendar b {
+  font-size: 1.1rem;
+}
+
+.atelier-calendar em {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.atelier-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.atelier-cta p {
+  max-width: 640px;
+  font-size: clamp(1.7rem, 4vw, 3.6rem);
+  font-weight: 950;
+  line-height: 1.08;
+}
+
+.gym-stage {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.gym-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(3 5 8 / 0.86), rgb(3 5 8 / 0.3) 52%, rgb(3 5 8 / 0.74)),
+    linear-gradient(0deg, #06080c 0%, transparent 38%);
+}
+
+.gym-stage > img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gym-copy {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 122px 0 220px;
+}
+
+.gym-copy p:not(.kicker) {
+  max-width: 540px;
+  margin-top: 24px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.gym-metrics {
+  position: absolute;
+  right: max(16px, calc((100vw - 1180px) / 2));
+  bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  width: min(620px, calc(100% - 32px));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(6 8 12 / 0.72);
+}
+
+.gym-metrics article {
+  padding: 20px;
+  border-right: 1px solid var(--line);
+}
+
+.gym-metrics article:last-child {
+  border-right: 0;
+}
+
+.gym-metrics b {
+  display: block;
+  color: var(--key);
+  font-size: clamp(1.8rem, 4vw, 3.3rem);
+}
+
+.gym-metrics span {
+  color: var(--muted);
+}
+
+.gym-program,
+.gym-price,
+.gym-trial {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 132px) 0;
+}
+
+.gym-program {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 42px;
+}
+
+.program-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.program-cards article {
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgb(114 227 255 / 0.11), rgb(255 255 255 / 0.035));
+}
+
+.program-cards span {
+  color: var(--key);
+  font-weight: 900;
+}
+
+.program-cards h3 {
+  margin-top: 90px;
+  font-size: 1.6rem;
+}
+
+.program-cards p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.gym-price {
+  border-top: 1px solid var(--line);
+}
+
+.price-stack {
+  margin-top: 34px;
+  display: grid;
+  gap: 12px;
+}
+
+.price-stack article {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+  min-height: 92px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.price-stack .hot {
+  border-color: color-mix(in srgb, var(--key) 68%, white 0%);
+  background: rgb(114 227 255 / 0.09);
+}
+
+.price-stack span {
+  font-weight: 900;
+}
+
+.price-stack b {
+  color: var(--key);
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  white-space: nowrap;
+}
+
+.price-stack p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.gym-trial {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr auto;
+  gap: 28px;
+  align-items: end;
+  border-top: 1px solid var(--line);
+}
+
+.gym-trial ol {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.gym-trial li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 900;
+}
+
+.gym-trial b {
+  margin-right: 14px;
+  color: var(--key);
+}
+
+@media (max-width: 960px) {
+  .juku-hero,
+  .board-head,
+  .atelier-cover,
+  .atelier-calendar,
+  .gym-program,
+  .gym-trial {
+    grid-template-columns: 1fr;
+  }
+
+  .juku-hero__copy,
+  .juku-hero__photo,
+  .atelier-cover figure {
+    min-height: auto;
+  }
+
+  .juku-hero__photo img,
+  .atelier-cover img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .juku-proof,
+  .juku-results,
+  .juku-flow ol,
+  .program-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-grid .large {
+    min-height: 340px;
+  }
+
+  .price-stack article {
+    grid-template-columns: 1fr;
+  }
+
+  .juku-cta,
+  .atelier-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .juku-hero {
+    padding-top: 96px;
+  }
+
+  .juku-hero h1,
+  .atelier-cover h1,
+  .gym-stage h1 {
+    font-size: clamp(3.2rem, 17vw, 5rem);
+  }
+
+  .atelier-calendar li,
+  .gym-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .gym-metrics article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .gym-copy {
+    padding-bottom: 360px;
+  }
+}

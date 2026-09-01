@@ -5,79 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>未来ラボ進学塾 | 名古屋市西区の少人数指導</title>
-    <meta name="description" content="名古屋市西区の少人数制進学塾。定期テスト対策、受験対策、無料体験の申し込みまで1ページで確認できます。" />
+    <meta name="description" content="名古屋市西区の少人数制進学塾。料金、時間割、合格実績、無料体験まで保護者が比較しやすいデモサイトです。" />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="theme-juku">
-    <header class="hero">
+  <body class="theme-juku layout-juku">
+    <header class="juku-hero">
       <nav class="nav" aria-label="主要メニュー">
         <a class="brand" href="#">未来ラボ進学塾</a>
         <div>
-          <a href="#course">コース</a>
+          <a href="#compare">比較表</a>
+          <a href="#schedule">時間割</a>
           <a href="#trial">無料体験</a>
-          <a href="tel:0520001101">052-000-1101</a>
         </div>
       </nav>
-      <img src="./img/hero.png" alt="落ち着いた少人数制の学習空間" />
-      <div class="hero__veil"></div>
-      <section class="hero__copy" aria-label="紹介">
-        <p class="kicker">Small class / Exam support</p>
-        <h1>わからないを、<span>今日のうちに。</span></h1>
-        <p>学校別の定期テスト対策と、ひとりずつの弱点管理。保護者の方がスマホで見ても、料金・時間割・体験申込まで迷わない塾サイトです。</p>
-        <div class="actions">
-          <a class="primary" href="#trial">無料体験を予約</a>
-          <a class="ghost" href="#results">実績を見る</a>
-        </div>
-      </section>
-      <aside class="score-card" aria-label="塾の特徴">
-        <b>1クラス最大6名</b>
-        <span>中学生 / 高校生 / 個別補習</span>
-      </aside>
+      <div class="juku-hero__copy">
+        <p class="kicker">For parents comparing after school</p>
+        <h1>点数が上がる理由を、先に見せる。</h1>
+        <p>保護者が知りたい「料金」「曜日」「対象学年」「実績」をファーストビュー直下で比較できる、進学塾向けの構成です。</p>
+        <a class="primary" href="#trial">無料体験を申し込む</a>
+      </div>
+      <figure class="juku-hero__photo">
+        <img src="./img/hero.png" alt="落ち着いた少人数制の学習空間" />
+      </figure>
+      <div class="juku-proof">
+        <span>1クラス最大6名</span>
+        <span>学校別テスト対策</span>
+        <span>欠席振替OK</span>
+      </div>
     </header>
 
     <main>
-      <section class="strip" aria-label="実績" id="results">
-        <article><span>92%</span><p>定期テスト点数アップ率</p></article>
-        <article><span>5教科</span><p>学校別に課題管理</p></article>
-        <article><span>当日OK</span><p>欠席時の振替相談</p></article>
-      </section>
-
-      <section class="section split" id="course">
-        <div>
-          <p class="eyebrow">Course</p>
-          <h2>料金と時間割を先に見せる。</h2>
+      <section class="juku-board" id="compare">
+        <div class="board-head">
+          <p class="eyebrow">Compare</p>
+          <h2>電話後に親がそのまま見られる比較表。</h2>
         </div>
-        <div class="cards">
-          <article>
-            <h3>中学生 定期テスト対策</h3>
-            <p>学校ワーク、英数の弱点補強、テスト2週間前の追加演習。</p>
-            <b>月 14,800円から</b>
-          </article>
-          <article>
-            <h3>高校受験 完走プラン</h3>
-            <p>内申対策、過去問演習、志望校別の面談を毎月実施。</p>
-            <b>月 24,800円から</b>
-          </article>
-          <article>
-            <h3>自習室パス</h3>
-            <p>授業がない日も利用可能。質問対応の時間を明記。</p>
-            <b>月 5,500円</b>
-          </article>
+        <div class="compare-table" role="table" aria-label="コース比較">
+          <div class="row head" role="row">
+            <b>コース</b><b>対象</b><b>曜日</b><b>月額</b>
+          </div>
+          <div class="row" role="row">
+            <span>定期テスト対策</span><span>中1・中2</span><span>月・水</span><strong>14,800円から</strong>
+          </div>
+          <div class="row" role="row">
+            <span>高校受験 完走</span><span>中3</span><span>火・木・土</span><strong>24,800円から</strong>
+          </div>
+          <div class="row" role="row">
+            <span>自習室パス</span><span>全学年</span><span>平日利用可</span><strong>5,500円</strong>
+          </div>
         </div>
       </section>
 
-      <section class="section timetable">
+      <section class="juku-results">
+        <article><b>92%</b><span>定期テスト点数アップ</span></article>
+        <article><b>31名</b><span>昨年度の志望校合格者</span></article>
+        <article><b>48時間</b><span>テスト前の追加演習枠</span></article>
+      </section>
+
+      <section class="juku-flow" id="schedule">
         <p class="eyebrow">Schedule</p>
-        <h2>通える曜日がすぐわかる。</h2>
-        <div class="table">
-          <div><b>月・水</b><span>中1・中2 英数</span><em>19:10-21:20</em></div>
-          <div><b>火・木</b><span>中3 受験対策</span><em>19:00-21:40</em></div>
-          <div><b>土</b><span>自習室 / 質問対応</span><em>14:00-20:00</em></div>
-        </div>
+        <h2>入塾までの不安を順番に消す。</h2>
+        <ol>
+          <li><b>01</b><span>無料体験を予約</span><p>希望学年と苦手科目を送るだけ。</p></li>
+          <li><b>02</b><span>学習状況を診断</span><p>学校ワーク、テスト答案、志望校を確認。</p></li>
+          <li><b>03</b><span>曜日と料金を決定</span><p>無理なく通える時間割を一緒に選ぶ。</p></li>
+        </ol>
       </section>
 
-      <section class="cta" id="trial">
-        <p class="eyebrow">Trial lesson</p>
+      <section class="juku-cta" id="trial">
         <h2>まずは90分、教室の空気を見てください。</h2>
         <a class="primary" href="mailto:trial@example.com">無料体験を申し込む</a>
       </section>

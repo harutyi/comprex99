@@ -5,80 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>AXIS FIT | 名古屋のパーソナルジム</title>
-    <meta name="description" content="名古屋のパーソナルジム。体験予約、料金、トレーニング内容をスマホで見やすくまとめたデモサイトです。" />
+    <meta name="description" content="名古屋のパーソナルジム。体験予約、料金、目的別プラン、入会までの流れを強く見せるデモサイトです。" />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="theme-gym">
-    <header class="hero">
-      <nav class="nav" aria-label="主要メニュー">
+  <body class="theme-gym layout-gym">
+    <header class="gym-stage">
+      <nav class="nav gym-nav" aria-label="主要メニュー">
         <a class="brand" href="#">AXIS FIT</a>
         <div>
-          <a href="#plan">プラン</a>
+          <a href="#program">目的</a>
+          <a href="#price">料金</a>
           <a href="#trial">体験</a>
-          <a href="tel:0520003303">052-000-3303</a>
         </div>
       </nav>
       <img src="./img/hero.png" alt="上質なパーソナルトレーニングジムの室内" />
-      <div class="hero__veil"></div>
-      <section class="hero__copy" aria-label="紹介">
-        <p class="kicker">Personal training / Body make</p>
-        <h1>続く身体づくりを、<span>予約から設計。</span></h1>
-        <p>初回体験、料金、トレーナーの得意分野を迷わず確認。ジム探しの不安を消して、問い合わせまで一気に進めるデモです。</p>
-        <div class="actions">
-          <a class="primary" href="#trial">体験を予約</a>
-          <a class="ghost" href="#plan">料金を見る</a>
-        </div>
-      </section>
-      <aside class="score-card" aria-label="ジムの特徴">
-        <b>完全予約制</b>
-        <span>姿勢改善 / ダイエット / 筋力アップ</span>
-      </aside>
+      <div class="gym-copy">
+        <p class="kicker">Private training studio</p>
+        <h1>変わる理由を、数字で見せる。</h1>
+        <p>ジムは雰囲気だけでは問い合わせに届きにくい。目的別プログラム、料金、初回体験を強く配置する構成です。</p>
+      </div>
+      <div class="gym-metrics">
+        <article><b>50min</b><span>完全予約制</span></article>
+        <article><b>3min</b><span>駅から徒歩</span></article>
+        <article><b>1:1</b><span>専属サポート</span></article>
+      </div>
     </header>
 
     <main>
-      <section class="strip" aria-label="ジムの強み">
-        <article><span>50分</span><p>集中セッション</p></article>
-        <article><span>食事相談</span><p>LINEで週1チェック</p></article>
-        <article><span>駅3分</span><p>仕事帰りに通いやすい</p></article>
+      <section class="gym-program" id="program">
+        <div class="program-heading">
+          <p class="eyebrow">Programs</p>
+          <h2>目的別に選べるから、迷わない。</h2>
+        </div>
+        <div class="program-cards">
+          <article>
+            <span>01</span>
+            <h3>姿勢改善</h3>
+            <p>肩こり、反り腰、猫背。日常の不調から入れる。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>ダイエット</h3>
+            <p>食事相談と週1測定で、続け方まで見せる。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>筋力アップ</h3>
+            <p>フォーム確認と負荷設計を明確にする。</p>
+          </article>
+        </div>
       </section>
 
-      <section class="section split" id="plan">
+      <section class="gym-price" id="price">
+        <p class="eyebrow">Price</p>
+        <h2>料金は、隠さないほうが強い。</h2>
+        <div class="price-stack">
+          <article><span>月4回ライト</span><b>29,800円</b><p>運動習慣を作りたい方向け。</p></article>
+          <article class="hot"><span>月8回ボディメイク</span><b>54,800円</b><p>短期で変えたい方向け。食事相談込み。</p></article>
+          <article><span>初回体験</span><b>3,300円</b><p>カウンセリングと30分トレーニング。</p></article>
+        </div>
+      </section>
+
+      <section class="gym-trial" id="trial">
         <div>
-          <p class="eyebrow">Plan</p>
-          <h2>料金を隠さず、体験予約へつなげる。</h2>
+          <p class="eyebrow">Trial flow</p>
+          <h2>問い合わせ前の不安を3ステップで消す。</h2>
         </div>
-        <div class="cards">
-          <article>
-            <h3>月4回ライト</h3>
-            <p>運動習慣を作りたい方向け。姿勢チェック付き。</p>
-            <b>月 29,800円</b>
-          </article>
-          <article>
-            <h3>月8回ボディメイク</h3>
-            <p>短期で変えたい方向け。食事相談と測定を含む。</p>
-            <b>月 54,800円</b>
-          </article>
-          <article>
-            <h3>初回体験</h3>
-            <p>カウンセリング、姿勢評価、30分トレーニング。</p>
-            <b>3,300円</b>
-          </article>
-        </div>
-      </section>
-
-      <section class="section timetable">
-        <p class="eyebrow">Flow</p>
-        <h2>初めてでも流れがわかる。</h2>
-        <div class="table">
-          <div><b>01</b><span>体験予約</span><em>希望日時を送信</em></div>
-          <div><b>02</b><span>姿勢と目的を確認</span><em>約20分</em></div>
-          <div><b>03</b><span>提案と見積</span><em>その場で確認</em></div>
-        </div>
-      </section>
-
-      <section class="cta" id="trial">
-        <p class="eyebrow">Trial</p>
-        <h2>空いている時間に、体験だけでも。</h2>
+        <ol>
+          <li><b>01</b>希望日時を送る</li>
+          <li><b>02</b>姿勢と目的を確認</li>
+          <li><b>03</b>最適な通い方を提案</li>
+        </ol>
         <a class="primary" href="mailto:trial@example.com">体験予約を送る</a>
       </section>
     </main>
