@@ -1,0 +1,10 @@
+デモ用画像の出典（CC0 / パブリックドメイン、商用利用可・帰属表示不要）
+取得元: Openverse (api.openverse.org) 経由 / 提供 rawpixel
+
+hero.webp / hero-sm.webp … "Japanese Izakaya, Tokyo, Japan" (CC0)
+  ※モノクロ化・コントラスト調整あり
+dish.webp                … "Free salmon steak vegetable dish" (CC0)
+  ※トリミング・減光・彩度調整あり
+
+※実店舗向けサンプルでは店舗の写真に差し替えること。
+※店舗の写真を無断で公開状態に置かない。断られたら即削除。

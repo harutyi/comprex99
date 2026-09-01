@@ -1,0 +1,474 @@
+/* ============================================================
+   base.css — デモ共通の骨格
+   色と書体は theme-*.css。ここに色を直接書かない。
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.9;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.tate {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-feature-settings: "palt" 0, "vert" 1;
+}
+
+.wrap {
+  width: min(100% - 2.5rem, 64rem);
+  margin-inline: auto;
+}
+
+/* ============ ヒーロー ============ */
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  background: var(--night);
+  color: var(--night-ink);
+}
+
+.hero__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+  object-fit: cover;
+  object-position: 55% 40%;
+  filter: grayscale(1) contrast(1.05) brightness(0.82);
+}
+
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--night) 2%, transparent 45%);
+}
+
+.hero__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 1.75rem 3.5rem;
+}
+
+/* 店名を figure として置く */
+.mark {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.mark__name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(3.4rem, 17vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: 0.06em;
+}
+
+.mark__kind {
+  padding-top: 0.6rem;
+  font-family: var(--serif);
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  letter-spacing: 0.5em;
+  color: var(--night-dim);
+}
+
+.hero__copy {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 4.2vw, 1.35rem);
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--night-line);
+  color: var(--night-dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.hero__meta b {
+  color: var(--night-ink);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__tel {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+/* ============ 品書き ============ */
+
+.menu {
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+.menu__head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.menu__head h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 4.5vw, 1.6rem);
+  letter-spacing: 0.32em;
+}
+
+.menu__head span {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.menu__head small {
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.course {
+  display: grid;
+  gap: 0.75rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.course__label {
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-dim);
+}
+
+.dishes li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.dishes .n {
+  letter-spacing: 0.06em;
+}
+
+.dishes .n small {
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.dishes .sp {
+  flex: 1;
+}
+
+.dishes .y {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.dishes .y small {
+  font-size: 0.7rem;
+  margin-left: 0.15rem;
+  color: var(--ink-dim);
+}
+
+.dishes li.head-dish .n {
+  color: var(--accent);
+}
+
+.menu__note {
+  color: var(--ink-dim);
+  font-size: 0.84rem;
+}
+
+/* ============ 今日の魚 ============ */
+
+.today {
+  position: relative;
+  display: grid;
+  background: var(--night);
+  color: var(--night-ink);
+}
+
+.today img {
+  width: 100%;
+  height: 100%;
+  min-height: 15rem;
+  object-fit: cover;
+  filter: brightness(0.86) contrast(1.06) saturate(0.95);
+}
+
+.today__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 3rem 1.75rem;
+}
+
+.today__body h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 5vw, 1.75rem);
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+}
+
+.today__body p {
+  color: var(--night-dim);
+  font-size: 0.95rem;
+}
+
+/* ============ 店のこと ============ */
+
+.about {
+  padding-block: clamp(3.5rem, 9vw, 6rem);
+}
+
+.about__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.about h2 {
+  margin-bottom: 1.25rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-dim);
+}
+
+.rows div {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rows dt {
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+}
+
+.rows dd {
+  font-variant-numeric: tabular-nums;
+}
+
+.about__text p + p {
+  margin-top: 1rem;
+}
+
+/* ============ 電話 ============ */
+
+.ring {
+  padding-block: clamp(3rem, 8vw, 5rem);
+  background: var(--night);
+  color: var(--night-ink);
+  text-align: center;
+}
+
+.ring p {
+  color: var(--night-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+}
+
+.ring a {
+  display: inline-block;
+  margin: 1rem 0 0.75rem;
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.foot {
+  padding-block: 2rem 2.5rem;
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  line-height: 2;
+}
+
+.foot a {
+  color: var(--ink);
+}
+
+/* ============ 広い画面 ============ */
+
+@media (min-width: 48rem) {
+  .course {
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+
+  .about__grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+
+  .hero__media {
+    order: 2;
+  }
+
+  .hero__media::after {
+    background: linear-gradient(to right, var(--night) 1%, transparent 30%);
+  }
+
+  .hero__stage {
+    justify-content: space-between;
+    padding: 4.5rem clamp(2.5rem, 5vw, 5rem) 3.5rem;
+  }
+
+  /* 店名は縦組みで立てる */
+  .mark {
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .mark__name {
+    writing-mode: vertical-rl;
+    font-size: clamp(4.2rem, 8vw, 7rem);
+    letter-spacing: 0.14em;
+  }
+
+  .mark__kind {
+    writing-mode: vertical-rl;
+    padding-top: 0;
+    padding-right: 0.4rem;
+    letter-spacing: 0.9em;
+  }
+
+  .hero__copy {
+    writing-mode: vertical-rl;
+    max-height: 22rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  }
+
+  .hero__stage {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: minmax(0, 1fr) auto;
+    justify-content: start;
+    align-items: center;
+    gap: 0 3.25rem;
+    max-width: 37rem;
+  }
+
+  .mark {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .hero__copy {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    margin-top: 1.5rem;
+  }
+
+  .hero__meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .today {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .today__body {
+    padding: 4rem clamp(2.5rem, 4vw, 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
