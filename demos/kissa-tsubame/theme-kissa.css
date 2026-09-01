@@ -1,0 +1,148 @@
+:root {
+  --paper: #ffffff;
+  --ink: #171a18;
+  --ink-dim: #77807b;
+  --rule: #dfe2de;
+  --green: #14523c;
+  --font-sans: "Hiragino Sans", "Noto Sans CJK JP", "Yu Gothic", sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgb(20 82 60 / 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, var(--paper), #f7f8f7 58%, var(--paper));
+  background-size: 92px 100%, 100% 100%;
+}
+
+.hero {
+  background: var(--paper);
+}
+
+.hero__copy {
+  background: linear-gradient(90deg, var(--paper) 0%, rgb(255 255 255 / 0.92) 70%, transparent 100%);
+}
+
+.hero__photo::after {
+  background:
+    linear-gradient(90deg, var(--paper) 0%, rgb(255 255 255 / 0.96) 9%, rgb(255 255 255 / 0.72) 24%, rgb(255 255 255 / 0.18) 52%, transparent 72%),
+    linear-gradient(180deg, transparent 64%, var(--paper) 99%);
+}
+
+.area {
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+h1 {
+  color: var(--ink);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+.roman {
+  color: var(--green);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.5em;
+}
+
+.hero__lead {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero__facts a:hover,
+.first-visit a:hover,
+.tel-cta a:hover,
+footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.section-head p,
+.morning__copy > p {
+  color: var(--green);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+}
+
+.section-head h2,
+.morning__copy h2,
+.tel-cta h2 {
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.time-list time strong {
+  color: var(--green);
+  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.time-list time span {
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.time-list h3,
+.menu-grid h3,
+.first-visit h3 {
+  font-size: clamp(1.25rem, 2.3vw, 1.7rem);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.time-list b {
+  color: var(--green);
+  font-size: 1rem;
+}
+
+.morning__media::after {
+  background:
+    linear-gradient(90deg, transparent 30%, rgb(20 82 60 / 0.28) 74%, var(--green) 99%),
+    linear-gradient(180deg, transparent 62%, var(--green) 99%);
+}
+
+.morning__copy {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent),
+    var(--green);
+}
+
+.morning__copy p {
+  color: rgb(255 255 255 / 0.82);
+}
+
+.menu-grid h3,
+.info dd,
+.menu-grid dd {
+  color: var(--green);
+}
+
+.first-visit {
+  background: linear-gradient(180deg, rgb(20 82 60 / 0.045), transparent);
+}
+
+@media (max-width: 900px) {
+  .hero__photo::after {
+    background:
+      linear-gradient(180deg, transparent 30%, rgb(255 255 255 / 0.88) 78%, var(--paper) 99%),
+      linear-gradient(90deg, var(--paper) 0%, rgb(255 255 255 / 0.16) 34%, transparent 70%);
+  }
+
+  .hero__copy {
+    background: transparent;
+  }
+
+  .morning__media::after {
+    background:
+      linear-gradient(180deg, transparent 30%, rgb(20 82 60 / 0.78) 84%, var(--green) 99%);
+  }
+}
