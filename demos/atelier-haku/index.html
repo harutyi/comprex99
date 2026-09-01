@@ -4,78 +4,88 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>アトリエ白 | 名古屋の大人向け陶芸・手しごと教室</title>
-    <meta name="description" content="名古屋の手しごと教室。作品例、講座、日程、体験予約まで空気感を伝えるデモサイトです。" />
+    <title>アトリエ白 | 大人のための手しごと教室</title>
+    <meta name="description" content="陶芸、絵付け、親子ワークショップを選んで予約できる、明るく遊びのある教室デモサイトです。" />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="theme-atelier layout-atelier">
-    <nav class="nav atelier-nav" aria-label="主要メニュー">
-      <a class="brand" href="#">アトリエ白</a>
-      <div>
-        <a href="#journal">作品</a>
-        <a href="#lessons">講座</a>
-        <a href="#reserve">予約</a>
-      </div>
+  <body>
+    <nav class="nav" aria-label="主要メニュー">
+      <a class="brand" href="#">Atelier Haku</a>
+      <a class="bubble" href="#reserve">体験を選ぶ</a>
     </nav>
 
-    <header class="atelier-cover">
-      <div class="atelier-title">
-        <p class="kicker">Ceramic & craft studio</p>
-        <h1>静かな机から、週末が変わる。</h1>
+    <header class="cover">
+      <div class="cover-copy">
+        <p class="eyebrow">Make one thing this weekend</p>
+        <h1>つくる日を、選ぶ。</h1>
+        <p>アトリエ白は、陶芸・絵付け・季節の手しごとを1回から楽しめる小さな教室です。</p>
       </div>
-      <figure>
+      <figure class="book-object" aria-label="教室の雰囲気">
         <img src="./img/hero.png" alt="陶芸と手しごとの道具が並ぶ静かな教室" />
       </figure>
-      <aside>
-        <b>1回完結の体験から</b>
-        <p>少人数で、道具も材料も教室で用意。写真で雰囲気を伝えて、予約前の不安を減らします。</p>
-      </aside>
+      <div class="cover-note">
+        <b>1回完結</b>
+        <span>道具・材料込み / 少人数 / 週末開催</span>
+      </div>
     </header>
 
     <main>
-      <section class="atelier-journal" id="journal">
-        <p class="eyebrow">Studio notes</p>
-        <div class="journal-grid">
-          <article class="large">
+      <section class="genre" id="reserve">
+        <div class="genre-head">
+          <p class="eyebrow">Pick your class</p>
+          <h2>今日は、どの気分で作る？</h2>
+        </div>
+        <div class="genre-grid">
+          <a class="genre-card yellow" href="mailto:reserve@example.com">
             <span>01</span>
-            <h2>作品例を主役にする。</h2>
-            <p>教室は価格より先に「ここで作りたい」と思わせる写真と余白が大事。講座カードより、制作の空気を先に出します。</p>
-          </article>
-          <article>
+            <h3>うつわ作り</h3>
+            <p>90分 / 4,400円</p>
+          </a>
+          <a class="genre-card pink" href="mailto:reserve@example.com">
             <span>02</span>
-            <h3>手ぶらで来られる</h3>
-            <p>持ち物や服装を短く明記。</p>
-          </article>
-          <article>
+            <h3>季節の絵付け</h3>
+            <p>60分 / 3,300円</p>
+          </a>
+          <a class="genre-card green" href="mailto:reserve@example.com">
             <span>03</span>
-            <h3>焼成後に受け取り</h3>
-            <p>完成までの流れも先に伝える。</p>
-          </article>
+            <h3>親子ワークショップ</h3>
+            <p>土日 / 5,500円</p>
+          </a>
         </div>
       </section>
 
-      <section class="lesson-ribbon" id="lessons">
-        <article><b>うつわ作り</b><span>90分 / 4,400円</span></article>
-        <article><b>季節の絵付け</b><span>60分 / 3,300円</span></article>
-        <article><b>親子体験</b><span>土日 / 5,500円</span></article>
-        <article><b>貸切相談</b><span>4名から</span></article>
-      </section>
-
-      <section class="atelier-calendar" id="reserve">
-        <div>
-          <p class="eyebrow">Open seats</p>
-          <h2>空き日程を、作品の余韻のあとに置く。</h2>
+      <section class="unbox">
+        <div class="unbox-copy">
+          <p class="eyebrow">Studio reveal</p>
+          <h2>予約前に、教室の空気まで伝える。</h2>
+          <p>写真、道具、流れ、よくある質問を短い塊で並べる。小さな教室ほど、世界観がそのまま予約理由になります。</p>
         </div>
-        <ul>
-          <li><span>Fri</span><b>夜の陶芸体験</b><em>19:00-20:30</em></li>
-          <li><span>Sat</span><b>親子ワークショップ</b><em>10:30-12:00</em></li>
-          <li><span>Sun</span><b>絵付けとお茶の時間</b><em>14:00-15:30</em></li>
-        </ul>
+        <div class="stack">
+          <article><b>手ぶらOK</b><span>エプロンと材料を用意</span></article>
+          <article><b>焼成後お渡し</b><span>完成までの流れも明記</span></article>
+          <article><b>貸切相談</b><span>4名から小さな会にも</span></article>
+        </div>
       </section>
 
-      <section class="atelier-cta">
-        <p>小さな教室ほど、世界観と予約導線を同じ画面に。</p>
-        <a class="primary" href="mailto:reserve@example.com">体験を予約する</a>
+      <section class="faq">
+        <p class="eyebrow">FAQ</p>
+        <details open>
+          <summary>初めてでも大丈夫ですか？</summary>
+          <p>ほとんどの方が初回です。形が崩れても味になる作り方から始めます。</p>
+        </details>
+        <details>
+          <summary>持ち物はありますか？</summary>
+          <p>汚れてもよい服装だけで大丈夫です。道具と材料は教室で用意します。</p>
+        </details>
+        <details>
+          <summary>作品は当日持ち帰れますか？</summary>
+          <p>陶芸作品は焼成後のお渡しです。絵付け講座は内容によって変わります。</p>
+        </details>
+      </section>
+
+      <section class="bottom-cta">
+        <h2>週末の空き枠を、見に行く。</h2>
+        <a class="bubble big" href="mailto:reserve@example.com">体験予約</a>
       </section>
     </main>
   </body>
