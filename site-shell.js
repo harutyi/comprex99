@@ -1,4 +1,5 @@
 (function(){
+  document.body.classList.add("js-ready");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const touch = matchMedia("(hover: none)").matches;
 
@@ -51,6 +52,9 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  setTimeout(() => {
+    document.querySelectorAll(".reveal:not(.in)").forEach((element) => element.classList.add("in"));
+  }, 900);
 
   if(reduce || touch) return;
 
