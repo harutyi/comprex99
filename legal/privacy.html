@@ -48,9 +48,36 @@
     th{white-space:normal}
   }
 </style>
+<link rel="stylesheet" href="/site-shell.css">
 </head>
-<body>
-<div class="wrap">
+<body data-theme="lime">
+<div class="cursor" id="cursor"></div>
+<div class="layout">
+  <aside class="side">
+    <a class="side-logo" href="/">COMPREX<span>99</span></a>
+    <nav class="side-nav" aria-label="主要ナビゲーション">
+      <a href="/" data-t="TOP"><i>TOP</i></a>
+      <a href="/company.html" data-t="COMPANY"><i>COMPANY</i></a>
+      <a href="/web/" data-t="WEB制作"><i>WEB制作</i></a>
+      <a href="/web/#contact" data-t="CONTACT"><i>CONTACT</i></a>
+    </nav>
+    <div class="side-bottom">
+      <div>
+        <div class="sw-label">THEME</div>
+        <div class="swatches">
+          <button class="sw active" data-theme="lime" style="--sw:#B5E800" title="lime"></button>
+          <button class="sw" data-theme="noir" style="--sw:#2B32FF" title="noir"></button>
+          <button class="sw" data-theme="ivory" style="--sw:#E4572E" title="ivory"></button>
+          <button class="sw" data-theme="forest" style="--sw:#E9B44C" title="forest"></button>
+          <button class="sw" data-theme="plum" style="--sw:#C6F432" title="plum"></button>
+          <button class="sw" data-theme="paper" style="--sw:#0F7B5F" title="paper"></button>
+        </div>
+      </div>
+      <div class="side-line">PRIVACY</div>
+    </div>
+  </aside>
+  <main>
+<div class="wrap reveal">
 
 <header>
   <span class="mark">COMPREX99</span>
@@ -127,5 +154,8 @@
 </footer>
 
 </div>
+  </main>
+</div>
+<script src="/site-shell.js"></script>
 </body>
 </html>

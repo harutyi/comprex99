@@ -6,14 +6,14 @@
 <title>法務情報 | Comprex99</title>
 <meta name="robots" content="noindex">
 <style>
-  body{background:#FAF8F5;color:#3A3A38;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:15px;line-height:2;}
   .wrap{max-width:680px;margin:0 auto;padding:56px 22px 80px;}
   h1{font-size:20px;margin-bottom:14px;}
   h2{font-size:16px;margin:36px 0 10px;}
-  .lead{color:#7C7A74;margin-bottom:28px;}
+  .lead{color:var(--dim);margin-bottom:28px;}
   .legal-nav{display:grid;gap:10px;margin:26px 0 38px;}
-  .legal-nav a{display:block;border:1px solid #E8E4DD;border-radius:12px;background:#fff;padding:14px 16px;font-weight:700;text-decoration:none;}
-  .legal-nav small{display:block;color:#7C7A74;font-weight:400;margin-top:2px;}
+  .legal-nav a{display:block;border:1px solid var(--line);background:var(--card);padding:14px 16px;font-weight:800;text-decoration:none;}
+  .legal-nav a:hover{background:var(--sub);color:var(--base);}
+  .legal-nav small{display:block;color:var(--dim);font-weight:400;margin-top:2px;}
   dl{display:grid;grid-template-columns:120px 1fr;gap:6px 16px;font-size:14.5px;}
   dd{overflow-wrap:anywhere;}
   @media (max-width:520px){
@@ -21,13 +21,39 @@
     dl{grid-template-columns:1fr;gap:2px 0;}
     dd{margin-bottom:10px;}
   }
-  dt{color:#7C7A74;}
-  a{color:#2E6B4F;}
+  dt{color:var(--dim);}
   .back{display:inline-block;margin-top:48px;font-size:14px;}
 </style>
+<link rel="stylesheet" href="/site-shell.css">
 </head>
-<body>
-<div class="wrap">
+<body data-theme="lime">
+<div class="cursor" id="cursor"></div>
+<div class="layout">
+  <aside class="side">
+    <a class="side-logo" href="/">COMPREX<span>99</span></a>
+    <nav class="side-nav" aria-label="主要ナビゲーション">
+      <a href="/" data-t="TOP"><i>TOP</i></a>
+      <a href="/company.html" data-t="COMPANY"><i>COMPANY</i></a>
+      <a href="/web/" data-t="WEB制作"><i>WEB制作</i></a>
+      <a href="/web/#contact" data-t="CONTACT"><i>CONTACT</i></a>
+    </nav>
+    <div class="side-bottom">
+      <div>
+        <div class="sw-label">THEME</div>
+        <div class="swatches">
+          <button class="sw active" data-theme="lime" style="--sw:#B5E800" title="lime"></button>
+          <button class="sw" data-theme="noir" style="--sw:#2B32FF" title="noir"></button>
+          <button class="sw" data-theme="ivory" style="--sw:#E4572E" title="ivory"></button>
+          <button class="sw" data-theme="forest" style="--sw:#E9B44C" title="forest"></button>
+          <button class="sw" data-theme="plum" style="--sw:#C6F432" title="plum"></button>
+          <button class="sw" data-theme="paper" style="--sw:#0F7B5F" title="paper"></button>
+        </div>
+      </div>
+      <div class="side-line">LEGAL</div>
+    </div>
+  </aside>
+  <main>
+<div class="wrap reveal">
   <h1>法務情報</h1>
   <p class="lead">Comprex99の運営者情報と、サービス利用に関する各種規約です。</p>
 
@@ -52,5 +78,8 @@
 
   <a class="back" href="/">← トップへ戻る</a>
 </div>
+</main>
+</div>
+<script src="/site-shell.js"></script>
 </body>
 </html>

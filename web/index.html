@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -10,447 +10,177 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://comprex99.com/web/">
 <meta property="og:image" content="https://comprex99.com/web/og.jpg">
-<style>
-  :root{
-    --bg:#FAF8F5;
-    --ink:#3A3A38;
-    --soft:#7C7A74;
-    --green:#2E6B4F;
-    --green-soft:#EAF2ED;
-    --card:#FFFFFF;
-    --line:#E8E4DD;
-    --radius:16px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg); color:var(--ink);
-    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Helvetica Neue",Arial,sans-serif;
-    font-size:17px; line-height:1.9;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
-
-  /* ===== header ===== */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(250,248,245,.92);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .hd{display:flex;justify-content:space-between;align-items:center;height:60px;}
-  .hd .logo{font-weight:700;font-size:15px;color:var(--soft);}
-  .hd .logo b{color:var(--ink);}
-  .hd a.mini-cta{
-    background:var(--green);color:#fff;
-    padding:9px 18px;border-radius:999px;
-    font-size:13.5px;font-weight:700;
-  }
-
-  /* ===== buttons ===== */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:16px 32px;border-radius:999px;
-    font-size:16px;font-weight:700;
-    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
-  }
-  .btn.line{
-    background:#06C755;color:#fff;
-    box-shadow:0 4px 14px rgba(6,199,85,.25);
-  }
-  .btn.line:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,199,85,.3);}
-  .btn.sub{
-    background:#fff;color:var(--ink);
-    border:1.5px solid var(--line);
-  }
-  .btn.sub:hover{border-color:var(--ink);transform:translateY(-2px);}
-  .note{font-size:13px;color:var(--soft);margin-top:10px;}
-
-  /* ===== hero ===== */
-  .hero{padding:72px 0 64px;text-align:center;}
-  .hero h1{
-    font-size:clamp(26px,5.6vw,42px);
-    font-weight:800;line-height:1.6;letter-spacing:.01em;
-    overflow-wrap:anywhere;
-  }
-  .hero .lede{
-    margin:26px auto 0;max-width:560px;
-    color:var(--soft);font-size:clamp(15px,2vw,17px);
-  }
-  .hero .lede b{color:var(--ink);}
-  .hero .cta{margin-top:38px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-
-  /* ===== demo ===== */
-  section{padding:64px 0;}
-  .sec-title{
-    text-align:center;font-size:clamp(21px,3.4vw,28px);font-weight:800;
-    margin-bottom:12px;
-  }
-  .sec-sub{text-align:center;color:var(--soft);font-size:15px;margin-bottom:40px;}
-  .demo-card{
-    display:block;
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;
-    box-shadow:0 6px 24px rgba(58,58,56,.06);
-    transition:transform .25s ease,box-shadow .25s ease;
-    min-width:0;
-  }
-  .demo-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:0 auto;}
-  .demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(58,58,56,.1);}
-  .demo-thumb{
-    aspect-ratio:16/9;
-    background:#111 url() center/cover;
-    display:flex;align-items:center;justify-content:center;
-    color:#C9A227;font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:.06em;
-  }
-  .demo-thumb.noir{background:#111;color:#C9A227;}
-  .demo-thumb.seitai{background:linear-gradient(135deg,rgba(251,250,244,.72),rgba(43,98,81,.22)),url("/demos/seitai-tsukiakari/img/hero.webp") center/cover;color:#183f34;}
-  .demo-body{padding:22px 26px 26px;}
-  .demo-body h3{font-size:17px;font-weight:700;}
-  .demo-body p{font-size:14.5px;color:var(--soft);margin-top:6px;}
-  .demo-body .go{color:var(--green);font-weight:700;font-size:14.5px;margin-top:10px;display:inline-block;}
-
-  /* ===== price ===== */
-  #price{background:var(--green-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .price-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    max-width:760px;margin:0 auto;overflow:hidden;
-    box-shadow:0 6px 24px rgba(58,58,56,.06);
-  }
-  .price-grid{display:grid;gap:14px;max-width:760px;margin:0 auto;}
-  .plan-card,.included-card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;box-shadow:0 6px 24px rgba(58,58,56,.05);
-  }
-  .plan-card.primary{border-color:rgba(46,107,79,.45);background:#fff;}
-  .plan-card h3,.included-card h3{font-size:17px;font-weight:800;margin-bottom:8px;}
-  .plan-card .amount{font-size:clamp(30px,5vw,46px);line-height:1.2;font-weight:800;color:var(--green);}
-  .plan-card .amount small{font-size:.42em;}
-  .plan-card p,.included-card p{color:var(--soft);font-size:14.5px;margin-top:8px;}
-  .plan-list{display:grid;gap:12px;margin-top:12px;}
-  .plan-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);}
-  .plan-row b{font-size:15px;}
-  .plan-row span{color:var(--soft);font-size:14px;}
-  .included-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin-top:14px;}
-  .included-grid li{font-size:14px;padding-left:20px;position:relative;list-style:none;}
-  .included-grid li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
-  .price-head{
-    text-align:center;padding:34px 26px 28px;
-    border-bottom:1px dashed var(--line);
-  }
-  .price-head .plan{font-size:15px;font-weight:700;color:var(--green);letter-spacing:.08em;}
-  .price-head .was{
-    margin-top:14px;color:var(--soft);font-size:15px;
-    text-decoration:line-through;
-  }
-  .price-head .now{
-    font-size:clamp(38px,7vw,52px);font-weight:800;line-height:1.2;letter-spacing:.01em;
-  }
-  .price-head .now small{font-size:.45em;font-weight:700;}
-  .price-head .cond{
-    display:inline-block;margin-top:12px;
-    background:var(--green-soft);color:var(--green);
-    font-size:13px;font-weight:700;
-    padding:5px 14px;border-radius:999px;
-  }
-  .price-body{padding:26px;}
-  .inc{list-style:none;display:grid;gap:12px;}
-  .inc li{
-    padding-left:30px;position:relative;font-size:15.5px;
-  }
-  .inc li::before{
-    content:"✓";position:absolute;left:4px;top:0;
-    color:var(--green);font-weight:800;
-  }
-  .price-foot{
-    border-top:1px dashed var(--line);
-    padding:20px 26px;text-align:center;
-    font-size:14.5px;color:var(--soft);
-  }
-  .price-foot b{color:var(--ink);}
-  .addons{max-width:760px;margin:28px auto 0;font-size:14px;color:var(--soft);}
-  .addons summary{
-    font-weight:700;color:var(--ink);font-size:15px;
-    padding:14px 18px;background:var(--card);
-    border:1px solid var(--line);border-radius:12px;
-    list-style:none;
-  }
-  .addons summary::-webkit-details-marker{display:none;}
-  .addons summary::after{content:" +";color:var(--green);font-weight:800;}
-  .addons[open] summary::after{content:" −";}
-  .addons .ad-body{padding:16px 18px 6px;}
-  .addons table{width:100%;border-collapse:collapse;}
-  .addons td{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
-  .addons td:last-child{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);}
-  .price-note{max-width:760px;margin:18px auto 0;color:var(--soft);font-size:13.5px;line-height:1.8;}
-
-  /* ===== flow ===== */
-  .flow{max-width:640px;margin:0 auto;display:grid;gap:0;}
-  .step{
-    display:grid;grid-template-columns:52px 1fr;gap:18px;
-    padding:22px 0;
-    position:relative;
-  }
-  .step:not(:last-child)::before{
-    content:"";position:absolute;left:25px;top:64px;bottom:-8px;
-    width:2px;background:var(--line);
-  }
-  .step .num{
-    width:52px;height:52px;border-radius:50%;
-    background:var(--card);border:1.5px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;color:var(--green);font-size:17px;
-    position:relative;z-index:1;
-  }
-  .step h3{font-size:17px;font-weight:700;padding-top:10px;}
-  .step p{font-size:15px;color:var(--soft);margin-top:4px;}
-  .step .badge{
-    display:inline-block;margin-left:8px;
-    background:var(--green-soft);color:var(--green);
-    font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;
-    vertical-align:2px;
-  }
-
-  /* ===== owner ===== */
-  .owner{
-    max-width:640px;margin:0 auto;
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:30px 30px 32px;
-    box-shadow:0 6px 24px rgba(58,58,56,.06);
-  }
-  .owner .who{font-size:14px;color:var(--soft);}
-  .owner .who b{color:var(--ink);font-size:16px;}
-  .owner p{font-size:15px;margin-top:14px;}
-
-  /* ===== contact ===== */
-  #contact{padding-bottom:90px;}
-  .contact-box{
-    max-width:640px;margin:0 auto;text-align:center;
-    background:var(--card);border:1px solid var(--line);border-radius:20px;
-    padding:44px 28px 40px;
-    box-shadow:0 6px 24px rgba(58,58,56,.06);
-  }
-  .contact-box h2{font-size:clamp(20px,3.4vw,26px);font-weight:800;line-height:1.7;}
-  .contact-box .p{color:var(--soft);font-size:15px;margin-top:12px;}
-  .contact-box .cta{margin-top:28px;}
-  .mail{
-    margin-top:22px;font-size:14px;color:var(--soft);
-  }
-  .mail a{color:var(--green);font-weight:700;}
-
-  footer{border-top:1px solid var(--line);padding:24px 0 30px;}
-  .ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--soft);}
-  .ft a:hover{color:var(--ink);}
-
-  @media (max-width:640px){
-    body{font-size:16px;}
-    .hero{padding:52px 0 48px;}
-    .hero h1{font-size:25px;line-height:1.55;max-width:12em;margin-inline:auto;}
-    .hero .lede{max-width:21em;overflow-wrap:break-word;}
-    .hero .cta{flex-direction:column;align-items:center;}
-    .btn{width:min(320px,100%);}
-    .demo-list{grid-template-columns:1fr;}
-    .plan-row{grid-template-columns:1fr;gap:4px;}
-    .included-grid{grid-template-columns:1fr;}
-    section{padding:52px 0;}
-    .step{grid-template-columns:44px 1fr;gap:14px;}
-    .step .num{width:44px;height:44px;font-size:15px;}
-    .step:not(:last-child)::before{left:21px;top:56px;}
-    .owner{padding:24px 22px 26px;}
-    .ft{flex-direction:column;}
-  }
-</style>
+<link rel="stylesheet" href="/site-shell.css">
 </head>
-<body>
-
-<header>
-  <div class="wrap hd">
-    <a class="logo" href="/">Comprex99 <b>| ホームページ制作</b></a>
-    <a class="mini-cta" href="#contact">相談する</a>
-  </div>
-</header>
-
-<div class="hero">
-  <div class="wrap">
-    <h1>あなたのお店の良さ、<br>ちゃんと伝わっていますか。</h1>
-    <p class="lede">お店の紹介ページを、まるごとおまかせでおつくりします。<br>やりとりはLINEだけ。<b>お手間は10分ほど</b>です。</p>
-    <div class="cta">
-      <a class="btn line" href="https://line.me/R/ti/p/@419iumau" target="_blank" rel="noopener">LINEで相談してみる</a>
-      <a class="btn sub" href="/web/estimate/">料金をチェックする</a>
-      <a class="btn sub" href="#demo">制作例を見る</a>
+<body data-theme="lime">
+<div class="cursor" id="cursor"></div>
+<div class="layout">
+  <aside class="side">
+    <a class="side-logo" href="/">COMPREX<span>99</span></a>
+    <nav class="side-nav" aria-label="主要ナビゲーション">
+      <a href="/" data-t="TOP"><i>TOP</i></a>
+      <a href="#demo" data-t="WORKS"><i>WORKS</i></a>
+      <a href="#price" data-t="PRICE"><i>PRICE</i></a>
+      <a href="#contact" data-t="CONTACT"><i>CONTACT</i></a>
+    </nav>
+    <div class="side-bottom">
+      <div>
+        <div class="sw-label">THEME</div>
+        <div class="swatches">
+          <button class="sw active" data-theme="lime" style="--sw:#B5E800" title="lime"></button>
+          <button class="sw" data-theme="noir" style="--sw:#2B32FF" title="noir"></button>
+          <button class="sw" data-theme="ivory" style="--sw:#E4572E" title="ivory"></button>
+          <button class="sw" data-theme="forest" style="--sw:#E9B44C" title="forest"></button>
+          <button class="sw" data-theme="plum" style="--sw:#C6F432" title="plum"></button>
+          <button class="sw" data-theme="paper" style="--sw:#0F7B5F" title="paper"></button>
+        </div>
+      </div>
+      <div class="side-line">WEB PRODUCTION</div>
     </div>
-    <p class="note">相談は無料です。そのまま依頼しなくても大丈夫です。</p>
-  </div>
-</div>
+  </aside>
 
-<section id="demo">
-  <div class="wrap">
-    <h2 class="sec-title">制作例</h2>
-    <p class="sec-sub">実際にこんなサイトをおつくりします。</p>
-    <div class="demo-list">
-      <a class="demo-card" href="https://comprex99.com/demos/noir-et-or/" target="_blank" rel="noopener">
-        <div class="demo-thumb noir">Noir et Or</div>
-        <div class="demo-body">
-          <h3>美容室のホームページ(制作デモ)</h3>
-          <p>高級感のある黒×金のデザイン。スマホでもきれいに見られます。</p>
-          <span class="go">実物を見てみる →</span>
-        </div>
-      </a>
-      <a class="demo-card" href="https://comprex99.com/demos/seitai-tsukiakari/" target="_blank" rel="noopener">
-        <div class="demo-thumb seitai">月灯り整体院</div>
-        <div class="demo-body">
-          <h3>整体院のホームページ(制作デモ)</h3>
-          <p>初回の不安、料金、流れ、アクセスを先に見せる落ち着いたデザイン。</p>
-          <span class="go">実物を見てみる →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+  <main>
+    <section class="page-hero pad">
+      <div class="hero-bg">WEB</div>
+      <p class="kicker reveal">WEB PRODUCTION</p>
+      <h1 class="page-title reveal">あなたのお店の良さ、<br>ちゃんと伝わっていますか。</h1>
+      <p class="lead reveal">お店の紹介ページを、まるごとおまかせでおつくりします。やりとりはLINEだけ。<span class="highlight">お手間は10分ほど</span>です。</p>
+      <div class="actions reveal">
+        <a class="button primary magnet" href="https://line.me/R/ti/p/@419iumau" target="_blank" rel="noopener">LINEで相談してみる</a>
+        <a class="button" href="/web/estimate/">料金をチェックする</a>
+        <a class="button" href="#demo">制作例を見る</a>
+      </div>
+    </section>
 
-<section id="price">
-  <div class="wrap">
-    <h2 class="sec-title">料金</h2>
-    <p class="sec-sub">制作費は銀行振込の前払い、保守は月額カード決済です。銀行口座はお申し込み後にご案内します。</p>
-    <div class="price-grid">
-      <div class="plan-card primary">
-        <h3>制作費 Aプラン</h3>
-        <div class="amount">19,800<small>円</small></div>
-        <p><b>保守12ヶ月契約とセットの価格です。</b>単独の制作費ではありません。</p>
+    <section id="demo" class="section pad">
+      <div class="section-head reveal">
+        <h2>制作例</h2>
+        <p>実際にこんなサイトをおつくりします。営業中に送るURLとしても使いやすい制作デモです。</p>
       </div>
-      <div class="plan-card">
-        <h3>制作のみ</h3>
-        <div class="amount">39,800<small>円</small></div>
-        <p>保守契約なしで、制作と公開作業のみをご依頼いただく場合の価格です。</p>
+      <div class="grid">
+        <a class="card reveal" data-tilt href="https://comprex99.com/demos/noir-et-or/" target="_blank" rel="noopener">
+          <div class="thumb"><img src="/assets/noir-et-or-mobile.webp" alt=""></div>
+          <p class="meta">BEAUTY SALON</p>
+          <h3>Noir et Or</h3>
+          <p>美容室のホームページ制作デモ。高級感のある黒と金、スマホで見やすいメニュー導線。</p>
+          <span class="text-link">実物を見る</span>
+        </a>
+        <a class="card reveal" data-tilt href="https://comprex99.com/demos/seitai-tsukiakari/" target="_blank" rel="noopener">
+          <div class="thumb">月灯り整体院</div>
+          <p class="meta">SEITAI / CLINIC</p>
+          <h3>整体院デモ</h3>
+          <p>初回の不安、料金、流れ、アクセスを先に見せる落ち着いた構成。</p>
+          <span class="text-link">実物を見る</span>
+        </a>
       </div>
-      <div class="plan-card">
-        <h3>上位プラン</h3>
-        <div class="plan-list">
-          <div class="plan-row"><b>Bプラン 150,000円〜</b><span>10ページまで、原稿作成、写真整理、制作期間2週間。</span></div>
-          <div class="plan-row"><b>Cプラン 300,000円〜</b><span>EC・会員・予約連携。運用おまかせ25,000円の保守契約が必須です。</span></div>
+    </section>
+
+    <section id="price" class="section pad">
+      <div class="section-head reveal">
+        <h2>料金</h2>
+        <p>制作費は銀行振込の前払い、保守は月額カード決済です。銀行口座はお申し込み後にご案内します。</p>
+      </div>
+      <div class="grid">
+        <article class="card reveal" data-tilt>
+          <p class="meta">A PLAN</p>
+          <div class="big">19,800円</div>
+          <p><strong>保守12ヶ月契約とセットの価格です。</strong>単独の制作費ではありません。</p>
+        </article>
+        <article class="card reveal" data-tilt>
+          <p class="meta">PRODUCTION ONLY</p>
+          <div class="big">39,800円</div>
+          <p>保守契約なしで、制作と公開作業のみをご依頼いただく場合の価格です。</p>
+        </article>
+        <article class="card reveal" data-tilt>
+          <p class="meta">B / C PLAN</p>
+          <h3>150,000円〜</h3>
+          <p>Bプランは10ページまで、原稿作成、写真整理、制作期間2週間。Cプランは300,000円〜で、EC・会員・予約連携に対応します。</p>
+        </article>
+      </div>
+      <div class="line-list" style="margin-top:28px">
+        <div class="line-row reveal">
+          <span class="index">CARD</span>
+          <h3>ライト 5,500円</h3>
+          <p>サーバー・ドメイン管理、SSL更新、バックアップ、障害時の復旧、軽微な修正 月1回まで。</p>
+          <span class="arrow">MONTHLY</span>
+        </div>
+        <div class="line-row reveal offset">
+          <span class="index">CARD</span>
+          <h3>スタンダード 12,000円</h3>
+          <p>ライトに加え、修正 月3回まで、Googleビジネスプロフィール投稿代行 月2回、季節ごとの写真差し替え 年4回、月次アクセスレポート。</p>
+          <span class="arrow">MONTHLY</span>
+        </div>
+        <div class="line-row reveal">
+          <span class="index">CARD</span>
+          <h3>運用おまかせ 25,000円</h3>
+          <p>修正 回数無制限、ページ追加 年2ページまで、Googleビジネスプロフィール投稿代行 週1回、電話・LINE相談。</p>
+          <span class="arrow">MONTHLY</span>
         </div>
       </div>
-      <div class="included-card">
+      <div class="card reveal" style="margin-top:28px">
         <h3>基本料に含まれるもの</h3>
-        <ul class="included-grid">
-          <li>電話ボタン</li>
-          <li>料金表</li>
-          <li>スマホ対応</li>
-          <li>SSL</li>
-          <li>独自ドメイン取得</li>
-          <li>Googleマップ埋め込み</li>
-          <li>favicon・OGP</li>
-          <li>表示速度最適化</li>
-          <li>問い合わせフォーム</li>
-          <li>外部予約サービスへのリンク</li>
-          <li>お客様の声</li>
-          <li>お知らせ・臨時休業の枠</li>
-          <li>QRコード発行</li>
-          <li>写真の撮り方ガイド</li>
-          <li>いただいた写真の加工・整理</li>
-          <li>フリー素材の手配</li>
-        </ul>
+        <p>電話ボタン / 料金表 / スマホ対応 / SSL / 独自ドメイン取得 / Googleマップ埋め込み / favicon・OGP / 表示速度最適化 / 問い合わせフォーム / 外部予約サービスへのリンク / お客様の声 / お知らせ・臨時休業の枠 / QRコード発行 / 写真の撮り方ガイド / いただいた写真の加工・整理 / フリー素材の手配</p>
       </div>
-      <div class="plan-card">
-        <h3>保守（月額・カード決済）</h3>
-        <div class="plan-list">
-          <div class="plan-row"><b>ライト 5,500円</b><span>サーバー・ドメイン管理、SSL更新、バックアップ、障害時の復旧、軽微な修正 月1回まで。</span></div>
-          <div class="plan-row"><b>スタンダード 12,000円</b><span>ライトに加え、修正 月3回まで、Googleビジネスプロフィール投稿代行 月2回、季節ごとの写真差し替え 年4回、月次アクセスレポート。</span></div>
-          <div class="plan-row"><b>運用おまかせ 25,000円</b><span>スタンダードに加え、修正 回数無制限（1回30分以内）、ページ追加 年2ページまで、Googleビジネスプロフィール投稿代行 週1回、電話・LINE相談（平日10〜18時・翌営業日までに返信）。</span></div>
-        </div>
-        <p>最低契約期間は12ヶ月です。以降は自動更新となり、解約は1ヶ月前までにご連絡ください。年一括払いは1ヶ月分無料（銀行振込のみ）です。</p>
-      </div>
-    </div>
-    <details class="addons">
-      <summary>有料オプションを見る</summary>
-      <div class="ad-body">
+      <details class="card reveal" style="margin-top:18px">
+        <summary class="meta">有料オプションを見る</summary>
         <table>
-          <tr><td>予約フォーム（日時選択）</td><td>15,000円</td></tr>
-          <tr><td>LINE友だち追加ボタン</td><td>5,000円</td></tr>
-          <tr><td>採用ページ</td><td>25,000円</td></tr>
-          <tr><td>修正3回目以降</td><td>3,000円/回</td></tr>
-          <tr><td>お急ぎ対応（最短3日）</td><td>総額+50%</td></tr>
+          <tr><th>予約フォーム（日時選択）</th><td>15,000円</td></tr>
+          <tr><th>LINE友だち追加ボタン</th><td>5,000円</td></tr>
+          <tr><th>採用ページ</th><td>25,000円</td></tr>
+          <tr><th>修正3回目以降</th><td>3,000円/回</td></tr>
+          <tr><th>お急ぎ対応（最短3日）</th><td>総額+50%</td></tr>
         </table>
-      </div>
-    </details>
-    <p class="price-note">制作費と有料オプションは合算し、着手前に銀行振込でお支払いいただきます。銀行口座はお申し込み後にご案内します。</p>
-  </div>
-</section>
+        <p>制作費と有料オプションは合算し、着手前に銀行振込でお支払いいただきます。</p>
+      </details>
+      <p class="lead reveal">最低契約期間は12ヶ月です。以降は自動更新となり、解約は1ヶ月前までにご連絡ください。年一括払いは1ヶ月分無料（銀行振込のみ）です。</p>
+    </section>
 
-<section id="flow">
-  <div class="wrap">
-    <h2 class="sec-title">ご依頼の流れ</h2>
-    <p class="sec-sub">公開までに必要なことを、順番にこちらで案内します。</p>
-    <div class="flow">
-      <div class="step">
-        <div class="num">1</div>
-        <div>
-          <h3>お問い合わせ</h3>
-          <p>LINEから、お店の名前や相談したい内容を送ってください。</p>
-        </div>
+    <section id="flow" class="section pad">
+      <div class="section-head reveal">
+        <h2>流れ</h2>
+        <p>公開までに必要なことを、順番にこちらで案内します。</p>
       </div>
-      <div class="step">
-        <div class="num">2</div>
-        <div>
-          <h3>内容のご確認・お見積り</h3>
-          <p>必要な内容を確認し、制作費と保守内容を事前にお伝えします。</p>
-        </div>
+      <div class="line-list">
+        <div class="line-row reveal"><span class="index">01</span><h3>お問い合わせ</h3><p>LINEから、お店の名前や相談したい内容を送ってください。</p><span class="arrow">START</span></div>
+        <div class="line-row reveal offset"><span class="index">02</span><h3>内容確認</h3><p>必要な内容を確認し、制作費と保守内容を事前にお伝えします。</p><span class="arrow">CHECK</span></div>
+        <div class="line-row reveal"><span class="index">03</span><h3>お振り込み</h3><p>内容にご納得いただいてから、着手前に銀行振込でお支払いいただきます。</p><span class="arrow">PAY</span></div>
+        <div class="line-row reveal offset"><span class="index">04</span><h3>素材送付</h3><p>掲載したい写真、メニュー、営業時間などをお送りください。</p><span class="arrow">SEND</span></div>
+        <div class="line-row reveal"><span class="index">05</span><h3>素材受領から3営業日で公開</h3><p>素材が揃ってから3営業日を目安に制作し、公開作業まで行います。</p><span class="arrow">OPEN</span></div>
       </div>
-      <div class="step">
-        <div class="num">3</div>
-        <div>
-          <h3>制作費のお振り込み</h3>
-          <p>内容にご納得いただいてから、着手前に銀行振込でお支払いいただきます。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">4</div>
-        <div>
-          <h3>写真・メニュー等の素材をご送付</h3>
-          <p>掲載したい写真、メニュー、営業時間などをお送りください。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">5</div>
-        <div>
-          <h3>素材受領から3営業日で公開</h3>
-          <p>素材が揃ってから3営業日を目安に制作し、公開作業まで行います。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="owner">
-  <div class="wrap">
-    <h2 class="sec-title">つくる人</h2>
-    <p class="sec-sub">制作から公開後の管理まで、同じ人間がずっと担当します。</p>
-    <div class="owner">
-      <div class="who"><b>加藤 晴士</b> — Comprex99 代表</div>
-      <p>Webサイトの制作を専門にしている個人の制作所です。お打ち合わせから制作、公開後の管理まで、代表の私がすべて直接担当いたします。ご連絡には原則当日中にお返事しています。公開して終わりではなく、その後の更新やご相談も継続してお受けしています。</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-box">
-      <h2>まずは、お店の名前だけ<br>送ってみてください。</h2>
-      <p class="p">「うちのお店でもできる？」の一言でも大丈夫です。<br>相談はLINEで受け付けています。</p>
-      <div class="cta">
-        <a class="btn line" href="https://line.me/R/ti/p/@419iumau" target="_blank" rel="noopener">LINEで相談してみる</a>
+    <section id="owner" class="section pad">
+      <div class="section-head reveal">
+        <h2>つくる人</h2>
+        <p>制作から公開後の管理まで、同じ人間がずっと担当します。</p>
       </div>
-      <p class="mail">まだ内容がまとまっていなくても大丈夫です。</p>
-    </div>
-  </div>
-</section>
+      <div class="card narrow reveal">
+        <h3>加藤 晴士 — Comprex99 代表</h3>
+        <p>Webサイトの制作を専門にしている個人の制作所です。お打ち合わせから制作、公開後の管理まで、代表の私がすべて直接担当いたします。</p>
+      </div>
+    </section>
 
-<footer>
-  <div class="wrap ft">
-    <div>© Comprex99</div>
-    <div><a href="/legal/terms.html">利用規約</a> / <a href="/legal/privacy.html">プライバシーポリシー</a> / <a href="/legal/tokushoho.html">特商法表記</a></div>
-  </div>
-</footer>
+    <section id="contact" class="section pad">
+      <div class="section-head reveal">
+        <h2>まずは、お店の名前だけ。</h2>
+        <p>「うちのお店でもできる？」の一言でも大丈夫です。相談はLINEで受け付けています。</p>
+      </div>
+      <div class="actions reveal">
+        <a class="button primary magnet" href="https://line.me/R/ti/p/@419iumau" target="_blank" rel="noopener">LINEで相談してみる</a>
+      </div>
+    </section>
 
+    <footer class="footer">
+      <div>© COMPREX99</div>
+      <div class="footer-links">
+        <a href="/legal/terms.html">TERMS</a>
+        <a href="/legal/privacy.html">PRIVACY</a>
+        <a href="/legal/tokushoho.html">TOKUSHOHO</a>
+      </div>
+      <div>LAST UPDATE: 2026-09-07</div>
+    </footer>
+  </main>
+</div>
+<script src="/site-shell.js"></script>
 </body>
 </html>

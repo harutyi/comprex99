@@ -7,9 +7,10 @@
     <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="/web/estimate/estimate.css" />
   </head>
-  <body>
+  <body data-theme="lime">
+    <div class="cursor" id="cursor"></div>
     <main class="estimate-shell">
-      <section class="estimate-head">
+      <section class="estimate-head reveal">
         <a href="/web/">Comprex99</a>
         <p>料金チェックシート</p>
         <h1>必要な内容を選んで、<span>概算を確認できます。</span></h1>
@@ -19,18 +20,18 @@
       <form id="estimateForm" class="estimate-form">
         <input type="text" name="company_url" class="hp" tabindex="-1" autocomplete="off" />
 
-        <section class="panel">
+        <section class="panel reveal">
           <p class="step-label">1. 業種を選ぶ</p>
           <div class="choice-grid" id="industryChoices"></div>
         </section>
 
-        <section class="panel">
+        <section class="panel reveal">
           <p class="step-label">2. 保守プランを選ぶ</p>
           <div class="plan-grid" id="maintenanceChoices"></div>
           <div class="fee-link" id="productionFeeNote"></div>
         </section>
 
-        <section class="panel">
+        <section class="panel reveal">
           <p class="step-label">3. オプションを選ぶ</p>
           <div class="option-list" id="optionChoices"></div>
           <label class="field">
@@ -39,7 +40,7 @@
           </label>
         </section>
 
-        <section class="panel contact-panel">
+        <section class="panel contact-panel reveal">
           <p class="step-label">4. 連絡先</p>
           <label class="field"><span>店名</span><input name="shopName" required /></label>
           <label class="field"><span>お名前</span><input name="personName" required /></label>
@@ -60,5 +61,6 @@
 
     <script src="/web/catalog.js"></script>
     <script src="/web/estimate/estimate.js"></script>
+    <script src="/site-shell.js"></script>
   </body>
 </html>
