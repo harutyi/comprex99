@@ -83,6 +83,7 @@ a {
 .ghost-button,
 .kicker,
 .average,
+.hero-proof,
 dt,
 dd {
   font-family: var(--font-body);
@@ -132,7 +133,7 @@ main {
   position: relative;
   isolation: isolate;
   min-height: calc(100svh - 120px);
-  padding: clamp(64px, 10vw, 128px) clamp(20px, 8vw, 104px);
+  padding: clamp(56px, 8vw, 104px) clamp(20px, 8vw, 104px);
   display: grid;
   place-items: center;
   text-align: center;
@@ -196,8 +197,46 @@ h3 {
   line-height: 1.9;
 }
 
+.hero-proof {
+  width: min(860px, 100%);
+  margin: 36px auto 0;
+  padding: 0;
+  border: 1px solid var(--color-ash);
+  border-radius: 40px;
+  background: rgb(246 243 241 / 72%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.hero-proof div {
+  min-height: 112px;
+  padding: 22px 24px;
+  border-left: 1px solid var(--color-ash);
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  text-align: left;
+}
+
+.hero-proof div:first-child {
+  border-left: 0;
+}
+
+.hero-proof dt {
+  color: var(--color-smoke);
+  font-size: 12px;
+  letter-spacing: -0.3px;
+}
+
+.hero-proof dd {
+  color: var(--color-off-black);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 .hero-actions {
-  margin-top: 40px;
+  margin-top: 34px;
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -415,6 +454,21 @@ dd {
 
   .lead {
     margin-inline: 0;
+  }
+
+  .hero-proof {
+    margin-inline: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-proof div {
+    min-height: auto;
+    border-left: 0;
+    border-top: 1px solid var(--color-ash);
+  }
+
+  .hero-proof div:first-child {
+    border-top: 0;
   }
 
   .hero-actions {

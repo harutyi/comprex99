@@ -43,14 +43,6 @@ img {
   object-fit: cover;
 }
 
-.spare-photo {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .announce {
   min-height: 48px;
   margin-inline: 0;
@@ -506,8 +498,8 @@ h3 {
 
 @media (max-width: 760px) {
   .announce {
-    margin-inline: -24px;
-    padding-inline: 40px 32px;
+    border-radius: 0 0 999px 999px;
+    padding-inline: 18px;
     font-size: 13px;
   }
 
@@ -603,11 +595,17 @@ h3 {
   }
 
   .band-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .band-photo {
+    width: 100%;
+    min-width: 0;
     min-height: 330px;
+  }
+
+  .band-copy {
+    min-width: 0;
   }
 
   .flow-list li {
@@ -639,6 +637,6 @@ h3 {
   }
 
   h2 {
-    font-size: clamp(1.8rem, 10vw, 2.7rem);
+    font-size: clamp(1.65rem, 8vw, 2.05rem);
   }
 }
