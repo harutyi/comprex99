@@ -5,113 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>中根建築設計 | Comprex99 制作デモ</title>
-<meta name="description" content="木造住宅の設計・リフォームを行う中根建築設計の制作デモページです。価格、期間、進み方を数字で見せる信頼型。">
+<meta name="description" content="中根建築設計の制作デモ。木造住宅の設計とリフォームを、施工棟数、金額、工期、進み方で見せる信頼型ページです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400&family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+<div class="announce">
+  <p>無料相談 受付中 / <a href="tel:0586000000">0586-00-0000</a></p>
+  <a class="announce-button" href="tel:0586000000">相談する</a>
+</div>
+
+<nav class="nav" aria-label="主要ナビゲーション">
+  <a class="brand" href="/types/">中根建築設計</a>
+  <div class="nav-links">
+    <a href="#works">施工事例</a>
+    <a href="#flow">進み方</a>
+    <a href="#faq">よくある不安</a>
+  </div>
+  <a class="ghost-button nav-cta" href="tel:0586000000">相談する</a>
+</nav>
+
 <main>
   <section class="hero" aria-label="中根建築設計">
-    <header class="topbar">
-      <a href="/types/" class="brand">NAKANE ARCHITECTS</a>
-      <a href="tel:0586000000" class="call">0586-00-0000</a>
-    </header>
-
-    <div class="hero-grid">
-      <div class="hero-title">
-        <p class="tag">WOODEN HOUSE / REFORM</p>
-        <h1>中根建築<br>設計</h1>
-        <p class="lead">木造住宅の設計・リフォーム</p>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="kicker">ICHINOMIYA / SINCE 1998</p>
+      <h1>木造の家を、<br>340棟つくってきました。</h1>
+      <p class="lead"><span>一宮市</span> / <span>創業 1998年</span> / 設計から引渡しまで自社で担当します</p>
+      <div class="hero-actions">
+        <a class="primary-button" href="tel:0586000000">相談する ▸</a>
+        <a class="ghost-button" href="#works">施工事例を見る</a>
       </div>
+    </div>
+  </section>
 
-      <dl class="facts" aria-label="事業者情報">
-        <div>
-          <dt>AREA</dt>
-          <dd>愛知県一宮市</dd>
-        </div>
-        <div>
-          <dt>SINCE</dt>
-          <dd>1998年</dd>
-        </div>
-        <div>
-          <dt>WORKS</dt>
-          <dd>施工実績 340棟</dd>
-        </div>
-        <div>
-          <dt>PHONE</dt>
-          <dd><a href="tel:0586000000">0586-00-0000</a></dd>
-        </div>
+  <section class="section works" id="works" aria-label="施工事例">
+    <div class="section-head">
+      <p class="kicker">WORKS / NUMBERS</p>
+      <h2>施工事例を、<br>数字で見る。</h2>
+    </div>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <h3>一宮市 S様邸</h3>
+        <dl>
+          <div><dt>構造</dt><dd>木造2階建て 34坪</dd></div>
+          <div><dt>金額</dt><dd>2,180万円</dd></div>
+          <div><dt>工期</dt><dd>5ヶ月（打合せ8回）</dd></div>
+        </dl>
+      </article>
+
+      <article class="work-card raised">
+        <h3>江南市 T様邸</h3>
+        <dl>
+          <div><dt>構造</dt><dd>平屋 26坪</dd></div>
+          <div><dt>金額</dt><dd>1,760万円</dd></div>
+          <div><dt>工期</dt><dd>4ヶ月（打合せ6回）</dd></div>
+        </dl>
+      </article>
+
+      <article class="work-card periwinkle">
+        <h3>一宮市 K様邸</h3>
+        <dl>
+          <div><dt>構造</dt><dd>水回りリフォーム</dd></div>
+          <div><dt>金額</dt><dd>380万円</dd></div>
+          <div><dt>工期</dt><dd>3週間（打合せ3回）</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="section process" id="flow" aria-label="進み方">
+    <div class="section-head">
+      <p class="kicker">PIPELINE</p>
+      <h2>相談から、<br>引渡しまで。</h2>
+    </div>
+
+    <div class="pipeline">
+      <svg class="pipeline-lines" viewBox="0 0 1000 160" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M88 82 C150 18 202 146 268 82 S404 18 468 82 S604 146 668 82 S804 18 868 82" />
+      </svg>
+      <ol>
+        <li>相談</li>
+        <li>現地調査</li>
+        <li>見積</li>
+        <li>契約</li>
+        <li>着工</li>
+        <li>引渡</li>
+      </ol>
+    </div>
+    <p class="average">相談から引渡しまで、平均 7ヶ月</p>
+  </section>
+
+  <section class="section faq" id="faq" aria-label="よくある不安">
+    <div class="section-head">
+      <p class="kicker">FAQ</p>
+      <h2>よくある不安を、<br>先に出します。</h2>
+    </div>
+
+    <details>
+      <summary><span>見積より高くなることはありますか</span><b>↓</b></summary>
+      <p>追加工事が必要な場合は、着工前に金額を出します。変更は必ず書面で確認し、回答期限を3営業日取ります。</p>
+    </details>
+    <details>
+      <summary><span>着工したあとに間取りを変えられますか</span><b>↓</b></summary>
+      <p>構造に関わる変更は、工期と費用を再計算します。軽微な変更でも、追加日数を1日単位で書いてから進めます。</p>
+    </details>
+    <details>
+      <summary><span>引渡しのあとに不具合が出たら</span><b>↓</b></summary>
+      <p>引渡し後30日以内に一度確認します。補修が必要な場合は、確認から7営業日以内に対応日を決めます。</p>
+    </details>
+  </section>
+
+  <section class="section info" aria-label="基本情報">
+    <div class="info-card">
+      <p class="kicker">INFORMATION</p>
+      <h2>基本情報</h2>
+      <dl>
+        <div><dt>社名</dt><dd>中根建築設計</dd></div>
+        <div><dt>所在</dt><dd>愛知県一宮市</dd></div>
+        <div><dt>電話</dt><dd><a href="tel:0586000000">0586-00-0000</a></dd></div>
+        <div><dt>営業時間</dt><dd>9:00-18:00 / 日曜定休</dd></div>
       </dl>
     </div>
   </section>
-
-  <section class="services" aria-label="できること表">
-    <div class="section-head">
-      <p class="tag">SERVICE TABLE</p>
-      <h2>できることを、<br>数字で見る。</h2>
-    </div>
-
-    <div class="service-table" role="table" aria-label="できること">
-      <div class="table-row table-head" role="row">
-        <span role="columnheader">内容</span>
-        <span role="columnheader">価格</span>
-        <span role="columnheader">回数・期間</span>
-      </div>
-      <div class="table-row" role="row">
-        <span role="cell">新築（木造2階建て）</span>
-        <strong role="cell">1,800万円〜</strong>
-        <span role="cell">打合せ6回・工期5ヶ月</span>
-      </div>
-      <div class="table-row" role="row">
-        <span role="cell">戸建てリフォーム</span>
-        <strong role="cell">480万円〜</strong>
-        <span role="cell">打合せ4回・工期2ヶ月</span>
-      </div>
-      <div class="table-row" role="row">
-        <span role="cell">水回り改修</span>
-        <strong role="cell">120万円〜</strong>
-        <span role="cell">打合せ3回・工期1ヶ月</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="trust" aria-label="進み方と、よくある不安">
-    <div class="section-head">
-      <p class="tag">FLOW AND QUESTIONS</p>
-      <h2>進み方と、<br>よくある不安。</h2>
-    </div>
-
-    <ol class="flow">
-      <li><span>01</span>相談</li>
-      <li><span>02</span>現地調査</li>
-      <li><span>03</span>見積</li>
-      <li><span>04</span>契約</li>
-      <li><span>05</span>着工</li>
-      <li><span>06</span>引渡</li>
-    </ol>
-
-    <div class="questions">
-      <article>
-        <h3>予算を<br>超えませんか</h3>
-        <p>見積の前に上限金額を確認します。追加工事が必要な場合は、金額を出してから判断できます。</p>
-      </article>
-      <article>
-        <h3>途中で<br>変更できますか</h3>
-        <p>契約前の変更は見積に反映します。着工後の変更は、工期と追加費用を数字で出してから進めます。</p>
-      </article>
-      <article>
-        <h3>住みながら<br>工事できますか</h3>
-        <p>水回りや断熱工事は、使えない期間を先に出します。仮住まいが必要な場合は、工程表に分けて書きます。</p>
-      </article>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>このページは Comprex99 の制作デモです。実在の店舗ではありません。</p>
-    <a href="https://comprex99.com/web/">ホームページ制作を見る</a>
-  </footer>
 </main>
+
+<footer class="footer">
+  <p>このページは Comprex99 の制作デモです。実在の事業者ではありません。</p>
+  <a class="ghost-button" href="https://comprex99.com/web/">ホームページ制作を見る</a>
+</footer>
 </body>
 </html>
