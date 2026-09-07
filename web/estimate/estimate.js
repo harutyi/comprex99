@@ -59,7 +59,7 @@
     monthlyTotal.textContent = yen(estimate.monthlyTotal);
     productionFeeNote.textContent = maintenanceId === "none"
       ? `保守なしなので制作費は ${yen(initialProductionFee("none"))} です。`
-      : `保守ありなので制作費は ${yen(initialProductionFee(maintenanceId))} です。月額と初期費用は分けて表示します。`;
+      : `保守12ヶ月契約とセットなので制作費は ${yen(initialProductionFee(maintenanceId))} です。月額と初期費用は分けて表示します。`;
   }
 
   renderChoices();
