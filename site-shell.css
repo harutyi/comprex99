@@ -243,6 +243,7 @@ input,textarea,select{
   .side{gap:12px;padding:12px 16px;}
   .side-nav{gap:10px;}
   .side-nav a{font-size:10px;}
+  .side-bottom{display:none;}
   .swatches{gap:6px;}
   .sw{width:16px;height:16px;}
   .pad{padding-left:18px;padding-right:18px;}
@@ -252,41 +253,46 @@ input,textarea,select{
 
 /* The sales LP keeps the shell motion, but uses calmer sizing for readability. */
 .web-lp .page-hero{
-  min-height:min(68svh,640px);
+  min-height:min(62svh,560px);
   align-content:center;
 }
 .web-lp .hero-bg{
-  font-size:clamp(120px,24vw,380px);
-  opacity:.9;
+  font-size:clamp(96px,18vw,300px);
+  opacity:.72;
 }
 .web-lp .page-title{
-  max-width:1120px;
-  font-size:clamp(42px,5.2vw,76px);
-  line-height:1.08;
-  letter-spacing:-.035em;
+  max-width:980px;
+  font-size:clamp(34px,4.3vw,62px);
+  line-height:1.16;
+  letter-spacing:-.025em;
 }
 .web-lp .lead{
-  max-width:760px;
-  font-size:clamp(17px,1.45vw,19px);
-  line-height:1.85;
+  max-width:720px;
+  font-size:clamp(16px,1.25vw,18px);
+  line-height:1.9;
 }
 .web-lp .actions{
-  margin-top:28px;
+  margin-top:24px;
 }
 .web-lp .section{
-  padding:clamp(56px,8vh,96px) 0;
+  padding:clamp(52px,7vh,84px) 0;
 }
 .web-lp .section-head{
-  grid-template-columns:minmax(240px,.78fr) minmax(300px,520px);
+  grid-template-columns:minmax(220px,.64fr) minmax(320px,560px);
   align-items:center;
-  margin-bottom:28px;
+  margin-bottom:24px;
 }
 .web-lp .section-head h2{
-  font-size:clamp(42px,4.8vw,72px);
-  line-height:1.02;
+  font-size:clamp(32px,3.5vw,52px);
+  line-height:1.08;
+  letter-spacing:-.025em;
+}
+.web-lp .section-head p{
+  font-size:16px;
+  line-height:1.9;
 }
 .web-lp .grid{
-  gap:18px;
+  gap:16px;
 }
 .web-lp #demo .grid{
   grid-template-columns:repeat(2,minmax(320px,1fr));
@@ -295,36 +301,40 @@ input,textarea,select{
   grid-template-columns:repeat(3,minmax(240px,1fr));
 }
 .web-lp .card{
-  padding:22px;
+  padding:20px;
 }
 .web-lp .thumb{
-  margin:-22px -22px 20px;
+  margin:-20px -20px 18px;
 }
 .web-lp .card h3{
-  font-size:clamp(28px,2.6vw,40px);
-  line-height:1.15;
+  font-size:clamp(22px,2.2vw,32px);
+  line-height:1.25;
+}
+.web-lp .card p{
+  font-size:15.5px;
+  line-height:1.9;
 }
 .web-lp .card .big{
-  font-size:clamp(40px,4.5vw,64px);
+  font-size:clamp(34px,3.5vw,52px);
   line-height:1;
 }
 .web-lp .line-row{
-  grid-template-columns:72px minmax(260px,.82fr) minmax(360px,1fr) auto;
-  min-height:104px;
-  gap:20px;
-  padding:20px 0;
+  grid-template-columns:64px minmax(220px,.62fr) minmax(360px,1fr) auto;
+  min-height:92px;
+  gap:18px;
+  padding:18px 0;
 }
 .web-lp .line-row.offset{
-  padding-left:clamp(12px,3vw,48px);
+  padding-left:clamp(8px,2vw,32px);
 }
 .web-lp .line-row h3{
-  font-size:clamp(28px,3.5vw,48px);
-  line-height:1.08;
+  font-size:clamp(22px,2.6vw,36px);
+  line-height:1.18;
   text-transform:none;
 }
 .web-lp .line-row p{
-  font-size:16px;
-  line-height:1.8;
+  font-size:15.5px;
+  line-height:1.9;
 }
 .web-lp #price .line-row h3{
   white-space:nowrap;
@@ -354,7 +364,16 @@ input,textarea,select{
 }
 @media (max-width:860px){
   .web-lp .page-title{
-    font-size:clamp(36px,10vw,58px);
+    max-width:11em;
+    font-size:clamp(27px,7.2vw,34px);
+    line-break:anywhere;
+    overflow-wrap:anywhere;
+  }
+  .web-lp .lead{
+    max-width:22em;
+    font-size:16px;
+    line-height:1.9;
+    overflow-wrap:anywhere;
   }
   .web-lp .section-head,
   .web-lp .line-row,
