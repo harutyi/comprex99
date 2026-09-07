@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>お店のホームページ制作 | Comprex99</title>
-<meta name="description" content="お店のホームページを39,800円で。やりとりはLINEだけ、お手間は10分ほど。愛知の個人制作所Comprex99。">
+<meta name="description" content="お店のホームページ制作。保守12ヶ月契約とセットなら制作費19,800円、制作のみは39,800円。愛知の個人制作所Comprex99。">
 <meta property="og:title" content="お店のホームページ、つくります。">
-<meta property="og:description" content="相談はLINEだけ。お店の名前を送るところから始められます。先着3名モニター価格39,800円。">
+<meta property="og:description" content="相談はLINEだけ。保守12ヶ月契約とセットなら制作費19,800円。お店の名前を送るところから始められます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://comprex99.com/web/">
 <meta property="og:image" content="https://comprex99.com/web/og.jpg">
@@ -114,9 +114,26 @@
   #price{background:var(--green-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .price-card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    max-width:640px;margin:0 auto;overflow:hidden;
+    max-width:760px;margin:0 auto;overflow:hidden;
     box-shadow:0 6px 24px rgba(58,58,56,.06);
   }
+  .price-grid{display:grid;gap:14px;max-width:760px;margin:0 auto;}
+  .plan-card,.included-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:0 6px 24px rgba(58,58,56,.05);
+  }
+  .plan-card.primary{border-color:rgba(46,107,79,.45);background:#fff;}
+  .plan-card h3,.included-card h3{font-size:17px;font-weight:800;margin-bottom:8px;}
+  .plan-card .amount{font-size:clamp(30px,5vw,46px);line-height:1.2;font-weight:800;color:var(--green);}
+  .plan-card .amount small{font-size:.42em;}
+  .plan-card p,.included-card p{color:var(--soft);font-size:14.5px;margin-top:8px;}
+  .plan-list{display:grid;gap:12px;margin-top:12px;}
+  .plan-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);}
+  .plan-row b{font-size:15px;}
+  .plan-row span{color:var(--soft);font-size:14px;}
+  .included-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin-top:14px;}
+  .included-grid li{font-size:14px;padding-left:20px;position:relative;list-style:none;}
+  .included-grid li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
   .price-head{
     text-align:center;padding:34px 26px 28px;
     border-bottom:1px dashed var(--line);
@@ -151,7 +168,7 @@
     font-size:14.5px;color:var(--soft);
   }
   .price-foot b{color:var(--ink);}
-  .addons{max-width:640px;margin:28px auto 0;font-size:14px;color:var(--soft);}
+  .addons{max-width:760px;margin:28px auto 0;font-size:14px;color:var(--soft);}
   .addons summary{
     font-weight:700;color:var(--ink);font-size:15px;
     padding:14px 18px;background:var(--card);
@@ -165,6 +182,7 @@
   .addons table{width:100%;border-collapse:collapse;}
   .addons td{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
   .addons td:last-child{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);}
+  .price-note{max-width:760px;margin:18px auto 0;color:var(--soft);font-size:13.5px;line-height:1.8;}
 
   /* ===== flow ===== */
   .flow{max-width:640px;margin:0 auto;display:grid;gap:0;}
@@ -232,6 +250,8 @@
     .hero .cta{flex-direction:column;align-items:center;}
     .btn{width:min(320px,100%);}
     .demo-list{grid-template-columns:1fr;}
+    .plan-row{grid-template-columns:1fr;gap:4px;}
+    .included-grid{grid-template-columns:1fr;}
     section{padding:52px 0;}
     .step{grid-template-columns:44px 1fr;gap:14px;}
     .step .num{width:44px;height:44px;font-size:15px;}
@@ -291,77 +311,110 @@
 <section id="price">
   <div class="wrap">
     <h2 class="sec-title">料金</h2>
-    <p class="sec-sub">追加料金が出ないよう、必要なものは全部込みにしました。</p>
-    <div class="price-card">
-      <div class="price-head">
-        <div class="plan">おまかせプラン</div>
-        <div class="was">通常 98,000円(税込)</div>
-        <div class="now">39,800<small>円(税込)</small></div>
-        <span class="cond">先着3名のモニター価格です</span>
+    <p class="sec-sub">制作費は銀行振込の前払い、保守は月額カード決済です。銀行口座はお申し込み後にご案内します。</p>
+    <div class="price-grid">
+      <div class="plan-card primary">
+        <h3>制作費 Aプラン</h3>
+        <div class="amount">19,800<small>円</small></div>
+        <p><b>保守12ヶ月契約とセットの価格です。</b>単独の制作費ではありません。</p>
       </div>
-      <div class="price-body">
-        <ul class="inc">
-          <li>お店の紹介ページ一式(スマホ完全対応)</li>
-          <li>紹介文・キャッチコピーの作成</li>
-          <li>写真の選定ときれいな加工</li>
-          <li>地図・営業時間・SNSへのリンク</li>
-          <li>公開に必要な設定すべて(サーバー・ドメイン・SSL)</li>
-          <li>公開後の修正2回まで無料</li>
+      <div class="plan-card">
+        <h3>制作のみ</h3>
+        <div class="amount">39,800<small>円</small></div>
+        <p>保守契約なしで、制作と公開作業のみをご依頼いただく場合の価格です。</p>
+      </div>
+      <div class="plan-card">
+        <h3>上位プラン</h3>
+        <div class="plan-list">
+          <div class="plan-row"><b>Bプラン 150,000円〜</b><span>10ページまで、原稿作成、写真整理、制作期間2週間。</span></div>
+          <div class="plan-row"><b>Cプラン 300,000円〜</b><span>EC・会員・予約連携。運用おまかせ25,000円の保守契約が必須です。</span></div>
+        </div>
+      </div>
+      <div class="included-card">
+        <h3>基本料に含まれるもの</h3>
+        <ul class="included-grid">
+          <li>電話ボタン</li>
+          <li>料金表</li>
+          <li>スマホ対応</li>
+          <li>SSL</li>
+          <li>独自ドメイン取得</li>
+          <li>Googleマップ埋め込み</li>
+          <li>favicon・OGP</li>
+          <li>表示速度最適化</li>
+          <li>問い合わせフォーム</li>
+          <li>外部予約サービスへのリンク</li>
+          <li>お客様の声</li>
+          <li>お知らせ・臨時休業の枠</li>
+          <li>QRコード発行</li>
+          <li>写真の撮り方ガイド</li>
+          <li>いただいた写真の加工・整理</li>
+          <li>フリー素材の手配</li>
         </ul>
       </div>
-      <div class="price-foot">
-        お支払いは<b>完成のご確認後</b>、公開前に銀行振込(1回)です。<br>
-        公開後の管理は <b>月額5,500円</b>(安全な状態の維持・バックアップ・軽微な修正 月2回)<br>
-        <small>管理をご解約される場合も、サイトのURL(ドメイン)はお客様にそのままお引き渡しできます。</small>
+      <div class="plan-card">
+        <h3>保守（月額・カード決済）</h3>
+        <div class="plan-list">
+          <div class="plan-row"><b>ライト 5,500円</b><span>サーバー・ドメイン管理、SSL更新、バックアップ、障害時の復旧、軽微な修正 月1回まで。</span></div>
+          <div class="plan-row"><b>スタンダード 12,000円</b><span>ライトに加え、修正 月3回まで、Googleビジネスプロフィール投稿代行 月2回、季節ごとの写真差し替え 年4回、月次アクセスレポート。</span></div>
+          <div class="plan-row"><b>運用おまかせ 25,000円</b><span>スタンダードに加え、修正 回数無制限（1回30分以内）、ページ追加 年2ページまで、Googleビジネスプロフィール投稿代行 週1回、電話・LINE相談（平日10〜18時・翌営業日までに返信）。</span></div>
+        </div>
+        <p>最低契約期間は12ヶ月です。以降は自動更新となり、解約は1ヶ月前までにご連絡ください。年一括払いは1ヶ月分無料（銀行振込のみ）です。</p>
       </div>
     </div>
     <details class="addons">
-      <summary>オプション料金を見る</summary>
+      <summary>有料オプションを見る</summary>
       <div class="ad-body">
         <table>
-          <tr><td>ページの追加</td><td>10,000円/ページ</td></tr>
-          <tr><td>予約フォーム・LINE連携</td><td>10,000円</td></tr>
-          <tr><td>かんたんなロゴ作成</td><td>10,000円</td></tr>
+          <tr><td>予約フォーム（日時選択）</td><td>15,000円</td></tr>
+          <tr><td>LINE友だち追加ボタン</td><td>5,000円</td></tr>
+          <tr><td>採用ページ</td><td>25,000円</td></tr>
           <tr><td>修正3回目以降</td><td>3,000円/回</td></tr>
-          <tr><td>お急ぎ対応(最短3日)</td><td>総額+50%</td></tr>
+          <tr><td>お急ぎ対応（最短3日）</td><td>総額+50%</td></tr>
         </table>
       </div>
     </details>
-    <p class="note" style="text-align:center;">※モニター価格は、完成後に「制作実績」としての掲載にご協力いただける方限定です。</p>
+    <p class="price-note">制作費と有料オプションは合算し、着手前に銀行振込でお支払いいただきます。銀行口座はお申し込み後にご案内します。</p>
   </div>
 </section>
 
 <section id="flow">
   <div class="wrap">
     <h2 class="sec-title">ご依頼の流れ</h2>
-    <p class="sec-sub">最初から最後まで、スマホの中だけで完結します。</p>
+    <p class="sec-sub">公開までに必要なことを、順番にこちらで案内します。</p>
     <div class="flow">
       <div class="step">
         <div class="num">1</div>
         <div>
-          <h3>LINEで相談する<span class="badge">無料</span></h3>
-          <p>まずはお店の名前だけでも大丈夫です。写真や詳細は、必要になったタイミングでLINEに送ってください。</p>
+          <h3>お問い合わせ</h3>
+          <p>LINEから、お店の名前や相談したい内容を送ってください。</p>
         </div>
       </div>
       <div class="step">
         <div class="num">2</div>
         <div>
-          <h3>デザインのご提案</h3>
-          <p>まず全体の雰囲気をお見せして、方向性をすり合わせます。「もっとこうしたい」はこの段階で遠慮なくどうぞ。</p>
+          <h3>内容のご確認・お見積り</h3>
+          <p>必要な内容を確認し、制作費と保守内容を事前にお伝えします。</p>
         </div>
       </div>
       <div class="step">
         <div class="num">3</div>
         <div>
-          <h3>仕上げ・手直し</h3>
-          <p>できあがりをご確認いただき、2回まで無料で調整します。誤字の修正、写真の差し替え、営業時間や料金の変更は回数に数えません。</p>
+          <h3>制作費のお振り込み</h3>
+          <p>内容にご納得いただいてから、着手前に銀行振込でお支払いいただきます。</p>
         </div>
       </div>
       <div class="step">
         <div class="num">4</div>
         <div>
-          <h3>公開</h3>
-          <p>面倒な設定はすべてこちらでやります。公開後もそのままご相談いただけます。</p>
+          <h3>写真・メニュー等の素材をご送付</h3>
+          <p>掲載したい写真、メニュー、営業時間などをお送りください。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div>
+          <h3>素材受領から3営業日で公開</h3>
+          <p>素材が揃ってから3営業日を目安に制作し、公開作業まで行います。</p>
         </div>
       </div>
     </div>
@@ -395,7 +448,7 @@
 <footer>
   <div class="wrap ft">
     <div>© Comprex99</div>
-    <div><a href="/legal/">運営者情報・プライバシーポリシー</a></div>
+    <div><a href="/legal/terms.html">利用規約</a> / <a href="/legal/privacy.html">プライバシーポリシー</a> / <a href="/legal/tokushoho.html">特商法表記</a></div>
   </div>
 </footer>
 
