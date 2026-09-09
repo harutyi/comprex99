@@ -1,0 +1,22 @@
+/* ============================================================
+   theme-shokudo.css — 飲食（大衆食堂）
+   ============================================================ */
+
+:root {
+  --paper: #faf8f5;
+  --ink: #1c1a17;
+  --ink-dim: #7d786f;
+  --rule: #ded8ce;
+
+  --night: #16150f;
+  --night-ink: #f2eee6;
+  --night-dim: #9b958a;
+  --night-line: #33302a;
+
+  --accent: #d0752f;
+
+  --serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif CJK JP",
+    "Noto Serif JP", serif;
+  --sans: "BIZ UDPGothic", "Hiragino Sans", "Noto Sans CJK JP", "Yu Gothic",
+    sans-serif;
+}
