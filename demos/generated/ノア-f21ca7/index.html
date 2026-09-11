@@ -26,12 +26,15 @@
       .generated-lead-info{margin:48px auto 0;padding:28px;max-width:960px;border:1px solid currentColor;background:rgba(255,255,255,.88);color:#222;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}
       .generated-lead-info h2{margin:0 0 14px;font-size:clamp(1.5rem,4vw,2.4rem);line-height:1.25}
       .generated-lead-info p{margin:0 0 18px;line-height:1.8}
+      .generated-lead-message{margin:22px 0;padding:18px 20px;border:1px solid rgba(0,0,0,.18);background:rgba(255,255,255,.58)}
+      .generated-lead-message h3{margin:0 0 8px;font-size:1rem;letter-spacing:.08em}
+      .generated-lead-message p{margin:0}
       .generated-lead-info dl{display:grid;gap:10px;margin:0}
-      .generated-lead-info div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px}
+      .generated-lead-info dl > div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px}
       .generated-lead-info dt{font-weight:700}
       .generated-lead-info dd{margin:0;overflow-wrap:anywhere}
       .generated-lead-info a{color:inherit;text-decoration:underline;text-underline-offset:.18em}
-      @media(max-width:640px){.generated-lead-info{margin:32px 16px 0;padding:20px}.generated-lead-info div{grid-template-columns:1fr;gap:3px}}
+      @media(max-width:640px){.generated-lead-info{margin:32px 16px 0;padding:20px}.generated-lead-info dl > div{grid-template-columns:1fr;gap:3px}}
     </style>
 </head>
   <body>
@@ -207,6 +210,10 @@
     <section class="generated-lead-info" aria-label="この店舗向けに差し替えた情報">
       <h2>ノア のサンプル</h2>
       <p>店名と基本情報だけを差し替えた営業用サンプルです。写真やメニューは仮のままです。</p>
+      <div class="generated-lead-message">
+        <h3>メッセージ</h3>
+        <p>ノア様のお名前を入れたサンプルを先に作ってみました。写真やメニューは仮のままですが、完成イメージとしてご覧ください。</p>
+      </div>
       <dl>
         <div><dt>業種</dt><dd>美容院</dd></div>
         <div><dt>住所</dt><dd>〒451-0045 愛知県名古屋市西区名駅２丁目１５−８</dd></div>
