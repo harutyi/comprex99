@@ -528,19 +528,20 @@ input,textarea,select{
 }
 .web-lp .price-tile.primary{
   background:var(--card);
-  border-color:color-mix(in srgb,var(--accent) 28%,var(--line));
+  border-color:var(--line);
   box-shadow:none;
 }
 .web-lp .price-tile:hover,
 .web-lp .price-tile:focus-within{
-  border-color:color-mix(in srgb,var(--accent) 44%,var(--line));
-  background:color-mix(in srgb,var(--accent) 4%,var(--card));
+  border-color:var(--line);
+  background:var(--card);
+  box-shadow:none;
 }
 .web-lp .price-tile.primary:hover,
 .web-lp .price-tile.primary:focus-within{
-  background:color-mix(in srgb,var(--accent) 7%,var(--card));
-  border-color:color-mix(in srgb,var(--accent) 52%,var(--line));
-  box-shadow:0 16px 48px color-mix(in srgb,var(--accent) 9%,transparent);
+  background:var(--card);
+  border-color:var(--line);
+  box-shadow:none;
 }
 .web-lp .price-tile h3{
   margin:0;
@@ -573,9 +574,9 @@ input,textarea,select{
   max-width:100%;
   margin-top:4px;
   padding:7px 10px;
-  border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line));
+  border:1px solid var(--line);
   color:var(--sub);
-  background:color-mix(in srgb,var(--accent) 17%,transparent);
+  background:transparent;
   font-size:13px;
   font-weight:700;
 }
