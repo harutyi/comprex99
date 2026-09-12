@@ -286,6 +286,24 @@ input,textarea,select{
   font-size:clamp(16px,1.25vw,18px);
   line-height:1.9;
 }
+.web-lp .hero-points{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+}
+.web-lp .hero-points span{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:5px 9px;
+  border:1px solid var(--line);
+  color:var(--dim);
+  background:color-mix(in srgb,var(--card) 64%,transparent);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+}
 .web-lp .actions{
   margin-top:24px;
 }
@@ -596,6 +614,28 @@ input,textarea,select{
   margin-bottom:5px;
   color:var(--accent-ink);
 }
+.web-lp .price-reason{
+  display:grid;
+  grid-template-columns:minmax(240px,.8fr) minmax(320px,1fr);
+  gap:24px;
+  align-items:start;
+  margin-top:18px;
+  padding:18px 0 0;
+  border-top:1px solid var(--line);
+}
+.web-lp .price-reason h3{
+  margin:0;
+  max-width:520px;
+  color:var(--sub);
+  font-size:clamp(21px,1.8vw,28px);
+  line-height:1.35;
+}
+.web-lp .price-reason p:not(.meta){
+  margin:0;
+  color:var(--dim);
+  font-size:15px;
+  line-height:1.82;
+}
 .web-lp .maintenance-panel{
   margin-top:44px;
   padding:34px 0 0;
@@ -729,6 +769,33 @@ input,textarea,select{
   font-weight:800;
   font-size:13px;
 }
+.web-lp .price-cta{
+  display:grid;
+  grid-template-columns:minmax(260px,1fr) auto;
+  gap:20px;
+  align-items:end;
+  margin-top:34px;
+  padding:22px;
+  border:1px solid var(--line);
+  background:var(--card);
+}
+.web-lp .price-cta h3{
+  margin:0;
+  color:var(--sub);
+  font-size:clamp(23px,2vw,32px);
+  line-height:1.2;
+}
+.web-lp .price-cta p:not(.meta){
+  max-width:720px;
+  margin:8px 0 0;
+  color:var(--dim);
+  font-size:15px;
+  line-height:1.78;
+}
+.web-lp .price-cta .actions{
+  justify-content:flex-end;
+  margin-top:0;
+}
 @media (max-width:1100px){
   .web-lp .price-main{
     grid-template-columns:1fr;
@@ -744,8 +811,13 @@ input,textarea,select{
     gap:6px;
   }
   .web-lp .additional-list,
-  .web-lp .payment-flow{
+  .web-lp .payment-flow,
+  .web-lp .price-reason,
+  .web-lp .price-cta{
     grid-template-columns:1fr;
+  }
+  .web-lp .price-cta .actions{
+    justify-content:flex-start;
   }
 }
 @media (max-width:520px){
@@ -760,6 +832,15 @@ input,textarea,select{
   .web-lp .lead{
     font-size:14px;
     line-height:1.72;
+  }
+  .web-lp .hero-points{
+    gap:6px;
+    margin-top:12px;
+  }
+  .web-lp .hero-points span{
+    min-height:28px;
+    padding:5px 7px;
+    font-size:12px;
   }
   .web-lp .price-main{
     gap:10px;
@@ -799,6 +880,8 @@ input,textarea,select{
   .web-lp .note-line,
   .web-lp .included-strip p,
   .web-lp .price-subhead p,
+  .web-lp .price-reason p:not(.meta),
+  .web-lp .price-cta p:not(.meta),
   .web-lp .additional-list p,
   .web-lp .payment-flow li{
     font-size:13px;
@@ -811,6 +894,20 @@ input,textarea,select{
   .web-lp .payment-flow{
     margin-top:26px;
     padding-top:22px;
+  }
+  .web-lp .price-reason{
+    gap:10px;
+    margin-top:14px;
+    padding-top:14px;
+  }
+  .web-lp .price-cta{
+    gap:14px;
+    margin-top:24px;
+    padding:14px;
+  }
+  .web-lp .price-cta .actions{
+    display:grid;
+    grid-template-columns:1fr;
   }
   .web-lp .additional-list div{
     min-height:0;
