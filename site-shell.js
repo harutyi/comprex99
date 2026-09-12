@@ -30,10 +30,9 @@
       ty = event.clientY;
     });
     const loop = () => {
-      cx += (tx - cx) * 0.18;
-      cy += (ty - cy) * 0.18;
-      cursor.style.left = `${cx}px`;
-      cursor.style.top = `${cy}px`;
+      cx += (tx - cx) * 0.44;
+      cy += (ty - cy) * 0.44;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
       requestAnimationFrame(loop);
     };
     loop();
@@ -70,7 +69,7 @@
       const rect = card.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg)`;
+      card.style.transform = `perspective(900px) rotateY(${x * 3.5}deg) rotateX(${-y * 3.5}deg)`;
     });
     card.addEventListener("mouseleave", () => {
       card.style.transform = "";
@@ -80,7 +79,7 @@
   document.querySelectorAll(".magnet").forEach((element) => {
     element.addEventListener("mousemove", (event) => {
       const rect = element.getBoundingClientRect();
-      element.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * 0.24}px, ${(event.clientY - rect.top - rect.height / 2) * 0.24}px)`;
+      element.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * 0.1}px, ${(event.clientY - rect.top - rect.height / 2) * 0.1}px)`;
     });
     element.addEventListener("mouseleave", () => {
       element.style.transform = "";
