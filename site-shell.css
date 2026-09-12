@@ -524,12 +524,23 @@ input,textarea,select{
   padding:20px;
   border:1px solid var(--line);
   background:var(--card);
+  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;
 }
 .web-lp .price-tile.primary{
-  background:color-mix(in srgb,var(--accent) 11%,var(--card));
-  border-color:color-mix(in srgb,var(--accent) 58%,var(--line));
-  box-shadow:0 20px 60px color-mix(in srgb,var(--accent) 14%,transparent);
-  transform:translateY(-8px);
+  background:var(--card);
+  border-color:color-mix(in srgb,var(--accent) 28%,var(--line));
+  box-shadow:none;
+}
+.web-lp .price-tile:hover,
+.web-lp .price-tile:focus-within{
+  border-color:color-mix(in srgb,var(--accent) 44%,var(--line));
+  background:color-mix(in srgb,var(--accent) 4%,var(--card));
+}
+.web-lp .price-tile.primary:hover,
+.web-lp .price-tile.primary:focus-within{
+  background:color-mix(in srgb,var(--accent) 7%,var(--card));
+  border-color:color-mix(in srgb,var(--accent) 52%,var(--line));
+  box-shadow:0 16px 48px color-mix(in srgb,var(--accent) 9%,transparent);
 }
 .web-lp .price-tile h3{
   margin:0;
