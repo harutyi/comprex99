@@ -305,6 +305,13 @@ input,textarea,select{
   font-size:16px;
   line-height:1.9;
 }
+.web-lp .section-head small{
+  display:block;
+  margin-top:10px;
+  color:color-mix(in srgb,var(--dim) 82%,var(--base));
+  font-size:13px;
+  line-height:1.65;
+}
 .web-lp .grid{
   gap:16px;
 }
@@ -503,20 +510,24 @@ input,textarea,select{
 
 .web-lp .price-main{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:1.12fr .94fr .94fr;
   gap:16px;
+  align-items:stretch;
 }
 .web-lp .price-tile{
   min-height:150px;
   display:grid;
   align-content:start;
-  gap:10px;
+  gap:9px;
   padding:20px;
   border:1px solid var(--line);
   background:var(--card);
 }
 .web-lp .price-tile.primary{
   background:color-mix(in srgb,var(--accent) 11%,var(--card));
+  border-color:color-mix(in srgb,var(--accent) 58%,var(--line));
+  box-shadow:0 20px 60px color-mix(in srgb,var(--accent) 14%,transparent);
+  transform:translateY(-8px);
 }
 .web-lp .price-tile h3{
   margin:0;
@@ -526,6 +537,16 @@ input,textarea,select{
   line-height:1;
   letter-spacing:-.02em;
 }
+.web-lp .price-tile.primary h3{
+  font-size:clamp(38px,3.2vw,56px);
+  white-space:nowrap;
+}
+.web-lp .price-tile h4{
+  margin:0;
+  color:var(--sub);
+  font-size:clamp(20px,1.7vw,27px);
+  line-height:1.25;
+}
 .web-lp .price-tile p:not(.meta){
   margin:0;
   max-width:26em;
@@ -534,10 +555,55 @@ input,textarea,select{
   line-height:1.72;
   font-weight:400;
 }
+.web-lp .price-tile .plan-note{
+  width:max-content;
+  max-width:100%;
+  margin-top:4px;
+  padding:7px 10px;
+  border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line));
+  color:var(--sub);
+  background:color-mix(in srgb,var(--accent) 17%,transparent);
+  font-size:13px;
+  font-weight:700;
+}
+.web-lp .included-strip{
+  margin-top:20px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  background:color-mix(in srgb,var(--card) 72%,transparent);
+}
+.web-lp .included-strip p{
+  margin:0;
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.78;
+}
+.web-lp .included-strip .meta{
+  margin-bottom:5px;
+  color:var(--accent-ink);
+}
 .web-lp .maintenance-panel{
-  margin-top:28px;
-  padding:22px 0 0;
+  margin-top:44px;
+  padding:34px 0 0;
   border-top:1px solid var(--line);
+}
+.web-lp .price-subhead{
+  display:grid;
+  gap:8px;
+  max-width:860px;
+  margin-bottom:18px;
+}
+.web-lp .price-subhead h3{
+  margin:0;
+  color:var(--sub);
+  font-size:clamp(23px,2.2vw,34px);
+  line-height:1.2;
+}
+.web-lp .price-subhead p{
+  margin:0;
+  color:var(--dim);
+  font-size:15px;
+  line-height:1.78;
 }
 .web-lp .maintenance-list{
   display:grid;
@@ -577,35 +643,77 @@ input,textarea,select{
   font-size:14px;
   line-height:1.75;
 }
-.web-lp .detail-stack{
-  display:grid;
-  gap:10px;
-  margin-top:18px;
+.web-lp .price-grid,
+.web-lp .payment-flow{
+  margin-top:38px;
+  padding-top:34px;
+  border-top:1px solid var(--line);
 }
-.web-lp .detail-box{
+.web-lp .additional-list{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.web-lp .additional-list div{
+  display:grid;
+  gap:8px;
+  min-height:166px;
+  padding:18px;
   border:1px solid var(--line);
   background:var(--card);
-  padding:0;
 }
-.web-lp .detail-box summary{
-  padding:14px 18px;
-  font-weight:700;
-  cursor:none;
-}
-.web-lp .detail-box summary:hover{
-  background:var(--sub);
-  color:var(--base);
-}
-.web-lp .detail-box p,
-.web-lp .detail-box table{
-  width:calc(100% - 36px);
-  margin:0 18px 18px;
-  color:var(--dim);
+.web-lp .additional-list span{
+  color:var(--sub);
   font-size:15px;
-  line-height:1.8;
+  font-weight:700;
 }
-.web-lp .detail-box table{
-  margin-top:0;
+.web-lp .additional-list strong{
+  color:var(--accent-ink);
+  font-size:clamp(22px,2.1vw,31px);
+  line-height:1.15;
+}
+.web-lp .additional-list p{
+  margin:0;
+  color:var(--dim);
+  font-size:14px;
+  line-height:1.7;
+}
+.web-lp .payment-flow{
+  display:grid;
+  grid-template-columns:minmax(260px,.8fr) minmax(320px,1.2fr);
+  gap:28px;
+  align-items:start;
+}
+.web-lp .payment-flow .price-subhead{
+  margin-bottom:0;
+}
+.web-lp .payment-flow ol{
+  display:grid;
+  gap:0;
+  margin:0;
+  padding:0;
+  list-style:none;
+  counter-reset:payment-step;
+  border-top:1px solid var(--line);
+}
+.web-lp .payment-flow li{
+  counter-increment:payment-step;
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:14px;
+  align-items:center;
+  min-height:52px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--sub);
+  font-size:15px;
+  line-height:1.45;
+}
+.web-lp .payment-flow li::before{
+  content:counter(payment-step,decimal-leading-zero);
+  color:var(--accent-ink);
+  font-weight:800;
+  font-size:13px;
 }
 @media (max-width:1100px){
   .web-lp .price-main{
@@ -614,9 +722,16 @@ input,textarea,select{
   .web-lp .price-tile{
     min-height:0;
   }
+  .web-lp .price-tile.primary{
+    transform:none;
+  }
   .web-lp .maintenance-list div{
     grid-template-columns:1fr;
     gap:6px;
+  }
+  .web-lp .additional-list,
+  .web-lp .payment-flow{
+    grid-template-columns:1fr;
   }
 }
 @media (max-width:520px){
@@ -642,12 +757,18 @@ input,textarea,select{
   .web-lp .price-tile h3{
     font-size:26px;
   }
+  .web-lp .price-tile.primary h3{
+    font-size:38px;
+  }
+  .web-lp .price-tile h4{
+    font-size:19px;
+  }
   .web-lp .price-tile p:not(.meta){
     font-size:13px;
     line-height:1.62;
   }
   .web-lp .maintenance-panel{
-    margin-top:18px;
+    margin-top:28px;
     padding-top:16px;
   }
   .web-lp .maintenance-list div{
@@ -662,13 +783,27 @@ input,textarea,select{
   }
   .web-lp .maintenance-list p,
   .web-lp .note-line,
-  .web-lp .detail-box p,
-  .web-lp .detail-box table{
+  .web-lp .included-strip p,
+  .web-lp .price-subhead p,
+  .web-lp .additional-list p,
+  .web-lp .payment-flow li{
     font-size:13px;
     line-height:1.68;
   }
-  .web-lp .detail-box summary{
-    padding:12px 14px;
-    font-size:14px;
+  .web-lp .included-strip{
+    padding:13px 14px;
+  }
+  .web-lp .price-grid,
+  .web-lp .payment-flow{
+    margin-top:26px;
+    padding-top:22px;
+  }
+  .web-lp .additional-list div{
+    min-height:0;
+    padding:14px;
+  }
+  .web-lp .payment-flow li{
+    grid-template-columns:36px 1fr;
+    gap:10px;
   }
 }
