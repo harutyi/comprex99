@@ -11,18 +11,19 @@ const config = {
 };
 
 const industries = [
-  { id: "seitai-private", label: "整体院（民間資格）" },
-  { id: "sekkotsu", label: "接骨院（国家資格）" },
+  { id: "seitai", label: "整体・接骨院" },
   { id: "salon", label: "美容室・ネイル" },
-  { id: "food", label: "飲食" },
-  { id: "other", label: "その他" }
+  { id: "food", label: "飲食店" },
+  { id: "office", label: "工務店・士業・不動産" },
+  { id: "school", label: "塾・教室・ジム" },
+  { id: "all", label: "その他・全業種" }
 ];
 
 const maintenancePlans = [
   { id: "light", name: "LIGHT 維持管理", monthly: 8000, description: "ドメイン・サーバー・SSL・契約更新管理。サイト内容の更新作業は基本的に含みません。" },
   { id: "standard", name: "STANDARD 保守管理", monthly: 12000, recommended: true, description: "LIGHTに加えてCMS管理、関連システム更新、バックアップ、基本的なセキュリティ対策。" },
   { id: "managed", name: "運用おまかせ", monthly: 25000, description: "文章・画像・商品情報・キャンペーンなど、既存ページ内の軽微な更新作業まで代行。" },
-  { id: "none", name: "保守なし", monthly: 0, description: "制作のみ。公開後の保守・修正・管理は含みません。" }
+  { id: "none", name: "保守なし（買い切り）", monthly: 0, description: "買い切り制作 79,800円〜。制作・公開までで完結。公開後の保守・修正・管理は含みません。" }
 ];
 
 const options = [
