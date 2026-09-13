@@ -19,9 +19,9 @@ const industries = [
 ];
 
 const maintenancePlans = [
-  { id: "light", name: "ライト", monthly: 5500, description: "サーバー・ドメイン管理、SSL更新、バックアップ、軽微な修正 月1回。" },
-  { id: "standard", name: "スタンダード", monthly: 12000, recommended: true, description: "修正 月3回、Google投稿代行、写真差し替え、月次レポート。" },
-  { id: "managed", name: "運用おまかせ", monthly: 25000, description: "更新多め、ページ追加、週1投稿、電話・LINE相談。" },
+  { id: "light", name: "LIGHT 維持管理", monthly: 8000, description: "ドメイン・サーバー・SSL・契約更新管理。サイト内容の更新作業は基本的に含みません。" },
+  { id: "standard", name: "STANDARD 保守管理", monthly: 12000, recommended: true, description: "LIGHTに加えてCMS管理、関連システム更新、バックアップ、基本的なセキュリティ対策。" },
+  { id: "managed", name: "運用おまかせ", monthly: 25000, description: "文章・画像・商品情報・キャンペーンなど、既存ページ内の軽微な更新作業まで代行。" },
   { id: "none", name: "保守なし", monthly: 0, description: "制作のみ。公開後の保守・修正・管理は含みません。" }
 ];
 
