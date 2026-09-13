@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>料金チェックシート | Comprex99</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="/web/estimate/estimate.css" />
+    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260913-estimate-simple" />
   </head>
   <body data-theme="lime">
     <div class="cursor" id="cursor"></div>
@@ -13,8 +13,8 @@
       <section class="estimate-head reveal">
         <a href="/web/">Comprex99</a>
         <p>料金チェックシート</p>
-        <h1>必要な内容を選んで、<span>概算を確認できます。</span></h1>
-        <span>この時点では契約は成立しません。内容を確認したうえで24時間以内にご連絡します。</span>
+        <h1>必要な内容を選んで、<span>制作費の目安を確認できます。</span></h1>
+        <span>細かい追加料金を積み上げるための画面ではありません。内容を確認したうえで、着手前に正式な料金をご案内します。</span>
       </section>
 
       <form id="estimateForm" class="estimate-form">
@@ -32,11 +32,11 @@
         </section>
 
         <section class="panel reveal">
-          <p class="step-label">3. オプションを選ぶ</p>
+          <p class="step-label">3. やりたいことを選ぶ</p>
           <div class="option-list" id="optionChoices"></div>
           <label class="field">
             <span>その他のご要望（自由記入）</span>
-            <textarea name="otherRequest" rows="4" placeholder="例：ココナラ用に画像もほしい、LINE誘導を強めたい、など"></textarea>
+            <textarea name="otherRequest" rows="4" placeholder="例：秋限定メニューを載せたい、予約はLINEに飛ばしたい、写真はあとで送る、など"></textarea>
           </label>
         </section>
 
@@ -54,13 +54,13 @@
     </main>
 
     <aside class="total-bar" aria-live="polite">
-      <div><span>初期費用 合計</span><strong id="initialTotal">0円</strong></div>
+      <div><span>制作費 目安</span><strong id="initialTotal">0円</strong></div>
       <div><span>月額</span><strong id="monthlyTotal">0円</strong></div>
-      <small>※お見積りは概算です。内容を確認のうえ、24時間以内にご連絡します。</small>
+      <small>※追加制作や特殊機能は内容確認後にご案内します。この画面だけでは契約は成立しません。</small>
     </aside>
 
-    <script src="/web/catalog.js?v=20260913-maintenance-plans"></script>
-    <script src="/web/estimate/estimate.js"></script>
+    <script src="/web/catalog.js?v=20260913-estimate-simple"></script>
+    <script src="/web/estimate/estimate.js?v=20260913-estimate-simple"></script>
     <script src="/site-shell.js"></script>
   </body>
 </html>

@@ -43,7 +43,8 @@
       <label class="option-row">
         <input type="checkbox" name="optionIds" value="${item.id}" ${checked.has(item.id) ? "checked" : ""}>
         <strong>${item.name}</strong>
-        <span>${yen(item.initial)}</span>
+        <span>${item.label || (item.initial ? yen(item.initial) : "基本込み")}</span>
+        ${item.note ? `<small>${item.note}</small>` : ""}
       </label>
     `).join("");
   }
@@ -58,8 +59,8 @@
     initialTotal.textContent = yen(estimate.initialTotal);
     monthlyTotal.textContent = yen(estimate.monthlyTotal);
     productionFeeNote.textContent = maintenanceId === "none"
-      ? `保守なしなので制作費は ${yen(initialProductionFee("none"))} です。`
-      : `保守12ヶ月契約とセットなので制作費は ${yen(initialProductionFee(maintenanceId))} です。月額と初期費用は分けて表示します。`;
+      ? `買い切り制作の目安は ${yen(initialProductionFee("none"))}〜 です。公開後の保守・修正・管理は含みません。`
+      : `おまかせ制作の目安は ${yen(initialProductionFee(maintenanceId))}〜 です。保守12ヶ月契約が前提です。`;
   }
 
   renderChoices();

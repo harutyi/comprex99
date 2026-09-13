@@ -54,6 +54,7 @@ h1 span{display:block;}
   gap:12px;
 }
 .choice,.plan,.option-row{
+  position:relative;
   display:grid;
   gap:4px;
   border:1px solid var(--line);
@@ -63,7 +64,11 @@ h1 span{display:block;}
 .choice,.plan{padding:16px;}
 .choice input,.plan input,.option-row input{
   position:absolute;
+  width:1px;
+  height:1px;
+  margin:0;
   opacity:0;
+  pointer-events:none;
 }
 .choice:has(input:checked),.plan:has(input:checked),.option-row:has(input:checked){
   border-color:var(--accent);
@@ -74,12 +79,19 @@ h1 span{display:block;}
   font-size:17px;
   overflow-wrap:anywhere;
 }
-.plan span,.option-row span,.fee-link{
+.plan span,.option-row span,.option-row small,.fee-link{
   color:var(--dim);
   font-size:14px;
   overflow-wrap:anywhere;
 }
-.choice:has(input:checked) span,.plan:has(input:checked) span,.option-row:has(input:checked) span{
+.option-row small{
+  grid-column:1 / -1;
+  line-height:1.65;
+}
+.choice:has(input:checked) span,
+.plan:has(input:checked) span,
+.option-row:has(input:checked) span,
+.option-row:has(input:checked) small{
   color:#111;
 }
 .fee-link{
@@ -90,7 +102,7 @@ h1 span{display:block;}
 }
 .option-list{display:grid;gap:10px;}
 .option-row{
-  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-columns:minmax(0,1fr) minmax(120px,auto);
   align-items:center;
   padding:14px 16px;
 }

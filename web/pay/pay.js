@@ -22,9 +22,11 @@
   }
 
   function render(estimate) {
+    const payableOptions = (estimate.options || []).filter((item) => Number(item.initial || 0) > 0);
+    const requestOptions = (estimate.options || []).filter((item) => Number(item.initial || 0) <= 0);
     const rows = [
       ["サイト制作費", estimate.totals.productionFee],
-      ...(estimate.options || []).map((item) => [item.name, item.initial])
+      ...payableOptions.map((item) => [item.name, item.initial])
     ];
     app.innerHTML = `
       <article class="quote" id="quoteSheet">
@@ -58,6 +60,15 @@
           <thead><tr><th>項目</th><th>金額</th></tr></thead>
           <tbody>${rows.map(([name, amount]) => `<tr><td>${escapeHtml(name)}</td><td>${yen(amount)}</td></tr>`).join("")}</tbody>
         </table>
+
+        ${requestOptions.length ? `
+          <section class="terms">
+            <h2>確認項目</h2>
+            <ul>
+              ${requestOptions.map((item) => `<li>${escapeHtml(item.name)}は、内容を確認したうえで制作範囲または別途見積もりをご案内します。</li>`).join("")}
+            </ul>
+          </section>
+        ` : ""}
 
         <section class="quote-total">
           <div><span class="muted">初期費用の合計</span><strong>${yen(estimate.totals.initialTotal)}</strong></div>
