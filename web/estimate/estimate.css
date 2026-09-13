@@ -149,7 +149,7 @@ h1 span{display:block;}
   z-index:20;
   inset:auto 0 0;
   display:grid;
-  grid-template-columns:minmax(220px,.35fr) 1fr;
+  grid-template-columns:1fr 1fr minmax(220px,.9fr);
   gap:14px;
   align-items:center;
   padding:14px max(18px,calc((100vw - 980px) / 2));

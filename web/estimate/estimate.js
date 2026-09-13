@@ -2,11 +2,14 @@
   const { industries, maintenancePlans, visibleOptions, calculateEstimate, initialProductionFee } = window.ComprexCatalog;
   const form = document.querySelector("#estimateForm");
   const industryChoices = document.querySelector("#industryChoices");
+  const maintenanceChoices = document.querySelector("#maintenanceChoices");
   const optionChoices = document.querySelector("#optionChoices");
   const productionFeeNote = document.querySelector("#productionFeeNote");
   const initialTotal = document.querySelector("#initialTotal");
+  const monthlyTotal = document.querySelector("#monthlyTotal");
   const formMessage = document.querySelector("#formMessage");
-  const defaultMaintenance = maintenancePlans.find((item) => item.recommended) || maintenancePlans[0];
+  const visibleMaintenancePlans = maintenancePlans.filter((item) => item.id !== "none");
+  const defaultMaintenance = visibleMaintenancePlans.find((item) => item.recommended) || visibleMaintenancePlans[0];
 
   const yen = (value) => `${Number(value || 0).toLocaleString("ja-JP")}円`;
 
@@ -18,6 +21,13 @@
       </label>
     `).join("");
 
+    maintenanceChoices.innerHTML = visibleMaintenancePlans.map((item) => `
+      <label class="plan">
+        <input type="radio" name="maintenanceId" value="${item.id}" ${item.id === defaultMaintenance.id ? "checked" : ""}>
+        <strong>${item.name} / ${yen(item.monthly)} 月</strong>
+        <span>${item.description}</span>
+      </label>
+    `).join("");
   }
 
   function selected(name) {
@@ -42,13 +52,14 @@
   }
 
   function updateTotal() {
-    const maintenanceId = defaultMaintenance.id;
+    const maintenanceId = selected("maintenanceId") || defaultMaintenance.id;
     const estimate = calculateEstimate({
       industryId: selected("industryId"),
       maintenanceId,
       optionIds: selectedOptions()
     });
     initialTotal.textContent = yen(estimate.initialTotal);
+    monthlyTotal.textContent = yen(estimate.monthlyTotal);
     productionFeeNote.textContent = `基本制作 ${yen(initialProductionFee(maintenanceId))}〜 に、選んだ内容の目安を足しています。正式な料金は着手前にご案内します。`;
   }
 
@@ -68,7 +79,7 @@
     const data = new FormData(form);
     const payload = {
       industryId: selected("industryId"),
-      maintenanceId: defaultMaintenance.id,
+      maintenanceId: selected("maintenanceId") || defaultMaintenance.id,
       optionIds: selectedOptions(),
       otherRequest: String(data.get("otherRequest") || ""),
       contact: {
