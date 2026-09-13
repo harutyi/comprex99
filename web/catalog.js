@@ -16,7 +16,7 @@ const industries = [
   { id: "food", label: "飲食店" },
   { id: "office", label: "工務店・士業・不動産" },
   { id: "school", label: "塾・教室・ジム" },
-  { id: "all", label: "その他・全業種" }
+  { id: "all", label: "その他" }
 ];
 
 const maintenancePlans = [
