@@ -20,9 +20,9 @@ const industries = [
 ];
 
 const maintenancePlans = [
-  { id: "light", name: "LIGHT 維持管理", monthly: 8000, description: "ドメイン・サーバー・SSL・契約更新管理。サイト内容の更新作業は基本的に含みません。" },
-  { id: "standard", name: "STANDARD 保守管理", monthly: 12000, recommended: true, description: "LIGHTに加えてCMS管理、関連システム更新、バックアップ、基本的なセキュリティ対策。" },
-  { id: "managed", name: "運用おまかせ", monthly: 25000, description: "文章・画像・商品情報・キャンペーンなど、既存ページ内の軽微な更新作業まで代行。" },
+  { id: "light", name: "BASIC サイト管理", monthly: 8000, description: "ドメイン・サーバー・SSLなど、サイトを公開し続けるための基本管理。内容の更新作業は基本的に含みません。" },
+  { id: "standard", name: "STANDARD サイト管理", monthly: 12000, recommended: true, description: "BASICに加えて、CMS管理・バックアップ・基本的なセキュリティ対策まで対応します。" },
+  { id: "managed", name: "UPDATE 更新サポート", monthly: 25000, description: "STANDARDに加えて、文章・画像・商品情報・キャンペーンなどの更新作業まで対応します。" },
   { id: "none", name: "保守なし（買い切り）", monthly: 0, description: "買い切り制作 79,800円〜。制作・公開までで完結。公開後の保守・修正・管理は含みません。" }
 ];
 
@@ -31,7 +31,7 @@ const options = [
   { id: "content-update", name: "文章・写真・メニューを載せたい", initial: 0, label: "基本込み", note: "原稿や写真が揃っていれば、通常の店舗サイトとして対応します。", showOnSite: true },
   { id: "extra-page", name: "ページを増やしたい", initial: 3000, label: "+3,000円〜", note: "内容や作業量に応じて、着手前に正式な料金をご案内します。", showOnSite: true },
   { id: "booking-form", name: "予約フォーム・申込フォームを入れたい", initial: 0, label: "内容確認", note: "簡単なフォームか、予約管理まで必要かで扱いが変わります。", showOnSite: true },
-  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "保守・運用で対応", note: "文章・画像変更まで任せたい場合は、運用おまかせが向いています。制作費には加算しません。", showOnSite: true },
+  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "更新サポートで対応", note: "文章・画像変更まで任せたい場合は、UPDATE 更新サポートが向いています。制作費には加算しません。", showOnSite: true },
   { id: "system-work", name: "決済・会員・API連携などを入れたい", initial: 25000, label: "+25,000円〜", note: "大きな機能追加や新規システム開発は、内容を確認して別途お見積もりします。", showOnSite: true }
 ];
 

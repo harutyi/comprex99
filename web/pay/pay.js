@@ -72,15 +72,15 @@
 
         <section class="quote-total">
           <div><span class="muted">初期費用の合計</span><strong>${yen(estimate.totals.initialTotal)}</strong></div>
-          <div><span class="muted">月額費用</span><strong>${yen(estimate.totals.monthlyTotal)}</strong><p>${escapeHtml(estimate.maintenance.name)}</p></div>
+          <div><span class="muted">月額管理費用</span><strong>${yen(estimate.totals.monthlyTotal)}</strong><p>${escapeHtml(estimate.maintenance.name)}</p></div>
         </section>
 
         <section class="terms">
           <h2>契約条件・特定商取引法に基づく表示</h2>
           <ul>
             <li>決済ボタンを押した時点で、初期費用が即時決済されます。</li>
-            <li>保守費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}</li>
-            <li>保守の最低契約期間は12ヶ月、以降自動更新です。解約は1ヶ月前までの申告が必要です。</li>
+            <li>公開後の管理費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}</li>
+            <li>公開後の管理は最低契約期間12ヶ月、以降自動更新です。解約は1ヶ月前までの申告が必要です。</li>
             <li>通常納期は必要な素材がすべて揃ってから約2週間です。特急制作の場合のみ、事前に合意した納期で進行します。制作段階の修正は2回まで無料です。</li>
             <li>キャンセルは着手前は全額返金、着手後は返金不可です。</li>
             <li>ドメインは当方名義で管理し、解約時はお客様名義へ移管します。取得後60日は移管できません。</li>
@@ -144,7 +144,7 @@
       ctx.font = "24px sans-serif";
       [
         "決済ボタンを押した時点で、初期費用が即時決済されます。",
-        `保守費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}`,
+        `公開後の管理費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}`,
         "最低契約期間は12ヶ月、以降自動更新。解約は1ヶ月前までの申告が必要です。",
         "通常納期は素材受領後約2週間。特急制作の場合のみ、事前に合意した納期で進行します。",
         "事業者名: Comprex99 / 代表者: 加藤晴士 / 連絡先: web@comprex99.com"

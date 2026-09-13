@@ -60,7 +60,7 @@
     });
     initialTotal.textContent = yen(estimate.initialTotal);
     monthlyTotal.textContent = yen(estimate.monthlyTotal);
-    productionFeeNote.textContent = `基本制作 ${yen(initialProductionFee(maintenanceId))}〜 に、選んだ内容の目安を足しています。正式な料金は着手前にご案内します。`;
+    productionFeeNote.textContent = `基本制作 ${yen(initialProductionFee(maintenanceId))}〜 に、選んだ内容の目安を足しています。公開後の管理内容を含めて、正式な料金は着手前にご案内します。`;
   }
 
   renderChoices();
