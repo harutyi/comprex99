@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>料金チェックシート | Comprex99</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260913-estimate-simple" />
+    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260913-estimate-options" />
   </head>
   <body data-theme="lime">
     <div class="cursor" id="cursor"></div>
@@ -26,13 +26,7 @@
         </section>
 
         <section class="panel reveal">
-          <p class="step-label">2. 保守プランを選ぶ</p>
-          <div class="plan-grid" id="maintenanceChoices"></div>
-          <div class="fee-link" id="productionFeeNote"></div>
-        </section>
-
-        <section class="panel reveal">
-          <p class="step-label">3. やりたいことを選ぶ</p>
+          <p class="step-label">2. やりたいことを選ぶ</p>
           <div class="option-list" id="optionChoices"></div>
           <label class="field">
             <span>その他のご要望（自由記入）</span>
@@ -41,7 +35,7 @@
         </section>
 
         <section class="panel contact-panel reveal">
-          <p class="step-label">4. 連絡先</p>
+          <p class="step-label">3. 連絡先</p>
           <label class="field"><span>店名</span><input name="shopName" required /></label>
           <label class="field"><span>お名前</span><input name="personName" required /></label>
           <label class="field"><span>電話番号</span><input name="phone" inputmode="tel" required /></label>
@@ -55,12 +49,11 @@
 
     <aside class="total-bar" aria-live="polite">
       <div><span>制作費 目安</span><strong id="initialTotal">0円</strong></div>
-      <div><span>月額</span><strong id="monthlyTotal">0円</strong></div>
-      <small>※追加制作や特殊機能は内容確認後にご案内します。この画面だけでは契約は成立しません。</small>
+      <small id="productionFeeNote">※追加制作や特殊機能は内容確認後にご案内します。この画面だけでは契約は成立しません。</small>
     </aside>
 
-    <script src="/web/catalog.js?v=20260913-estimate-simple"></script>
-    <script src="/web/estimate/estimate.js?v=20260913-estimate-simple"></script>
+    <script src="/web/catalog.js?v=20260913-estimate-options"></script>
+    <script src="/web/estimate/estimate.js?v=20260913-estimate-options"></script>
     <script src="/site-shell.js"></script>
   </body>
 </html>
