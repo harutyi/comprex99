@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>料金チェックシート | Comprex99</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260913-site-management" />
+    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260914-wording" />
   </head>
   <body data-theme="lime">
     <div class="cursor" id="cursor"></div>
@@ -14,7 +14,7 @@
         <a href="/web/">Comprex99</a>
         <p>料金チェックシート</p>
         <h1>必要な内容を選んで、<span>制作費の目安を確認できます。</span></h1>
-        <span>細かい追加料金を積み上げるための画面ではありません。内容を確認したうえで、着手前に正式な料金をご案内します。</span>
+        <span>ご希望の内容に合わせた制作費と、公開後の月額管理費を確認できます。正式な料金は、ご相談内容を確認して制作開始前にご案内します。</span>
       </section>
 
       <form id="estimateForm" class="estimate-form">
@@ -36,7 +36,7 @@
           <div class="option-list" id="optionChoices"></div>
           <label class="field">
             <span>その他のご要望（自由記入）</span>
-            <textarea name="otherRequest" rows="4" placeholder="例：秋限定メニューを載せたい、予約はLINEに飛ばしたい、写真はあとで送る、など"></textarea>
+            <textarea name="otherRequest" rows="4" placeholder="例：秋限定メニューを載せたい、LINEで予約を受け付けたい、写真は後日送りたい"></textarea>
           </label>
         </section>
 
@@ -48,19 +48,19 @@
           <label class="field"><span>メールアドレス</span><input name="email" type="email" required /></label>
         </section>
 
-        <button class="submit-button" type="submit">見積りを送信する</button>
+        <button class="submit-button" type="submit">この内容で見積もりを相談する</button>
         <p class="form-message" id="formMessage"></p>
       </form>
     </main>
 
     <aside class="total-bar" aria-live="polite">
       <div><span>制作費 目安</span><strong id="initialTotal">0円</strong></div>
-      <div><span>月額</span><strong id="monthlyTotal">0円</strong></div>
-      <small>※追加制作や複雑な機能は内容確認後にご案内します。この画面だけでは契約は成立しません。</small>
+      <div><span>公開後の月額管理費</span><strong id="monthlyTotal">0円</strong></div>
+      <small>表示は目安です。正式な料金は制作開始前にご案内します。相談の送信だけで契約・決済は行われません。</small>
     </aside>
 
-    <script src="/web/catalog.js?v=20260913-site-management"></script>
-    <script src="/web/estimate/estimate.js?v=20260913-site-management"></script>
+    <script src="/web/catalog.js?v=20260914-wording"></script>
+    <script src="/web/estimate/estimate.js?v=20260914-wording"></script>
     <script src="/site-shell.js"></script>
   </body>
 </html>

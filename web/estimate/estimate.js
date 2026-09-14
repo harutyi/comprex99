@@ -24,7 +24,7 @@
     maintenanceChoices.innerHTML = visibleMaintenancePlans.map((item) => `
       <label class="plan">
         <input type="radio" name="maintenanceId" value="${item.id}" ${item.id === defaultMaintenance.id ? "checked" : ""}>
-        <strong>${item.name} / ${yen(item.monthly)} 月</strong>
+        <strong>${item.name} / 月額 ${yen(item.monthly)}</strong>
         <span>${item.description}</span>
       </label>
     `).join("");
@@ -45,7 +45,7 @@
       <label class="option-row">
         <input type="checkbox" name="optionIds" value="${item.id}" ${checked.has(item.id) ? "checked" : ""}>
         <strong>${item.name}</strong>
-        <span>${item.label || (item.initial ? yen(item.initial) : "基本込み")}</span>
+        <span>${item.label || (item.initial ? yen(item.initial) : "基本料金に含む")}</span>
         ${item.note ? `<small>${item.note}</small>` : ""}
       </label>
     `).join("");
@@ -58,9 +58,14 @@
       maintenanceId,
       optionIds: selectedOptions()
     });
-    initialTotal.textContent = yen(estimate.initialTotal);
+    initialTotal.textContent = `${yen(estimate.initialTotal)}〜`;
     monthlyTotal.textContent = yen(estimate.monthlyTotal);
-    productionFeeNote.textContent = `基本制作 ${yen(initialProductionFee(maintenanceId))}〜 に、選んだ内容の目安を足しています。公開後の管理内容を含めて、正式な料金は着手前にご案内します。`;
+    productionFeeNote.textContent = `おまかせ制作の基本料金は${yen(initialProductionFee(maintenanceId))}〜です。月額管理費は別途かかり、お申し込み時点で12ヶ月の管理契約が前提となります。`;
+    if (selectedOptions().includes("seasonal-operation")) {
+      productionFeeNote.textContent += maintenanceId === "managed"
+        ? " 季節商品・キャンペーンの定期更新は、選択中の更新サポートに含まれます。"
+        : " 季節商品・キャンペーンの定期更新を任せる場合は、UPDATE 更新サポートをお選びください。";
+    }
   }
 
   renderChoices();

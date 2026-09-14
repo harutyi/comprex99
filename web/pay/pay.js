@@ -4,6 +4,12 @@
   const yen = (value) => `${Number(value || 0).toLocaleString("ja-JP")}円`;
   const dateText = (value) => value ? new Date(value).toLocaleDateString("ja-JP") : "";
 
+  function requestDescription(item) {
+    if (item.id === "normal-links" || item.id === "content-update") return "制作時の基本料金に含みます。";
+    if (item.id === "seasonal-operation") return "公開後の定期更新は、月額の更新サポートで対応します。制作費への加算はありません。";
+    return "内容を確認したうえで、対応範囲と正式な料金をご案内します。";
+  }
+
   function escapeHtml(value) {
     return String(value || "").replace(/[&<>"']/g, (char) => ({
       "&": "&amp;",
@@ -65,20 +71,20 @@
           <section class="terms">
             <h2>確認項目</h2>
             <ul>
-              ${requestOptions.map((item) => `<li>${escapeHtml(item.name)}は、内容を確認したうえで制作範囲または別途見積もりをご案内します。</li>`).join("")}
+              ${requestOptions.map((item) => `<li>${escapeHtml(item.name)}：${requestDescription(item)}</li>`).join("")}
             </ul>
           </section>
         ` : ""}
 
         <section class="quote-total">
           <div><span class="muted">初期費用の合計</span><strong>${yen(estimate.totals.initialTotal)}</strong></div>
-          <div><span class="muted">月額管理費用</span><strong>${yen(estimate.totals.monthlyTotal)}</strong><p>${escapeHtml(estimate.maintenance.name)}</p></div>
+          <div><span class="muted">公開後の月額管理費</span><strong>${yen(estimate.totals.monthlyTotal)}</strong><p>${escapeHtml(estimate.maintenance.name)}</p></div>
         </section>
 
         <section class="terms">
           <h2>契約条件・特定商取引法に基づく表示</h2>
           <ul>
-            <li>決済ボタンを押した時点で、初期費用が即時決済されます。</li>
+            <li>決済ページで内容を確認し、お支払いを確定すると初期費用が決済されます。</li>
             <li>公開後の管理費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}</li>
             <li>公開後の管理は最低契約期間12ヶ月、以降自動更新です。解約は1ヶ月前までの申告が必要です。</li>
             <li>通常納期は必要な素材がすべて揃ってから約2週間です。特急制作の場合のみ、事前に合意した納期で進行します。制作段階の修正は2回まで無料です。</li>
@@ -143,7 +149,7 @@
       ctx.fillStyle = "#17231d";
       ctx.font = "24px sans-serif";
       [
-        "決済ボタンを押した時点で、初期費用が即時決済されます。",
+        "決済ページでお支払いを確定すると、初期費用が決済されます。",
         `公開後の管理費用はサイト公開日から毎月自動で課金されます。開始予定日: ${dateText(estimate.publishAt)}`,
         "最低契約期間は12ヶ月、以降自動更新。解約は1ヶ月前までの申告が必要です。",
         "通常納期は素材受領後約2週間。特急制作の場合のみ、事前に合意した納期で進行します。",
