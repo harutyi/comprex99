@@ -64,7 +64,7 @@
     if (selectedOptions().includes("seasonal-operation")) {
       productionFeeNote.textContent += maintenanceId === "managed"
         ? " 季節商品・キャンペーンの定期更新は、選択中の更新サポートに含まれます。"
-        : " 季節商品・キャンペーンの定期更新を任せる場合は、UPDATE 更新サポートをお選びください。";
+        : " 季節商品・キャンペーンの定期更新を任せる場合は、運用代行プランをお選びください。";
     }
   }
 

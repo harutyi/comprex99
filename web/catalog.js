@@ -20,9 +20,9 @@ const industries = [
 ];
 
 const maintenancePlans = [
-  { id: "light", name: "BASIC サイト管理", monthly: 8000, description: "ドメイン・サーバー・SSLの管理と契約更新を行い、サイトを公開し続けられる状態に保ちます。文章・写真の変更やページ追加は含みません。" },
-  { id: "standard", name: "STANDARD サイト管理", monthly: 12000, recommended: true, description: "BASICに加えて、CMS・関連システムの管理と更新、バックアップ、基本的なセキュリティ対策に対応します。文章・写真・商品情報の日常的な更新は含みません。" },
-  { id: "managed", name: "UPDATE 更新サポート", monthly: 25000, description: "STANDARDに加えて、文章・写真・商品情報・営業時間・キャンペーンの更新を代行します。既存ページの軽微な変更・内容追加と、障害発生時の対応も含みます。" },
+  { id: "light", name: "基本管理プラン", monthly: 8000, description: "ドメイン・サーバー・SSLの管理と契約更新を行い、サイトを公開し続けられる状態に保ちます。文章・写真の変更やページ追加は含みません。" },
+  { id: "standard", name: "運用サポートプラン", monthly: 12000, recommended: true, description: "基本管理プランに加えて、CMS・関連システムの管理と更新、バックアップ、基本的なセキュリティ対策に対応します。文章・写真・商品情報の日常的な更新は含みません。" },
+  { id: "managed", name: "運用代行プラン", monthly: 25000, description: "運用サポートプランに加えて、文章・写真・商品情報・営業時間・キャンペーンの更新を代行します。既存ページの軽微な変更・内容追加と、障害発生時の対応も含みます。" },
   { id: "none", name: "買い切り制作", monthly: 0, description: "買い切り制作 79,800円〜。制作・公開までで完結。公開後の管理や更新はお客様に行っていただきます。" }
 ];
 
@@ -31,7 +31,7 @@ const options = [
   { id: "content-update", name: "文章・写真・メニューを載せたい", initial: 0, label: "基本料金に含む", note: "制作時に、ご提供いただいた文章・写真・メニューを掲載します。公開後の定期更新は更新サポートで承ります。", showOnSite: true },
   { id: "extra-page", name: "ページを増やしたい", initial: 3000, label: "+3,000円〜", note: "内容や作業量に応じて、着手前に正式な料金をご案内します。", showOnSite: true },
   { id: "booking-form", name: "予約フォーム・申込フォームを入れたい", initial: 0, label: "内容確認", note: "簡単な受付フォームは基本料金に含みます。空き枠管理や自動予約などの複雑な機能は、内容を確認して個別にお見積もりします。", showOnSite: true },
-  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "月額の更新サポートに含む", note: "2番の「UPDATE 更新サポート」で対応します。この項目を選んでも制作費は増えません。", showOnSite: true },
+  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "月額の更新サポートに含む", note: "2番の「運用代行プラン」で対応します。この項目を選んでも制作費は増えません。", showOnSite: true },
   { id: "system-work", name: "決済・会員・API連携などを入れたい", initial: 25000, label: "+25,000円〜", note: "大きな機能追加や新規システム開発は、内容を確認して別途お見積もりします。", showOnSite: true }
 ];
 
