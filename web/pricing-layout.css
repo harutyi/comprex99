@@ -1,0 +1,23 @@
+.web-lp .production-plans .price-tile {
+  display: flex;
+  flex-direction: column;
+}
+.web-lp .production-plans .price-tile h3 {
+  min-height: 56px;
+  display: flex;
+  align-items: flex-end;
+}
+.web-lp .production-plans .price-tile > .button {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  text-align: center;
+}
+@media (max-width: 1100px) {
+  .web-lp .production-plans .price-tile h3 { min-height: 0; }
+}
