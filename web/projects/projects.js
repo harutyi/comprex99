@@ -54,6 +54,12 @@
     window.scrollTo(0,0);
   }
   $('#rows').onclick=e=>{const b=e.target.closest('[data-open]');if(b)detail(b.dataset.open).catch(error);};
+  window.addEventListener('hashchange',()=>{
+    if(!key)return;
+    const ref=location.hash.slice(1);
+    if(ref) { try { detail(decodeURIComponent(ref)).catch(error); } catch(e) { error(e); } }
+    else { selected='';$('#detail').hidden=true;$('#detail').innerHTML='';$('#listView').hidden=false;load().catch(error); }
+  });
   for(const id of ['search','statusFilter','dueFilter'])$('#'+id).addEventListener(id==='search'?'input':'change',renderRows);
   $('#refresh').onclick=async()=>{if(busy)return;busy=true;try{await load();$('#message').textContent='一覧を更新しました。';}catch(e){error(e);}finally{busy=false;}};
   $('#logout').onclick=logout;
