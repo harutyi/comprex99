@@ -1,6 +1,7 @@
 (() => {
   const $=s=>document.querySelector(s), plans=window.ComprexPlans, M=window.ComprexProjectModel;
   const apiBase='https://api.comprex99.com';
+  let stopSupport=()=>{};
   let key='', orders=[], epoch=0, busy=false, selected='', emailEnabled=false;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
   const date=v=>v?(String(v).length===10?String(v).replaceAll('-','/'):new Date(v).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})):'未設定';
@@ -9,7 +10,7 @@
   const step=s=>M.steps[s]||s;
   const subLabel=s=>({active:'契約中',past_due:'支払い遅延',unpaid:'未払い',canceled:'解約済み',incomplete:'手続き未完了',incomplete_expired:'手続き期限切れ',trialing:'試用期間',paused:'停止中'})[s]||s||'未契約';
   const badge=o=>`<span class="badge ${M.group(o)==='制作中'?'progress':M.group(o)==='納品済み'?'done':M.group(o)==='情報待ち'?'alert':''}">${esc(M.group(o))}</span>`;
-  function logout(){epoch++;key='';orders=[];selected='';$('#workspace').hidden=true;$('#detail').innerHTML='';$('#rows').innerHTML='';$('#summary').innerHTML='';$('#unmatched').innerHTML='';$('#login').hidden=false;$('#logout').hidden=true;$('#key').value='';$('#search').value='';$('#statusFilter').value='';$('#dueFilter').value='';history.replaceState(null,'',location.pathname);}
+  function logout(){stopSupport();epoch++;key='';orders=[];selected='';$('#workspace').hidden=true;$('#detail').innerHTML='';$('#rows').innerHTML='';$('#summary').innerHTML='';$('#unmatched').innerHTML='';$('#login').hidden=false;$('#logout').hidden=true;$('#key').value='';$('#search').value='';$('#statusFilter').value='';$('#dueFilter').value='';history.replaceState(null,'',location.pathname);}
   function error(e){$('#message').textContent=e.message;}
   async function api(path='', data) {
     if(!key)throw Error('管理キーを入力してください。');
@@ -56,6 +57,6 @@
   for(const id of ['search','statusFilter','dueFilter'])$('#'+id).addEventListener(id==='search'?'input':'change',renderRows);
   $('#refresh').onclick=async()=>{if(busy)return;busy=true;try{await load();$('#message').textContent='一覧を更新しました。';}catch(e){error(e);}finally{busy=false;}};
   $('#logout').onclick=logout;
-  $('#login').onsubmit=async e=>{e.preventDefault();if(busy)return;busy=true;key=$('#key').value;epoch++;const link=location.hash.slice(1);try{await load();$('#key').value='';$('#login').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;$('#listView').hidden=false;$('#detail').hidden=true;$('#message').textContent='';if(link)await detail(decodeURIComponent(link));}catch(e){error(e);}finally{busy=false;}};
+  $('#login').onsubmit=async e=>{e.preventDefault();if(busy)return;busy=true;key=$('#key').value;epoch++;const link=location.hash.slice(1);try{await load();$('#key').value='';$('#login').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;$('#listView').hidden=false;$('#detail').hidden=true;$('#message').textContent='';stopSupport();stopSupport=window.ComprexSupport.mount($('#supportPanel'),(path,data)=>api('/support'+path,data),true);if(link)await detail(decodeURIComponent(link));}catch(e){error(e);}finally{busy=false;}};
   setInterval(()=>{if(key&&!busy&&!selected&&!document.hidden){busy=true;load().catch(error).finally(()=>busy=false);}},60000);
 })();
