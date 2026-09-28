@@ -1,5 +1,15 @@
 @import url("/site-shell.css");
 
+.estimate-breakdown h2 { font-size: 22px; margin: 0 0 18px; }
+.estimate-breakdown dl { margin: 0; }
+.estimate-breakdown dl > div, .estimate-breakdown li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.estimate-breakdown dd { margin: 0; font-weight: 700; text-align: right; }
+.estimate-breakdown ul { list-style: none; padding: 0; margin: 12px 0; }
+.estimate-breakdown li span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.estimate-breakdown p { font-size: 14px; line-height: 1.7; margin-top: 14px; }
+#copyConsultation { margin-top: 12px; padding: 10px 16px; cursor: pointer; }
+#emailFallback[hidden] { display: none; }
+
 body{
   padding-bottom:138px;
 }

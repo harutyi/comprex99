@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>料金チェックシート | Comprex99</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260914-wording" />
+    <link rel="stylesheet" href="/web/estimate/estimate.css?v=20260928-breakdown" />
   </head>
   <body data-theme="lime">
     <div class="cursor" id="cursor"></div>
@@ -40,6 +40,21 @@
           </label>
         </section>
 
+        <section class="panel estimate-breakdown" aria-live="polite">
+          <h2>見積もりの内訳</h2>
+          <dl>
+            <div><dt>基本制作料金</dt><dd id="baseFee"></dd></div>
+          </dl>
+          <ul id="selectedBreakdown"></ul>
+          <dl>
+            <div><dt>追加制作費 小計</dt><dd id="optionsSubtotal"></dd></div>
+            <div><dt>初期費用 合計（目安）</dt><dd id="initialBreakdownTotal"></dd></div>
+            <div><dt>公開後の月額費用</dt><dd id="monthlyBreakdownTotal"></dd></div>
+          </dl>
+          <p id="estimateScope"></p>
+          <p>初期費用と月額費用は別のお支払いです。正式な金額は内容確認後、着手前にご案内します。</p>
+        </section>
+
         <section class="panel contact-panel reveal">
           <p class="step-label">4. 連絡先</p>
           <label class="field"><span>店名</span><input name="shopName" required /></label>
@@ -50,17 +65,22 @@
 
         <button class="submit-button" type="submit">この内容で見積もりを相談する</button>
         <p class="form-message" id="formMessage"></p>
+        <div id="emailFallback" hidden>
+          <label class="field"><span>メール相談の内容</span><textarea id="consultationText" rows="12" readonly></textarea></label>
+          <button type="button" id="copyConsultation">相談内容をコピー</button>
+          <p>宛先：web@comprex99.com。メールが開かない場合は、上の内容をコピーしてお送りください。</p>
+        </div>
       </form>
     </main>
 
     <aside class="total-bar" aria-live="polite">
-      <div><span>制作費 目安</span><strong id="initialTotal">0円</strong></div>
+      <div><span>初期費用 合計（目安）</span><strong id="initialTotal">0円</strong></div>
       <div><span>公開後の月額管理費</span><strong id="monthlyTotal">0円</strong></div>
       <small>表示は目安です。正式な料金は制作開始前にご案内します。相談の送信だけで契約・決済は行われません。</small>
     </aside>
 
     <script src="/web/catalog.js?v=20260914-wording"></script>
-    <script src="/web/estimate/estimate.js?v=20260914-wording"></script>
+    <script src="/web/estimate/estimate.js?v=20260928-breakdown"></script>
     <script src="/site-shell.js"></script>
   </body>
 </html>
