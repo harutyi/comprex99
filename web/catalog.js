@@ -31,7 +31,7 @@ const options = [
   { id: "content-update", name: "文章・写真・メニューを載せたい", initial: 0, label: "基本料金に含む", note: "制作時に、ご提供いただいた文章・写真・メニューを掲載します。公開後の定期更新は更新サポートで承ります。", showOnSite: true },
   { id: "extra-page", name: "ページを増やしたい", initial: 3000, label: "+3,000円〜", note: "内容や作業量に応じて、着手前に正式な料金をご案内します。", showOnSite: true },
   { id: "booking-form", name: "予約フォーム・申込フォームを入れたい", initial: 0, label: "内容確認", note: "簡単な受付フォームは基本料金に含みます。空き枠管理や自動予約などの複雑な機能は、内容を確認して個別にお見積もりします。", showOnSite: true },
-  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "月額の更新サポートに含む", note: "2番の「運用代行プラン」で対応します。この項目を選んでも制作費は増えません。", showOnSite: true },
+  { id: "seasonal-operation", name: "季節商品やキャンペーンを定期的に更新したい", initial: 0, label: "月額25,000円のプランで対応", note: "選択すると公開後の管理は「運用代行プラン（月額25,000円）」になります。初期制作費への追加料金はありません。", showOnSite: true },
   { id: "system-work", name: "決済・会員・API連携などを入れたい", initial: 25000, label: "+25,000円〜", note: "大きな機能追加や新規システム開発は、内容を確認して別途お見積もりします。", showOnSite: true }
 ];
 
@@ -45,12 +45,13 @@ function visibleOptions(industryId) {
 
 function calculateEstimate(input = {}) {
   const industry = industries.find((item) => item.id === input.industryId) || industries[0];
-  const maintenance = maintenancePlans.find((item) => item.id === input.maintenanceId) || maintenancePlans.find((item) => item.recommended);
   const allowed = new Set(visibleOptions(industry.id).map((item) => item.id));
-  const selectedOptions = (input.optionIds || [])
+  const selectedOptions = [...new Set(input.optionIds || [])]
     .filter((id) => allowed.has(id))
     .map((id) => options.find((item) => item.id === id))
     .filter(Boolean);
+  const maintenanceId = selectedOptions.some(item => item.id === "seasonal-operation") ? "managed" : input.maintenanceId;
+  const maintenance = maintenancePlans.find((item) => item.id === maintenanceId) || maintenancePlans.find((item) => item.recommended);
   const productionFee = initialProductionFee(maintenance.id);
   const optionsTotal = selectedOptions.reduce((sum, item) => sum + item.initial, 0);
   return {

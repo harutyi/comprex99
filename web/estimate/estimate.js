@@ -54,6 +54,11 @@
   }
 
   function updateTotal() {
+    const seasonal = selectedOptions().includes("seasonal-operation");
+    if (seasonal) form.querySelector('[name="maintenanceId"][value="managed"]').checked = true;
+    form.querySelectorAll('[name="maintenanceId"]').forEach(input => {
+      input.disabled = seasonal && input.value !== "managed";
+    });
     const maintenanceId = selected("maintenanceId") || defaultMaintenance.id;
     const estimate = calculateEstimate({
       industryId: selected("industryId"),
@@ -87,9 +92,7 @@
       : "基本料金内の項目を選んでも、初期費用は増えません。";
     productionFeeNote.textContent = `おまかせ制作の基本料金は${yen(initialProductionFee(maintenanceId))}〜です。月額管理費は別途かかり、お申し込み時点で12ヶ月の管理契約が前提となります。`;
     if (selectedOptions().includes("seasonal-operation")) {
-      productionFeeNote.textContent += maintenanceId === "managed"
-        ? " 季節商品・キャンペーンの定期更新は、選択中の更新サポートに含まれます。"
-        : " 季節商品・キャンペーンの定期更新を任せる場合は、運用代行プランをお選びください。";
+      productionFeeNote.textContent += " 定期更新を選択したため、運用代行プラン（月額25,000円）を選択しています。初期制作費は増えません。別の管理プランにする場合は、3番の定期更新のチェックを外してください。";
     }
   }
 
