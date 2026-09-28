@@ -8,14 +8,8 @@
   const initialTotal = document.querySelector("#initialTotal");
   const monthlyTotal = document.querySelector("#monthlyTotal");
   const formMessage = document.querySelector("#formMessage");
-  // GitHub Pages and the static preview do not provide the local sales API.
-  const emailConsultation = location.hostname === "comprex99.com" ||
-    location.hostname === "www.comprex99.com" || location.hostname.endsWith(".github.io") ||
-    location.port === "5179";
-  if (emailConsultation) {
-    form.querySelector('[type="submit"]').textContent = "メールで見積もりを相談する";
-    formMessage.textContent = "メール作成画面を開きます。メールを送信するまで相談は届きません。内容確認・正式見積もりへの合意後に、お申し込みとお支払いをご案内します。";
-  }
+  let requestId = crypto.randomUUID(), lastPayload = '', sending = false;
+  formMessage.textContent = "相談の送信だけで契約・決済は行われません。内容確認後に正式なお見積もりをご案内します。";
   const visibleMaintenancePlans = maintenancePlans.filter((item) => item.id !== "none");
   const defaultMaintenance = visibleMaintenancePlans.find((item) => item.recommended) || visibleMaintenancePlans[0];
 
@@ -110,6 +104,7 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (sending) return;
     formMessage.className = "form-message";
     formMessage.textContent = "送信しています...";
     const data = new FormData(form);
@@ -127,57 +122,27 @@
       companyUrl: String(data.get("company_url") || "")
     };
 
-    if (emailConsultation) {
-      const estimate = calculateEstimate(payload);
-      const message = [
-        "ホームページ制作の見積もり相談",
-        "業種：" + estimate.industry.label,
-        "店名：" + payload.contact.shopName,
-        "お名前：" + payload.contact.personName,
-        "電話番号：" + payload.contact.phone,
-        "メール：" + payload.contact.email,
-        "基本制作料金：" + yen(estimate.productionFee) + "〜",
-        ...estimate.selectedOptions.map(item => item.name + "：" + item.label),
-        "追加制作費 小計：" + yen(estimate.optionsTotal) + "（目安）",
-        "初期費用 合計：" + yen(estimate.initialTotal) + "〜",
-        "月額費用：" + yen(estimate.monthlyTotal) + " / " + estimate.maintenance.name,
-        "季節更新の代行：" + (payload.optionIds.includes("seasonal-operation") && payload.maintenanceId !== "managed" ? "運用代行プラン（月額25,000円）への変更が必要。上記月額には未反映。" : "選択内容を確認"),
-        "おまかせ制作は12ヶ月の管理契約が前提。正式な料金は内容確認後。",
-        "その他のご要望：" + payload.otherRequest
-      ].join("\n");
-      document.querySelector("#consultationText").value = message;
-      document.querySelector("#emailFallback").hidden = false;
-      formMessage.textContent = "メール作成画面を開きます。送信ボタンを押して送信してください。まだ受付完了ではありません。";
-      location.href = "mailto:" + window.ComprexCatalog.config.ownerEmail +
-        "?subject=" + encodeURIComponent("ホームページ制作の見積もり相談") +
-        "&body=" + encodeURIComponent(message);
-      return;
-    }
+    const signature = JSON.stringify(payload);
+    if (lastPayload && signature !== lastPayload) requestId = crypto.randomUUID();
+    lastPayload = signature;
+    payload.requestId = requestId;
+    sending = true;
+    form.querySelector('[type="submit"]').disabled = true;
     try {
-      const response = await fetch("/api/estimates", {
+      const response = await fetch("https://api.comprex99.com/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload), signal: AbortSignal.timeout(30000)
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "送信できませんでした。");
-      if (result.redirectUrl) {
-        location.href = result.redirectUrl;
-      } else {
-        location.href = "/web/estimate/thanks/";
-      }
+      location.href = result.customerUrl;
     } catch (error) {
       formMessage.className = "form-message error";
       formMessage.textContent = error.message || "送信できませんでした。";
-    }
-  });
-  document.querySelector("#copyConsultation").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(document.querySelector("#consultationText").value);
-      formMessage.textContent = "相談内容をコピーしました。web@comprex99.com 宛てに送信してください。";
-    } catch {
-      document.querySelector("#consultationText").select();
-      formMessage.textContent = "本文を選択しました。コピーしてメールで送信してください。";
+    } finally {
+      sending = false;
+      form.querySelector('[type="submit"]').disabled = false;
     }
   });
 })();

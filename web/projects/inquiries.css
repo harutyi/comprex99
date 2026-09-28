@@ -1,0 +1,9 @@
+.inquiry-table { min-width: 740px; }
+.inquiry-line { display: grid; grid-template-columns: minmax(0, 1fr) 160px 44px; gap: 12px; align-items: end; margin-bottom: 12px; }
+.inquiry-line label { margin: 0; }
+.inquiry-line button { width: 44px; height: 44px; padding: 0; }
+.inquiry-copy { white-space: pre-wrap; overflow-wrap: anywhere; }
+#inquiriesPanel a { overflow-wrap: anywhere; }
+#inquiriesPanel [data-notice] { color: #77471a; }
+#inquiriesPanel [data-editor] { scroll-margin-top: 24px; }
+@media(max-width:600px) { .inquiry-line { grid-template-columns: minmax(0, 1fr) 95px 40px; gap: 8px; } }

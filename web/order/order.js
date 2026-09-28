@@ -17,6 +17,10 @@
     const o = await api("me");
     const data = { ...o.contact, ...o.information };
     app.innerHTML = `<h1>${esc(plans[o.plan].name)}</h1><p>制作費のお支払い：${o.paid ? "確認済み" : "要確認"}　／　${esc(o.status)}</p>`;
+    if (o.agreedQuote) {
+      const q = o.agreedQuote;
+      app.innerHTML += `<details><summary>合意済みの制作内容・料金</summary><p style="white-space:pre-wrap;overflow-wrap:anywhere">${esc(q.scope)}</p><ul><li>基本制作料金：${q.base.toLocaleString()}円</li>${q.lines.map(l=>`<li>${esc(l.name)}：${l.amount.toLocaleString()}円</li>`).join('')}</ul><p>初期費用 合計：${q.total.toLocaleString()}円 ／ 公開後の管理：${q.management.monthly.toLocaleString()}円 / 月</p></details>`;
+    }
     if (!o.paid || o.status === "キャンセル") { app.innerHTML += "<p>お手続きについて窓口へご連絡ください。</p>"; return; }
     app.innerHTML += `<p><a class="action" href="/web/support/#${encodeURIComponent(token)}">ご相談・修正依頼・質問</a></p>`;
     if (o.emailEnabled === false) app.innerHTML += '<section role="status"><p>現在、メールでのご案内を一時停止しています。お支払い・入力内容の保存は通常どおり受け付けています。</p><p>続きから入力できるよう、このページをブックマークするか、URLを保存してください。専用URLは第三者に共有しないでください。</p></section>';
