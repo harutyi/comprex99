@@ -3,6 +3,28 @@
   const apiBase='https://api.comprex99.com';
   let stopSupport=()=>{}, stopInquiries=()=>{};
   let key='', orders=[], epoch=0, busy=false, selected='', emailEnabled=false;
+  let testOrder=null;
+  const testPanel=document.createElement('section');testPanel.id='formTestPanel';
+  $('#listView').prepend(testPanel);
+  window.addEventListener('message',e=>{
+    const frame=$('#testFrame');
+    if(e.origin===location.origin && e.source===frame?.contentWindow && e.data?.type==='comprex-form-ready' && key && testOrder)
+      frame.contentWindow.postMessage({type:'comprex-form-test',key,token:testOrder.token},location.origin);
+  });
+  function renderTests(tests){
+    if($('#testFrame'))return;
+    testPanel.innerHTML='<h2>制作情報フォームのテスト</h2><button id="createFormTest" class="secondary">フォームをテストする</button><div id="testList"></div><div id="testArea"></div>';
+    $('#testList').innerHTML=tests.map(o=>`<p>テスト案件：${esc(o.contact.shopName)} ／ ${o.submittedAt?'提出済み':'入力中'} <button data-test-open="${o.id}">開く</button></p>`).join('');
+    $('#createFormTest').onclick=async()=>{const b=$('#createFormTest');b.disabled=true;try{const r=await api('/test',{});openTest(r.order);}catch(e){error(e);}finally{b.disabled=false;}};
+    testPanel.querySelectorAll('[data-test-open]').forEach(b=>b.onclick=async()=>{try{openTest((await api('/'+b.dataset.testOpen)).order);}catch(e){error(e);}});
+  }
+  function openTest(o){
+    testOrder=o;
+    $('#testArea').innerHTML='<p>管理者専用。決済・メール通知・売上集計の対象外です。</p><button id="testResult" class="secondary">結果を確認</button> <button id="testClose" class="secondary">閉じる（保存）</button> <button id="testEnd" class="secondary">テスト終了・データ削除</button><iframe id="testFrame" title="制作情報フォームのテスト" src="/web/order/?test=1" style="display:block;width:100%;height:75vh;border:1px solid #ccc;margin-top:16px"></iframe>';
+    $('#testResult').onclick=()=>{testOrder=null;$('#testArea').innerHTML='';detail(o.id).catch(error);};
+    $('#testClose').onclick=()=>{testOrder=null;$('#testArea').innerHTML='';load().catch(error);};
+    $('#testEnd').onclick=async()=>{if(!confirm('このテストの入力内容と画像を削除して終了しますか？'))return;try{await api('/'+o.id+'/test-end',{});testOrder=null;$('#testArea').innerHTML='';await load();}catch(e){error(e);}};
+  }
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
   const date=v=>v?(String(v).length===10?String(v).replaceAll('-','/'):new Date(v).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})):'未設定';
   const money=v=>Number.isFinite(v)?`${v.toLocaleString('ja-JP')}円`:'未取得';
@@ -10,7 +32,7 @@
   const step=s=>M.steps[s]||s;
   const subLabel=s=>({active:'契約中',past_due:'支払い遅延',unpaid:'未払い',canceled:'解約済み',incomplete:'手続き未完了',incomplete_expired:'手続き期限切れ',trialing:'試用期間',paused:'停止中'})[s]||s||'未契約';
   const badge=o=>`<span class="badge ${M.group(o)==='制作中'?'progress':M.group(o)==='納品済み'?'done':M.group(o)==='情報待ち'?'alert':''}">${esc(M.group(o))}</span>`;
-  function logout(){stopSupport();stopInquiries();epoch++;key='';orders=[];selected='';$('#workspace').hidden=true;$('#detail').innerHTML='';$('#rows').innerHTML='';$('#summary').innerHTML='';$('#unmatched').innerHTML='';$('#login').hidden=false;$('#logout').hidden=true;$('#key').value='';$('#search').value='';$('#statusFilter').value='';$('#dueFilter').value='';history.replaceState(null,'',location.pathname);}
+  function logout(){testOrder=null;testPanel.innerHTML='';stopSupport();stopInquiries();epoch++;key='';orders=[];selected='';$('#workspace').hidden=true;$('#detail').innerHTML='';$('#rows').innerHTML='';$('#summary').innerHTML='';$('#unmatched').innerHTML='';$('#login').hidden=false;$('#logout').hidden=true;$('#key').value='';$('#search').value='';$('#statusFilter').value='';$('#dueFilter').value='';history.replaceState(null,'',location.pathname);}
   function error(e){$('#message').textContent=e.message;}
   async function api(path='', data) {
     if(!key)throw Error('管理キーを入力してください。');
@@ -29,7 +51,8 @@
   async function load(){
     const result=await api(), all=[...result.orders];let cursor=result.nextCursor;
     while(cursor){const page=await api(`?before=${encodeURIComponent(cursor)}`);all.push(...page.orders);cursor=page.nextCursor;}
-    orders=all.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));emailEnabled=result.emailEnabled;
+    renderTests(all.filter(o=>o.isTest));
+    orders=all.filter(o=>!o.isTest).sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));emailEnabled=result.emailEnabled;
     const s=M.summary(orders);
     $('#summary').innerHTML=[['進行中案件',`${s.ongoing}件`,''],['今月の制作入金',money(s.revenue),'現在の返金額を控除'],['月額サイト管理契約額',`${money(s.monthly)}/月`,s.unknownMonthly?`金額未取得 ${s.unknownMonthly}件を除く`:'有効な契約の基本料金'],['制作費の未確認',`${s.unpaid}件`,'登録済み案件']].map(([label,value,note])=>`<div><dt>${label}</dt><dd>${value}<small>${note}</small></dd></div>`).join('');
     renderRows();$('#updated').textContent=`更新 ${new Date().toLocaleTimeString('ja-JP')}`;
@@ -52,6 +75,13 @@
     $('#reconcile').onclick=()=>{const sessionId=prompt('照合待ちの管理決済のCheckout Session ID');if(sessionId)action('/reconcile',{sessionId});};
     $('#detail').querySelectorAll('[data-retry]').forEach(b=>b.onclick=()=>{if(confirm('送信済みでないことを確認しましたか？'))action('/retry',{mailId:b.dataset.retry});});
     $('#detail').querySelectorAll('[data-file]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{const active=epoch;const r=await fetch(`${apiBase}/api/orders/admin/${encodeURIComponent(id)}/file?id=${encodeURIComponent(b.dataset.file)}`,{headers:{Authorization:`Bearer ${key}`},cache:'no-store'});if(active!==epoch)return;if(!r.ok)throw Error('素材を取得できません。');const blob=await r.blob();if(active!==epoch)return;const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=o.files.find(f=>f.id===b.dataset.file).name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}catch(e){error(e);}finally{b.disabled=false;}});
+    if(o.isTest){
+      $('#detail h1').textContent='テスト結果：'+(o.contact.shopName||'テスト案件');
+      $('#edit').closest('section').hidden=true;
+      $('#sync').closest('section').hidden=true;
+      $('#mail').closest('details').hidden=true;
+      $('#detail').querySelectorAll('a').forEach(a=>a.hidden=true);
+    }
     window.scrollTo(0,0);
   }
   $('#rows').onclick=e=>{const b=e.target.closest('[data-open]');if(b)detail(b.dataset.open).catch(error);};
@@ -64,6 +94,7 @@
   for(const id of ['search','statusFilter','dueFilter'])$('#'+id).addEventListener(id==='search'?'input':'change',renderRows);
   $('#refresh').onclick=async()=>{if(busy)return;busy=true;try{await load();$('#message').textContent='一覧を更新しました。';}catch(e){error(e);}finally{busy=false;}};
   $('#logout').onclick=logout;
+  $('#logout').addEventListener('click',()=>{testOrder=null;testPanel.innerHTML='';});
   $('#login').onsubmit=async e=>{e.preventDefault();if(busy)return;busy=true;key=$('#key').value;epoch++;const link=location.hash.slice(1);try{await load();$('#key').value='';$('#login').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;$('#listView').hidden=false;$('#detail').hidden=true;$('#message').textContent='';stopSupport();stopSupport=window.ComprexSupport.mount($('#supportPanel'),(path,data)=>api('/support'+path,data),true);stopInquiries();let panel=$('#inquiriesPanel');if(!panel){panel=document.createElement('section');panel.id='inquiriesPanel';$('#listView').prepend(panel);}stopInquiries=window.ComprexInquiries.mount(panel,api,id=>detail(id).catch(error));if(link)await detail(decodeURIComponent(link));}catch(e){error(e);}finally{busy=false;}};
   setInterval(()=>{if(key&&!busy&&!selected&&!document.hidden){busy=true;load().catch(error).finally(()=>busy=false);}},60000);
 })();

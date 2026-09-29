@@ -2,9 +2,10 @@
   const app = document.querySelector("#orderApp"), message = document.querySelector("#message");
   const plans = window.ComprexPlans;
   let token = location.hash.slice(1);
+  let adminKey = '';
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[c]);
   async function api(route, data) {
-    const r = await fetch(`https://api.comprex99.com/api/orders/${route}`, { method: data ? "POST" : "GET", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, ...(data ? { body: JSON.stringify(data) } : {}) });
+    const r = await fetch(`https://api.comprex99.com/api/orders/${route}`, { method: data ? "POST" : "GET", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`, ...(adminKey ? {'X-Admin-Key':adminKey} : {}) }, ...(data ? { body: JSON.stringify(data) } : {}) });
     let result; try { result = await r.json(); } catch { throw Error("受付サーバーに接続できません。窓口へご連絡ください。"); }
     if (!r.ok) throw Error(result.error || "受付サーバーに接続できません。"); return result;
   }
@@ -17,12 +18,14 @@
     const o = await api("me");
     const data = { ...o.contact, ...o.information };
     app.innerHTML = `<h1>${esc(plans[o.plan].name)}</h1><p>制作費のお支払い：${o.paid ? "確認済み" : "要確認"}　／　${esc(o.status)}</p>`;
+    if (o.isTest) app.innerHTML='<h1>制作情報フォームのテスト</h1><p>管理者専用です。決済・メール送信・実際の制作依頼は発生しません。</p>';
     if (o.agreedQuote) {
       const q = o.agreedQuote;
       app.innerHTML += `<details><summary>合意済みの制作内容・料金</summary><p style="white-space:pre-wrap;overflow-wrap:anywhere">${esc(q.scope)}</p><ul><li>基本制作料金：${q.base.toLocaleString()}円</li>${q.lines.map(l=>`<li>${esc(l.name)}：${l.amount.toLocaleString()}円</li>`).join('')}</ul><p>初期費用 合計：${q.total.toLocaleString()}円 ／ 公開後の管理：${q.management.monthly.toLocaleString()}円 / 月</p></details>`;
     }
-    if (!o.paid || o.status === "キャンセル") { app.innerHTML += "<p>お手続きについて窓口へご連絡ください。</p>"; return; }
-    app.innerHTML += `<p><a class="action" href="/web/support/#${encodeURIComponent(token)}">ご相談・修正依頼・質問</a></p>`;
+    if ((!o.paid && !o.isTest) || o.status === "キャンセル") { app.innerHTML += "<p>お手続きについて窓口へご連絡ください。</p>"; return; }
+    if (o.isTest && o.submittedAt) { app.innerHTML+='<h2>テスト提出が完了しました。</h2><p>管理画面の「結果を確認」で入力内容と写真を確認できます。</p>'; return; }
+    if (!o.isTest) app.innerHTML += `<p><a class="action" href="/web/support/#${encodeURIComponent(token)}">ご相談・修正依頼・質問</a></p>`;
     if (o.emailEnabled === false) app.innerHTML += '<section role="status"><p>現在、メールでのご案内を一時停止しています。お支払い・入力内容の保存は通常どおり受け付けています。</p><p>続きから入力できるよう、このページをブックマークするか、URLを保存してください。専用URLは第三者に共有しないでください。</p></section>';
     if (o.submittedAt) {
       app.innerHTML += o.publishedAt
@@ -36,26 +39,46 @@
       } else if (o.maintenance) app.innerHTML += `<p>管理契約：${esc(plans[o.maintenance.plan].name)} ／ ${esc(o.maintenance.status)}</p>`;
       return;
     }
-    app.innerHTML += `<p>制作情報と素材をお送りください。途中保存して、同じ専用リンクから再開できます。</p><form id="information"><fieldset><legend>1. 店舗・ご担当者</legend><div class="grid">${["shopName","personName","email","phone","address","industry","hours","holidays"].map(k=>field(k,data)).join("")}</div></fieldset><fieldset><legend>2. 掲載内容とデザイン</legend>${["services","copy","color","mood","referenceUrl","currentUrl","socialUrl","requests"].map(k=>field(k,data)).join("")}</fieldset><fieldset><legend>3. ロゴ・店舗写真・商品写真・その他の素材</legend><p class="note">JPEG・PNG・WebP・PDF。1点10MB、合計50MB・20点まで。公開する権利のある素材をお送りください。</p><input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.pdf"><ul id="filesList">${o.files.map(f=>`<li>${esc(f.name)}</li>`).join("")}</ul><p id="uploadState" role="status"></p></fieldset><label><input id="complete" type="checkbox" required> 制作に必要な情報・素材を揃えました</label><div class="actions"><button type="button" class="secondary" id="save">途中保存する</button><button type="submit">制作情報を提出する</button></div></form>`;
+    app.innerHTML += `<p>制作情報と素材をお送りください。途中保存して、同じ専用リンクから再開できます。</p><form id="information"><fieldset><legend>1. 店舗・ご担当者</legend><div class="grid">${["shopName","personName","email","phone","address","industry","hours","holidays"].map(k=>field(k,data)).join("")}</div></fieldset><fieldset><legend>2. 掲載内容とデザイン</legend>${["services","copy","color","mood","referenceUrl","currentUrl","socialUrl","requests"].map(k=>field(k,data)).join("")}</fieldset><fieldset><legend>3. ロゴ・店舗写真・商品写真・その他の素材</legend><p class="note">JPEG・PNG・WebP・HEIC・PDF。1点30MB、合計1GB・200点まで。提出前なら何回かに分けて追加できます。公開する権利のある素材をお送りください。</p><input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf"><ul id="filesList">${o.files.map(f=>`<li>${esc(f.name)}</li>`).join("")}</ul><p id="uploadState" role="status"></p><button id="retryFiles" type="button" hidden>失敗した素材を再送する</button></fieldset><label><input id="complete" type="checkbox" required> 制作に必要な情報・素材を揃えました</label><div class="actions"><button type="button" class="secondary" id="save">途中保存する</button><button type="submit">制作情報を提出する</button></div></form>`;
     const form = document.querySelector("#information");
     let uploading = false;
     async function save(submit) { message.textContent = "保存しています…"; try { const result = await api("information", { ...Object.fromEntries(new FormData(form)), submit }); message.textContent = submit ? "提出しました。" : "途中保存しました。"; if (result.submittedAt) await load(); } catch (e) { message.textContent = e.message; } }
     document.querySelector("#save").onclick = () => save(false);
     form.onsubmit = async e => { e.preventDefault(); if (uploading) return; const b = form.querySelector('[type="submit"]'); b.disabled = true; await save(true); b.disabled = false; };
-    document.querySelector("#files").onchange = async e => {
+    let failedFiles=[];
+    const filesInput=document.querySelector('#files'), retryFiles=document.querySelector('#retryFiles');
+    async function uploadFiles(files) {
       uploading = true; const state = document.querySelector("#uploadState"); form.querySelector('[type="submit"]').disabled = true;
+      filesInput.disabled=true; retryFiles.hidden=true; failedFiles=[];
       try {
-        for (const f of e.target.files) {
-          if (f.size > 10*1024*1024) throw Error("1点10MBまでです。"); state.textContent = `${f.name} を送信中…`;
-          const data = await new Promise((resolve,reject)=>{ const reader=new FileReader(); reader.onload=()=>resolve(String(reader.result).split(",")[1]); reader.onerror=reject; reader.readAsDataURL(f); });
-          await api("upload", { name:f.name, data }); const li=document.createElement("li"); li.textContent=f.name; document.querySelector("#filesList").append(li);
+        for (const [index,f] of files.entries()) {
+          try {
+            if (f.size > 30*1024*1024) throw Error('1点30MBまでです。');
+            state.textContent=`${index+1}/${files.length}点：${f.name} を送信中…`;
+            const r=await fetch('https://api.comprex99.com/api/orders/upload',{method:'POST',headers:{'Content-Type':'application/octet-stream','X-File-Name':encodeURIComponent(f.name),Authorization:`Bearer ${token}`,...(adminKey?{'X-Admin-Key':adminKey}:{})},body:f});
+            const result=await r.json(); if(!r.ok)throw Error(result.error||'送信できませんでした。');
+            const li=document.createElement('li');li.textContent=f.name;document.querySelector('#filesList').append(li);
+          } catch(e) { failedFiles.push(f); message.textContent=`${f.name}：${e.message}`; }
+          await new Promise(resolve=>setTimeout(resolve,600));
         }
-        state.textContent="素材を受け付けました。";
-      } catch(e) { state.textContent=e.message; } finally { uploading=false; form.querySelector('[type="submit"]').disabled=false; e.target.value=""; }
-    };
+        state.textContent=failedFiles.length?`${files.length-failedFiles.length}点を受付。${failedFiles.length}点は送信できませんでした。`:'素材を受け付けました。';
+      } finally { uploading=false; form.querySelector('[type="submit"]').disabled=false; filesInput.disabled=false; filesInput.value='';retryFiles.hidden=!failedFiles.length; }
+    }
+    filesInput.onchange=e=>uploadFiles([...e.target.files]);
+    retryFiles.onclick=()=>uploadFiles([...failedFiles]);
   }
   async function start() {
     const query = new URLSearchParams(location.search);
+    if (query.has('test')) {
+      app.innerHTML='<h1>管理画面からの接続を待っています。</h1>';
+      window.addEventListener('message',async e=>{
+        if(e.origin!==location.origin || e.source!==parent || e.data?.type!=='comprex-form-test' || adminKey)return;
+        adminKey=e.data.key;token=e.data.token;
+        try { await load(); } catch(err) { message.textContent=err.message; }
+      });
+      parent.postMessage({type:'comprex-form-ready'},location.origin);
+      return;
+    }
     if (query.get("session_id")) {
       const sessionId = query.get("session_id");
       // Only the verified server response grants access, never the query string itself.
