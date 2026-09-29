@@ -13,7 +13,10 @@
     shopName: "会社名・店舗名", personName: "担当者名", email: "メールアドレス", phone: "電話番号", address: "住所", industry: "業種", hours: "営業時間", holidays: "定休日", services: "事業・サービス内容", copy: "掲載したい文章", color: "希望する色", mood: "希望する雰囲気", referenceUrl: "参考サイトURL", currentUrl: "現在のホームページURL", socialUrl: "SNS URL", requests: "その他のご要望"
   };
   const required = ["shopName", "personName", "email", "phone", "address", "industry", "services"];
-  function field(key, data) { return `<label>${fields[key]}${required.includes(key) ? "（必須）" : ""}${["services", "copy", "requests"].includes(key) ? `<textarea name="${key}" maxlength="10000" ${required.includes(key)?"required":""}>${esc(data[key])}</textarea>` : `<input name="${key}" value="${esc(data[key])}" maxlength="10000" type="${key === "email" ? "email" : key.endsWith("Url") ? "url" : "text"}" ${required.includes(key)?"required":""}>`}</label>`; }
+  function field(key, data) {
+    if(key==='socialUrl') return `<h3>SNS・予約ページ（任意）</h3>${[['instagramUrl','Instagram'],['lineUrl','LINE'],['bookingUrl','ホットペッパーなどの予約ページ']].map(([k,label])=>`<label>${label}<input type="url" name="${k}" maxlength="2000" value="${esc(data[k])}" placeholder="https://"></label>`).join('')}<div id="otherLinks"></div><button type="button" class="secondary" id="addLink">その他のリンクを追加</button>`;
+    return `<label>${fields[key]}${required.includes(key) ? "（必須）" : ""}${["services", "copy", "requests"].includes(key) ? `<textarea name="${key}" maxlength="10000" ${required.includes(key)?"required":""}>${esc(data[key])}</textarea>` : `<input name="${key}" value="${esc(data[key])}" maxlength="10000" type="${key === "email" ? "email" : key.endsWith("Url") ? "url" : "text"}" ${required.includes(key)?"required":""}>`}</label>`;
+  }
   async function load() {
     const o = await api("me");
     const data = { ...o.contact, ...o.information };
@@ -41,8 +44,21 @@
     }
     app.innerHTML += `<p>制作情報と素材をお送りください。途中保存して、同じ専用リンクから再開できます。</p><form id="information"><fieldset><legend>1. 店舗・ご担当者</legend><div class="grid">${["shopName","personName","email","phone","address","industry","hours","holidays"].map(k=>field(k,data)).join("")}</div></fieldset><fieldset><legend>2. 掲載内容とデザイン</legend>${["services","copy","color","mood","referenceUrl","currentUrl","socialUrl","requests"].map(k=>field(k,data)).join("")}</fieldset><fieldset><legend>3. ロゴ・店舗写真・商品写真・その他の素材</legend><p class="note">JPEG・PNG・WebP・HEIC・PDF。1点30MB、合計1GB・200点まで。提出前なら何回かに分けて追加できます。公開する権利のある素材をお送りください。</p><input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf"><ul id="filesList">${o.files.map(f=>`<li>${esc(f.name)}</li>`).join("")}</ul><p id="uploadState" role="status"></p><button id="retryFiles" type="button" hidden>失敗した素材を再送する</button></fieldset><label><input id="complete" type="checkbox" required> 制作に必要な情報・素材を揃えました</label><div class="actions"><button type="button" class="secondary" id="save">途中保存する</button><button type="submit">制作情報を提出する</button></div></form>`;
     const form = document.querySelector("#information");
+    document.querySelector('#retryFiles').textContent='送れなかった写真・素材をもう一度送る';
+    const otherLinks=document.querySelector('#otherLinks'), addLink=document.querySelector('#addLink');
+    function appendLink(link={}) {
+      if(otherLinks.children.length>=20)return;
+      const row=document.createElement('div');row.className='extra-link';
+      row.innerHTML=`<label>サービス名<input data-link-name maxlength="100" value="${esc(link.name)}" placeholder="YouTube・TikTokなど"></label><label>URL<input type="url" data-link-url maxlength="2000" value="${esc(link.url)}" placeholder="https://"></label><button type="button" class="secondary" aria-label="このリンクを削除">削除</button>`;
+      row.querySelector('button').onclick=()=>{row.remove();addLink.disabled=false;};
+      otherLinks.append(row);addLink.disabled=otherLinks.children.length>=20;
+    }
+    const savedLinks=Array.isArray(data.otherLinks)?data.otherLinks:[];
+    savedLinks.forEach(appendLink);
+    if(data.socialUrl && !savedLinks.some(l=>l.url===data.socialUrl))appendLink({name:'以前登録したSNS',url:data.socialUrl});
+    addLink.onclick=()=>{appendLink();otherLinks.lastElementChild?.querySelector('input').focus();};
     let uploading = false;
-    async function save(submit) { message.textContent = "保存しています…"; try { const result = await api("information", { ...Object.fromEntries(new FormData(form)), submit }); message.textContent = submit ? "提出しました。" : "途中保存しました。"; if (result.submittedAt) await load(); } catch (e) { message.textContent = e.message; } }
+    async function save(submit) { message.textContent = "保存しています…"; try { const links=[...otherLinks.children].map(row=>({name:row.querySelector('[data-link-name]').value,url:row.querySelector('[data-link-url]').value})).filter(l=>l.name.trim()||l.url.trim());const result = await api("information", { ...Object.fromEntries(new FormData(form)), otherLinks:links, socialUrl:'', submit }); message.textContent = submit ? "提出しました。" : "途中保存しました。"; if (result.submittedAt) await load(); } catch (e) { message.textContent = e.message; } }
     document.querySelector("#save").onclick = () => save(false);
     form.onsubmit = async e => { e.preventDefault(); if (uploading) return; const b = form.querySelector('[type="submit"]'); b.disabled = true; await save(true); b.disabled = false; };
     let failedFiles=[];

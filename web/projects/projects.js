@@ -58,9 +58,10 @@
     renderRows();$('#updated').textContent=`更新 ${new Date().toLocaleTimeString('ja-JP')}`;
     $('#unmatched').innerHTML=result.unmatched?.length?`<section><h2>決済照合待ち ${result.unmatched.length}件</h2><ul>${result.unmatched.map(x=>`<li>${esc(x.sessionId)} / ${esc(x.email)} / ${esc(x.reason)}</li>`).join('')}</ul></section>`:'';
   }
-  const pairs=items=>`<dl>${items.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v||'未設定')}</dd>`).join('')}</dl>`;
+  const pairs=items=>`<dl>${items.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc((Array.isArray(v)?v.map(l=>`${l.name||'その他'}：${l.url}`).join('\n'):v)||'未設定')}</dd>`).join('')}</dl>`;
   const fields={shopName:'会社・店舗名',personName:'担当者',email:'メール',phone:'電話',address:'住所',industry:'業種',hours:'営業時間',holidays:'定休日',services:'事業内容',copy:'掲載文章',color:'希望カラー',mood:'希望する雰囲気',referenceUrl:'参考サイト',currentUrl:'現在のサイト',socialUrl:'SNS',requests:'その他要望'};
   async function detail(id){
+    Object.assign(fields,{instagramUrl:'Instagram',lineUrl:'LINE',bookingUrl:'予約ページ',otherLinks:'その他のリンク'});
     const result=await api(`/${encodeURIComponent(id)}`), o=result.order;emailEnabled=result.emailEnabled;selected=id;
     history.replaceState(null,'',`${location.pathname}#${encodeURIComponent(id)}`);
     const allowed=(o.allowedStatuses||[o.status]).filter(s=>!(o.plan==='outright'&&['保守契約待ち','保守中'].includes(s)));

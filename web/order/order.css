@@ -1,5 +1,7 @@
 :root { color-scheme: light; font-family: Arial, "Noto Sans JP", sans-serif; color: #1b1d1a; background: #fafaf7; }
 * { box-sizing: border-box; letter-spacing: 0; }
+[hidden] { display: none !important; }
+.extra-link { border-bottom: 1px solid #d1d3ca; padding-bottom: 16px; margin-bottom: 16px; }
 body { margin: 0; } header { padding: 20px max(20px, calc((100% - 1100px)/2)); border-bottom: 1px solid #d1d3ca; display: flex; justify-content: space-between; gap: 20px; }
 a { color: inherit; } main { max-width: 1100px; margin: 36px auto; padding: 0 20px; } h1 { font-size: 28px; margin: 0 0 20px; } h2 { font-size: 20px; } h3 { font-size: 16px; }
 p, li { line-height: 1.8; } section, fieldset { border: 0; border-top: 1px solid #d1d3ca; padding: 24px 0; margin: 20px 0; min-width: 0; } legend { font-size: 20px; font-weight: bold; padding: 0 12px 0 0; }
