@@ -1,0 +1,15 @@
+Images used for the Comprex99 demo page "喫茶つばめ".
+
+Hero coffee image:
+Source: Pexels photo ID 24206105
+URL: https://www.pexels.com/photo/cup-of-coffee-and-a-small-milk-jug-24206105/
+License: Pexels License, free for commercial use.
+
+Drip coffee image:
+Source: Pexels photo ID 7125767
+URL: https://www.pexels.com/photo/faceless-person-pouring-water-into-dripper-7125767/
+License: Pexels License, free for commercial use.
+
+Notes:
+Images were converted to WebP and resized for the local demo.
+No identifiable faces are used.
