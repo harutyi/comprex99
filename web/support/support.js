@@ -70,11 +70,27 @@
   const root=document.querySelector('#customerSupport');
   if(root) {
     const token=location.hash.slice(1);
-    if(!/^[A-Za-z0-9_-]{32}$/.test(token)){root.textContent='ご契約時の専用ページから「ご相談・修正依頼」を開いてください。';return;}
+    const locked = message => {
+      root.innerHTML='<section class="support-panel"><h2>相談・修正依頼はご契約者様専用です</h2><p>'+esc(message)+'</p><p>制作のお手続きで保存した専用URL、または担当者からお送りした専用URLからお進みください。見つからない場合は、これまでのご連絡先へ店名を添えてお知らせください。再度お支払いいただく必要はありません。</p></section>';
+    };
+    if(!/^[A-Za-z0-9_-]{32}$/.test(token)){locked('このURLからは依頼を送信できません。よくある質問はどなたでもご覧いただけます。');return;}
     document.querySelector('#orderLink').href='/web/order/#'+token;
-    window.ComprexSupport.mount(root, async(path,data)=>{
+    const help = document.querySelector('#helpLink'); if(help) help.href='./help.html#'+token;
+    const request = async(path,data)=>{
       const response=await fetch('https://api.comprex99.com/api/orders/support'+path,{method:data?'POST':'GET',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},...(data?{body:JSON.stringify(data)}:{}),cache:'no-store',signal:AbortSignal.timeout(30000)});
       const result=await response.json();if(!response.ok)throw Error(result.error||'接続できませんでした。');return result;
-    });
+    };
+    root.textContent='ご契約情報を確認しています…';
+    (async()=>{
+      try {
+        const response=await fetch('https://api.comprex99.com/api/orders/me',{headers:{Authorization:'Bearer '+token},cache:'no-store',signal:AbortSignal.timeout(30000)});
+        if(!response.ok)throw Error('専用リンクを確認できませんでした。');
+        const order=await response.json();
+        if(!order.paid || order.isTest || order.status==='キャンセル')throw Error('このご契約では相談フォームをご利用いただけません。担当者へご連絡ください。');
+        const shop=document.querySelector('#supportShop'); if(shop)shop.textContent=(order.contact.shopName || order.contact.personName)+' 様の専用ページ';
+        const link=document.querySelector('#requestLink');if(link){link.hidden=false;link.onclick=e=>{e.preventDefault();root.querySelector('[data-new]').scrollIntoView({behavior:'smooth'});};}
+        window.ComprexSupport.mount(root,request);
+      } catch(error){locked(error.message);}
+    })();
   }
 })();

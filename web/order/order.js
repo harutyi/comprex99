@@ -28,7 +28,7 @@
     }
     if ((!o.paid && !o.isTest) || o.status === "キャンセル") { app.innerHTML += "<p>お手続きについて窓口へご連絡ください。</p>"; return; }
     if (o.isTest && o.submittedAt) { app.innerHTML+='<h2>テスト提出が完了しました。</h2><p>管理画面の「結果を確認」で入力内容と写真を確認できます。</p>'; return; }
-    if (!o.isTest) app.innerHTML += `<p><a class="action" href="/web/support/#${encodeURIComponent(token)}">ご相談・修正依頼・質問</a></p>`;
+    if (!o.isTest) app.innerHTML += `<section><h2>お客様サポート</h2><p>使い方の確認や、担当者への相談・修正依頼はこちらから。</p><a class="action" href="/web/support/#${encodeURIComponent(token)}">お客様サポートを開く</a></section>`;
     if (o.emailEnabled === false) app.innerHTML += '<section role="status"><p>現在、メールでのご案内を一時停止しています。お支払い・入力内容の保存は通常どおり受け付けています。</p><p>続きから入力できるよう、このページをブックマークするか、URLを保存してください。専用URLは第三者に共有しないでください。</p></section>';
     if (o.submittedAt) {
       app.innerHTML += o.publishedAt

@@ -4,4 +4,5 @@
 .support-faq details{padding:20px 0;border-bottom:1px solid #c9d1ce}
 .support-faq summary{cursor:pointer;font-weight:600}
 .support-faq p{line-height:1.8}
+.support-entry{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.support-entry a{padding:12px 16px;border:1px solid #c9d1ce;text-decoration:none;color:inherit}.support-entry a:hover{background:#eef2ed}
 .support-table-wrap{overflow-x:auto}.support-table{width:100%;border-collapse:collapse;min-width:660px}.support-table th,.support-table td{text-align:left;padding:12px;border-bottom:1px solid #c9d1ce}.support-table th{font-size:14px}.support-table button{white-space:normal}.support-badge{margin:12px 0;background:#20251f;color:#fff;padding:12px 16px;border:0;border-radius:4px;cursor:pointer}
