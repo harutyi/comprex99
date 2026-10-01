@@ -3,11 +3,12 @@
   const date = v => new Date(v).toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'});
   window.ComprexSupport = { mount(root, request, admin = false) {
     let tickets = [], cursor = null, busy = false, stopped = false, selectedId = '';
-    root.innerHTML = `<h2>${admin?'問い合わせ管理':'お問い合わせ履歴'}</h2><p class="support-note">回答はこの画面に保存されます。メール通知はありません。${admin?'銀行振込の相談は受付のみです。リコーリースの契約・入金確認とは連動していません。':'銀行振込をご希望の場合も、まずはご相談ください。受付だけでは支払方法は変更されません。'}</p>
+    root.innerHTML = `<h2>${admin?'相談・修正依頼の管理':'相談・修正依頼'}</h2><p class="support-note">${admin?'お客様から届いた依頼に、担当者として回答します。':'内容は担当者が直接確認します。AIによる自動回答は行いません。'}回答はこの画面に保存されます。お客様への回答メール通知はありません。</p>${admin?'<p data-notification role="status"></p>':''}
       <div class="support-toolbar">${admin?'<label>対応状況<select data-filter><option value="">すべて</option><option selected>受付</option><option>対応中</option><option>回答済み</option><option>完了</option></select></label>':''}<button type="button" data-refresh>最新の状況を確認</button><span data-count></span></div>
       <p class="support-feedback" role="status"></p><ul class="support-list"></ul><button type="button" data-more hidden>続きを読み込む</button><div class="support-thread" hidden></div>
-      ${admin?'':`<details class="support-new"><summary>新しいお問い合わせ</summary><form data-new><label>種類<select name="kind"><option>相談</option><option>修正依頼</option><option>質問</option><option>銀行振込の相談</option></select></label><label>件名<input name="title" maxlength="120" required></label><label>内容<textarea name="body" maxlength="5000" required></textarea></label><button>送信する</button></form></details>`}`;
+      ${admin?'':`<section class="support-new"><h3>担当者に送る</h3><form data-new><label>種類<select name="kind"><option>相談</option><option>修正依頼</option></select></label><label>件名<input name="title" maxlength="120" required placeholder="例：トップページの写真変更について"></label><label>内容<textarea name="body" maxlength="5000" required placeholder="対象のページURLや、相談・変更したい内容をご記入ください。"></textarea></label><p class="support-note">追加費用が必要な場合は、作業前に内容と料金をご案内します。送信だけで追加料金が確定することはありません。</p><button>担当者に送信する</button></form></section>`}`;
     const $ = s => root.querySelector(s), feedback = text => {if(!stopped) $('.support-feedback').textContent = text;};
+    if (!admin) root.insertBefore($('.support-new'), $('.support-toolbar'));
     async function load(more = false) {
       const query = new URLSearchParams({status: $('[data-filter]')?.value || ''});
       if(more && cursor) query.set('before', cursor);
@@ -17,6 +18,10 @@
       cursor = result.nextCursor;
       $('[data-count]').textContent = `${tickets.length}件${cursor?'以上':''}`;
       $('.support-list').innerHTML = tickets.length ? tickets.map(t=>`<li><button type="button" class="secondary" data-ticket="${esc(t.id)}">${esc(t.status)} · ${esc(t.title)}</button><p class="support-note">${admin?esc(t.shopName)+' · ':''}${esc(t.kind)} · ${date(t.updatedAt)}</p></li>`).join('') : '<li>該当するお問い合わせはありません。</li>';
+      if (admin) {
+        $('.support-list').innerHTML = `<li class="support-table-wrap"><table class="support-table"><thead><tr><th>受付日時</th><th>店舗</th><th>種類</th><th>件名</th><th>対応状況</th></tr></thead><tbody>${tickets.map(t=>`<tr><td>${date(t.createdAt)}</td><td>${esc(t.shopName)}</td><td>${esc(t.kind)}</td><td><button type="button" data-ticket="${esc(t.id)}">${esc(t.title)}</button></td><td>${esc(t.status)}</td></tr>`).join('') || '<tr><td colspan="5">該当する依頼はありません。</td></tr>'}</tbody></table></li>`;
+        await refreshNotification();
+      }
       $('[data-more]').hidden = !cursor;
       if (selectedId) {
         const selected = tickets.find(t => t.id === selectedId);
@@ -25,6 +30,19 @@
       }
     }
     async function run(action) {if(busy)return;busy=true;try{await action();}catch(e){feedback(e.message);}finally{busy=false;}}
+    const badge = admin ? document.createElement('button') : null;
+    if (badge) {
+      badge.type='button'; badge.className='support-badge'; badge.textContent='相談・修正依頼';
+      (document.querySelector('#workspace') || root).prepend(badge);
+      badge.onclick=()=>{ const list=document.querySelector('#listView'), detail=document.querySelector('#detail'); if(list)list.hidden=false;if(detail)detail.hidden=true;root.scrollIntoView({behavior:'smooth'});run(()=>load()); };
+    }
+    async function refreshNotification() {
+      const summary = await request('/summary');
+      if(stopped)return;
+      badge.textContent=`相談・修正依頼：未対応 ${summary.pending}件 ／ 対応中 ${summary.inProgress}件`;
+      $('[data-notification]').textContent=summary.mailConfigured?'新規依頼・お客様からの返信は管理者へメール通知します。':'管理者メール通知は設定待ちです。依頼は保存されます。この画面でご確認ください。';
+    }
+    const timer = admin ? setInterval(()=>{if(!document.hidden&&!busy&&!stopped)run(()=>refreshNotification());},60000) : null;
     function show(t, preserveDraft = false) {
       const previous = preserveDraft ? $('.support-thread form') : null;
       const draft = previous ? Object.fromEntries(new FormData(previous)) : null;
@@ -47,7 +65,7 @@
       form.onsubmit=e=>{e.preventDefault();run(async()=>{const t=await request('',{...Object.fromEntries(new FormData(form)),requestId});if(stopped)return;form.reset();requestId=crypto.randomUUID();await load();show(t);feedback('お問い合わせを受け付けました。回答はこのページでご確認ください。');});};
     }
     run(()=>load());
-    return ()=>{stopped=true;root.innerHTML='';};
+    return ()=>{stopped=true;clearInterval(timer);badge?.remove();root.innerHTML='';};
   }};
   const root=document.querySelector('#customerSupport');
   if(root) {
